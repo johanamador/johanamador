@@ -8,6 +8,15 @@ import Link from "next/link"
 const projects = [
   {
     id: 1,
+    title: "3D Artist Portfolio",
+    description: "Interactive 3D artist portfolio featuring Sketchfab Viewer API integration, cyberpunk design, and embedded 3D model visualizations.",
+    image: "./projects/3d-artist.jpeg",
+    technologies: ["Next.js", "React", "Sketchfab API", "Three.js", "Tailwind CSS", "TypeScript"],
+    github: "", // Private repository
+    demo: "https://cuadot.vercel.app/",
+  },
+  {
+    id: 2,
     title: "Grunge Merch",
     description: "Interfaz web de una tienda de merch oficial de bandas de grunge y rock, con sistema de páginas de producto detalladas y galería de imágenes HD.",
     image: "./projects/grunge.png",
@@ -16,7 +25,7 @@ const projects = [
     demo: "https://grunge.vercel.app/",
   },
   {
-    id: 2,
+    id: 3,
     title: "Cinemark Perú Clone",
     description: "Responsive Cinemark Perú website clone using Next.js, TypeScript, and Cinemark API.",
     image: "./projects/cinemark-peru.png",
@@ -25,7 +34,7 @@ const projects = [
     demo: "https://cinemark-peru.vercel.app/",
   },
   {
-    id: 3,
+    id: 4,
     title: "Anniversary Project",
     description: "A digital memory corner and gift for a loved one. Built with Next.js and Tailwind CSS.",
     image: "./projects/anniversary-project.png",
@@ -34,7 +43,7 @@ const projects = [
     demo: "https://anniversary-project-sage.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Personal Portfolio",
     description: "My personal portfolio website built with Next.js, React, Tailwind CSS, and TypeScript. Features a modern UI, animated hero section, project gallery, and responsive design.",
     image: "./projects/cosmodev.png",
@@ -82,7 +91,7 @@ export function ProjectsSection() {
             {projects.map((project) => (
               <div
                 key={project.id}
-                className="bg-dark-background rounded-lg overflow-hidden border border-dark-border transition-all duration-300 hover:border-dark-accent hover:shadow-lg hover:shadow-dark-accent/10"
+                className="bg-dark-background rounded-lg overflow-hidden border border-dark-border transition-all duration-300 hover:border-dark-accent hover:shadow-lg hover:shadow-dark-accent/10 flex flex-col h-full"
               >
                 <div className="h-48 overflow-hidden">
                   <Link
@@ -97,29 +106,38 @@ export function ProjectsSection() {
                   />
                   </Link>
                 </div>
-                <div className="p-5">
-                  <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
-                  <p className="text-dark-secondary text-sm mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.map((tech, index) => (
-                      <span
-                        key={index}
-                        className="text-xs bg-dark-surface px-2 py-1 rounded-full text-dark-accent border border-dark-border"
-                      >
-                        {tech}
-                      </span>
-                    ))}
+                <div className="p-5 flex flex-col flex-grow">
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <p className="text-dark-secondary text-sm mb-4">{project.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.map((tech, index) => (
+                        <span
+                          key={index}
+                          className="text-xs bg-dark-surface px-2 py-1 rounded-full text-dark-accent border border-dark-border"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <Link
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center text-dark-secondary hover:text-dark-accent transition-colors"
-                    >
-                      <Github className="h-4 w-4 mr-1" />
-                      <span className="text-sm">Code</span>
-                    </Link>
+                  <div className="flex justify-between mt-auto">
+                    {project.github ? (
+                      <Link
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center text-dark-secondary hover:text-dark-accent transition-colors"
+                      >
+                        <Github className="h-4 w-4 mr-1" />
+                        <span className="text-sm">Code</span>
+                      </Link>
+                    ) : (
+                      <span className="flex items-center text-dark-secondary/50">
+                        <Github className="h-4 w-4 mr-1" />
+                        <span className="text-sm">Private</span>
+                      </span>
+                    )}
                     <Link
                       href={project.demo}
                       target="_blank"
