@@ -1,10 +1,10 @@
 "use client"
 
-import { useEffect, useRef } from "react"
-import { Github, ExternalLink } from "lucide-react"
+import { useEffect, useRef, useState } from "react"
+import { Github, ExternalLink, Figma, Code } from "lucide-react"
 import Link from "next/link"
 
-// Ejemplo de proyectos - puedes reemplazarlos con tus proyectos reales
+// Example projects - you can replace them with your real projects
 const projects = [
   {
     id: 1,
@@ -18,7 +18,7 @@ const projects = [
   {
     id: 2,
     title: "Grunge Merch",
-    description: "Interfaz web de una tienda de merch oficial de bandas de grunge y rock, con sistema de páginas de producto detalladas y galería de imágenes HD.",
+    description: "Official grunge and rock band merch store web interface, with detailed product pages and HD image gallery.",
     image: "./projects/grunge.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "APIs", "Web Scraping"],
     github: "https://github.com/UltimateCosmic/grunge",
@@ -51,10 +51,51 @@ const projects = [
     github: "https://github.com/UltimateCosmic/UltimateCosmic.github.io",
     demo: "https://cosmodev.me/",
   },
+  {
+    id: 6,
+    title: "DeliPUCP",
+    description: "Mobile app to reserve menus across the university dining halls. Figma prototype demonstrating menu browsing, schedule selection, and reservation flow.",
+    image: "/projects/delipucp.png",
+    technologies: ["Figma Prototype", "Mobile", "UI/UX"],
+    github: "", // Private repository
+    demo: "https://www.figma.com/proto/F94vpya9dZRTw9RioBY2Ah/DELIPUCP?node-id=23-5611&p=f&t=00qIgBVLQ8tHGD28-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=23%3A5611&show-proto-sidebar=1",
+    figma: "https://www.figma.com/design/F94vpya9dZRTw9RioBY2Ah/DeliPUCP?node-id=0-1&t=8eErBWAJa3yqx32j-1",
+  },
+  {
+    id: 7,
+    title: "OdiparTrack",
+    description: "A planning system developed as part of 9th-semester coursework. Figma prototype showcases task scheduling, progress tracking, and resource allocation features.",
+    image: "/projects/odipartrack.png",
+    technologies: ["Figma Prototype", "Planning System", "UI/UX"],
+    github: "", // Private repository
+    demo: "https://www.figma.com/proto/zJ4QQT8oATe2hilIgBmOQ9/OdiparTrack-Software---Prototype?node-id=47-11512&p=f&t=8dFNxVa6FVvgEaoK-1&scaling=min-zoom&content-scaling=fixed&page-id=23%3A845&starting-point-node-id=47%3A11512&show-proto-sidebar=1",
+    figma: "https://www.figma.com/design/zJ4QQT8oATe2hilIgBmOQ9/OdiparTrack-Software---Prototype?node-id=23-845&t=xUV13eCrmrIxBU9h-1",
+  },
+  {
+    id: 8,
+    title: "MiTutor",
+    description: "Tutoring management system for coordinating sessions between professors and students, developed during 7th-semester coursework. Figma prototype includes session booking, tutor profiles, and messaging flows.",
+    image: "/projects/mitutor.png",
+    technologies: ["Figma Prototype", "Education", "Scheduling"],
+    github: "", // Private repository
+    demo: "https://www.figma.com/proto/PNjuf2y76dcM4Ip6WOjzNt/Prototipo?node-id=2266-20827&p=f&t=20oUQkWg9payQwdf-1&scaling=min-zoom&content-scaling=fixed&page-id=6%3A16&starting-point-node-id=2266%3A20827",
+    designType: "figma",
+    figma: "", // Figma prototype exists but not publicly shared — mark as private
+  },
 ]
+
+// Filter state: default to show non-Figma projects (code/other)
+// 'projects' = non-Figma items, 'designs' = Figma prototypes
+type FilterType = "projects" | "designs"
 
 export function ProjectsSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [filter, setFilter] = useState<FilterType>("projects")
+
+  const filteredProjects = projects.filter((p) => {
+    const isFigma = Boolean(p.figma) || p.designType === "figma"
+    return filter === "designs" ? isFigma : !isFigma
+  })
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -87,8 +128,37 @@ export function ProjectsSection() {
           <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
             <span className="text-dark-accent">#</span> Projects
           </h2>
+
+          {/* Filter tabs: Projects (default) / Designs - simple, full-width buttons, stack on mobile */}
+          <div className="mb-6 flex w-full flex-col md:flex-row gap-3">
+            <button
+              onClick={() => setFilter("projects")}
+              className={`flex-1 w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                filter === "projects"
+                  ? "bg-dark-accent/10 text-dark-accent border border-dark-accent"
+                  : "bg-dark-surface text-dark-secondary border border-dark-border"
+              }`}
+              aria-pressed={filter === "projects"}
+            >
+              <Code className="h-4 w-4" />
+              <span>Projects</span>
+            </button>
+            <button
+              onClick={() => setFilter("designs")}
+              className={`flex-1 w-full flex items-center justify-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                filter === "designs"
+                  ? "bg-dark-accent/10 text-dark-accent border border-dark-accent"
+                  : "bg-dark-surface text-dark-secondary border border-dark-border"
+              }`}
+              aria-pressed={filter === "designs"}
+            >
+              <Figma className="h-4 w-4" />
+              <span>Designs</span>
+            </button>
+          </div>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
+            {filteredProjects.map((project) => (
               <div
                 key={project.id}
                 className="bg-dark-background rounded-lg overflow-hidden border border-dark-border transition-all duration-300 hover:border-dark-accent hover:shadow-lg hover:shadow-dark-accent/10 flex flex-col h-full"
@@ -122,22 +192,49 @@ export function ProjectsSection() {
                     </div>
                   </div>
                   <div className="flex justify-between mt-auto">
-                    {project.github ? (
-                      <Link
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center text-dark-secondary hover:text-dark-accent transition-colors"
-                      >
-                        <Github className="h-4 w-4 mr-1" />
-                        <span className="text-sm">Code</span>
-                      </Link>
-                    ) : (
-                      <span className="flex items-center text-dark-secondary/50">
-                        <Github className="h-4 w-4 mr-1" />
-                        <span className="text-sm">Private</span>
-                      </span>
-                    )}
+                    <div className="flex items-center space-x-4">
+                      {/* Show Code if repository exists */}
+                      {project.github && (
+                        <Link
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-dark-secondary hover:text-dark-accent transition-colors"
+                        >
+                          <Github className="h-4 w-4 mr-1" />
+                          <span className="text-sm">Code</span>
+                        </Link>
+                      )}
+
+                      {/* If project has a Figma design URL, show Design with Figma icon.
+                          If project is a Figma prototype but has no public URL (designType === 'figma' && !project.figma),
+                          show "Private" with the Figma icon. Otherwise, if no github and no figma, show Private with GitHub icon. */}
+                      {project.figma ? (
+                        <Link
+                          href={project.figma}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center text-dark-secondary hover:text-dark-accent transition-colors"
+                        >
+                          <Figma className="h-4 w-4 mr-1" />
+                          <span className="text-sm">Design</span>
+                        </Link>
+                      ) : project.designType === "figma" ? (
+                        // Figma prototype exists but not publicly shared — show Private with Figma icon
+                        <span className="flex items-center text-dark-secondary/50">
+                          <Figma className="h-4 w-4 mr-1" />
+                          <span className="text-sm">Private</span>
+                        </span>
+                      ) : (
+                        !project.github && (
+                          <span className="flex items-center text-dark-secondary/50">
+                            <Github className="h-4 w-4 mr-1" />
+                            <span className="text-sm">Private</span>
+                          </span>
+                        )
+                      )}
+                    </div>
+
                     <Link
                       href={project.demo}
                       target="_blank"
