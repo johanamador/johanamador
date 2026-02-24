@@ -11,6 +11,42 @@ import { Separator } from "@/components/ui/separator"
 
 const projects = [
   {
+    id: 11,
+    title: "SercomFire",
+    description: "Corporate B2B landing page for SercomFire: services, products and training. Premium editorial UI/UX for a fire protection company with 22+ years of experience and SGS homologation.",
+    image: "./projects/sercomfire.png",
+    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS"],
+    github: "",
+    demo: "",
+  },
+  {
+    id: 16,
+    title: "PROSEDAIN",
+    description: "E-commerce platform for industrial automation distribution. 385+ products auto-synced from Google Sheets, quote cart with Google Drive/Gmail API integration, advanced search, and SEO-optimized responsive design.",
+    image: "./projects/prosedain.png",
+    technologies: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Google Sheets API", "Gmail API"],
+    github: "",
+    demo: "",
+  },
+  {
+    id: 15,
+    title: "Nebu",
+    description: "Full-stack SaaS platform with SSR frontend, NestJS backend, PostgreSQL master-slave replication, real-time voice/video via LiveKit, AI embeddings with ChromaDB, Culqi payments, and full observability stack.",
+    image: "./projects/nebu.png",
+    technologies: ["Remix", "NestJS", "TypeScript", "PostgreSQL", "Docker", "LiveKit", "OpenAI API", "Grafana"],
+    github: "",
+    demo: "",
+  },
+  {
+    id: 13,
+    title: "Farmasalud Inversiones",
+    description: "Professional responsive website for an online pharmacy. PostgreSQL + REST API backend, customizable Hero Section, WhatsApp consultation cart, SEO score 98/100, and full admin panel.",
+    image: "./projects/farmasalud.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "PostgreSQL", "Prisma", "NextAuth", "Cloudinary"],
+    github: "",
+    demo: "",
+  },
+  {
     id: 1,
     title: "3D Artist Portfolio",
     description: "Interactive 3D artist portfolio featuring Sketchfab Viewer API integration, cyberpunk design, and embedded 3D model visualizations.",
@@ -18,6 +54,33 @@ const projects = [
     technologies: ["Next.js", "React", "Sketchfab API", "Three.js", "Tailwind CSS", "TypeScript"],
     github: "",
     demo: "https://cuadot.vercel.app/",
+  },
+  {
+    id: 17,
+    title: "Academia Pásalo",
+    description: "University-focused academic platform for PUCP and UTEC students. Course catalog, study resources, and academic tools built with a modern full-stack architecture.",
+    image: "./projects/academia-pasalo.png",
+    technologies: ["Next.js", "NestJS", "TypeScript", "Tailwind CSS", "shadcn/ui"],
+    github: "",
+    demo: "https://www.academiapasalo.com",
+  },
+  {
+    id: 14,
+    title: "IPED",
+    description: "Institutional website for the Instituto Peruano de Enfermedades Digestivas (IPED). Built with Next.js for a clear, professional and trustworthy patient experience.",
+    image: "./projects/iped.png",
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
+    github: "",
+    demo: "",
+  },
+  {
+    id: 12,
+    title: "SercomFire Portal",
+    description: "Corporate document portal for Sercomfire. Clients securely access technical documents (certificates, reports) via RUC with integrated PDF preview. Admins manage companies, services and documents with real-time stats.",
+    image: "./projects/sercomfire-portal.png",
+    technologies: ["Next.js 14", "TypeScript", "Supabase", "PostgreSQL", "shadcn/ui", "Cloudflare Turnstile"],
+    github: "",
+    demo: "",
   },
   {
     id: 2,
@@ -36,15 +99,6 @@ const projects = [
     technologies: ["Next.js", "React 19", "Tailwind CSS", "TypeScript"],
     github: "https://github.com/UltimateCosmic/cinemark-peru",
     demo: "https://cinemark-peru.vercel.app/",
-  },
-  {
-    id: 4,
-    title: "Anniversary Project",
-    description: "A digital memory corner and gift for a loved one. Built with Next.js and Tailwind CSS.",
-    image: "./projects/anniversary-project.png",
-    technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    github: "https://github.com/UltimateCosmic/anniversary-project",
-    demo: "https://anniversary-project-sage.vercel.app/",
   },
   {
     id: 5,
@@ -117,13 +171,21 @@ export function ProjectsSection() {
   const renderProjectCard = (project: typeof projects[0] & { figma?: string }) => (
     <Card key={project.id} className="overflow-hidden flex flex-col h-full transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
       <div className="h-48 overflow-hidden">
-        <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+        {project.demo ? (
+          <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+            <img
+              src={project.image || "/placeholder.svg"}
+              alt={project.title}
+              className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105 cursor-pointer"
+            />
+          </Link>
+        ) : (
           <img
             src={project.image || "/placeholder.svg"}
             alt={project.title}
-            className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105 cursor-pointer"
+            className="w-full h-full object-cover object-top"
           />
-        </Link>
+        )}
       </div>
       <CardHeader className="pb-3">
         <CardTitle className="text-lg">{project.title}</CardTitle>
@@ -162,12 +224,14 @@ export function ProjectsSection() {
             </Button>
           )}
         </div>
-        <Button variant="ghost" size="sm" asChild>
-          <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-            <ExternalLink className="h-4 w-4 mr-1" />
-            Demo
-          </Link>
-        </Button>
+        {project.demo && (
+          <Button variant="ghost" size="sm" asChild>
+            <Link href={project.demo} target="_blank" rel="noopener noreferrer">
+              <ExternalLink className="h-4 w-4 mr-1" />
+              Demo
+            </Link>
+          </Button>
+        )}
       </CardFooter>
     </Card>
   )

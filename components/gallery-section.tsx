@@ -3,6 +3,13 @@
 import { useEffect, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 
 const images = [
   {
@@ -64,32 +71,38 @@ export function GallerySection() {
       className="py-12 md:py-20 fade-in-section"
     >
       <div className="container px-4 md:px-6">
-        <div className="mx-auto max-w-[58rem]">
+        <div className="mx-auto max-w-[58rem] px-10">
           <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
             <span className="text-primary">#</span> Gallery
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-            {images.map((img, idx) => (
-              <Card
-                key={img.src + idx}
-                className="overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-md"
-              >
-                <AspectRatio ratio={16 / 9}>
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className="w-full h-full object-cover select-none"
-                    draggable={false}
-                  />
-                </AspectRatio>
-                <CardContent className="p-4">
-                  <p className="text-sm text-muted-foreground text-center leading-relaxed">
-                    {img.description}
-                  </p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+          <Carousel
+            opts={{ align: "start", loop: true }}
+            className="w-full"
+          >
+            <CarouselContent>
+              {images.map((img, idx) => (
+                <CarouselItem key={img.src + idx} className="md:basis-1/2 lg:basis-1/3">
+                  <Card className="overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-md">
+                    <AspectRatio ratio={16 / 9}>
+                      <img
+                        src={img.src}
+                        alt={img.alt}
+                        className="w-full h-full object-cover select-none"
+                        draggable={false}
+                      />
+                    </AspectRatio>
+                    <CardContent className="p-4">
+                      <p className="text-sm text-muted-foreground text-center leading-relaxed">
+                        {img.description}
+                      </p>
+                    </CardContent>
+                  </Card>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious />
+            <CarouselNext />
+          </Carousel>
         </div>
       </div>
     </section>
