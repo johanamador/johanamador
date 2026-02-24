@@ -1,13 +1,16 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
 
 const projects = [
   {
     title: "Academic Thesis Management System",
     period: "March 2025 - Present",
     role: "Full Stack Developer",
-    technologies: "React • Spring Boot • PostgreSQL",
+    technologies: ["React", "Spring Boot", "PostgreSQL"],
     description:
       "Final career project developed with 38 members, simulating a real professional environment. Developed the review module, integrating the GoWinston API to analyze similarity and detect possible thesis plagiarism. Participated in the technical management of the system with quality control, CI/CD, and collaborative code review.",
   },
@@ -15,7 +18,7 @@ const projects = [
     title: "Logistics Operations Platform",
     period: "August 2024 - December 2024",
     role: "Full Stack Developer",
-    technologies: "Java • React • Figma",
+    technologies: ["Java", "React", "Figma"],
     description:
       "Delivery route planning system with restrictions and blockages. Backend with optimization algorithm in Java. Modular interface in React + UI system design in Figma.",
   },
@@ -23,7 +26,7 @@ const projects = [
     title: "Academic Tutoring System",
     period: "March 2024 - July 2024",
     role: "Full Stack Developer",
-    technologies: "React • ASP.NET",
+    technologies: ["React", "ASP.NET"],
     description:
       "Platform to coordinate advising between students and teachers. Implementation of schedules, notifications, and session management. Agile development with Scrum and interactive prototyping in Figma.",
   },
@@ -31,7 +34,7 @@ const projects = [
     title: "Banking Risk Management System",
     period: "August 2023 - December 2023",
     role: "Full Stack Developer",
-    technologies: "Java • C# • Figma",
+    technologies: ["Java", "C#", "Figma"],
     description:
       "Academic prototype for comprehensive risk management in digital banking entities. Implementation of registration, analysis, hierarchy, and reporting modules with filters. Coordination of a multidisciplinary team, flow design, and prototyping in Figma.",
   },
@@ -69,24 +72,39 @@ export function ExperienceSection() {
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
           <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-dark-accent">#</span> Project Experience
+            <span className="text-primary">#</span> Project Experience
           </h2>
-          <div className="space-y-12">
+          <div className="relative space-y-6 pl-8 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-px before:bg-border">
             {projects.map((project, index) => (
-              <div key={index} className="timeline-container">
-                <div className="timeline-dot"></div>
-                <div className="bg-dark-surface p-6 rounded-lg border border-dark-border">
-                  <div className="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                    <h3 className="text-xl font-semibold text-dark-foreground">{project.title}</h3>
-                    <span className="text-dark-secondary text-sm">{project.period}</span>
-                  </div>
-                  <div className="mb-3">
-                    <span className="text-dark-accent font-medium">{project.role}</span>
-                    <span className="mx-2 text-dark-muted">|</span>
-                    <span className="text-dark-secondary">{project.technologies}</span>
-                  </div>
-                  <p className="text-dark-secondary">{project.description}</p>
+              <div key={index} className="relative">
+                {/* Timeline dot */}
+                <div className="absolute -left-8 top-6 flex h-6 w-6 items-center justify-center">
+                  <div className="h-2.5 w-2.5 rounded-full bg-primary ring-4 ring-background" />
                 </div>
+
+                <Card>
+                  <CardHeader>
+                    <div className="flex flex-col md:flex-row md:items-center justify-between gap-2">
+                      <CardTitle className="text-xl">{project.title}</CardTitle>
+                      <Badge variant="secondary" className="w-fit text-xs">
+                        {project.period}
+                      </Badge>
+                    </div>
+                    <CardDescription className="flex items-center gap-2 pt-1">
+                      <span className="text-primary font-medium">{project.role}</span>
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="space-y-3">
+                    <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.technologies.map((tech, techIndex) => (
+                        <Badge key={techIndex} variant="outline" className="text-xs">
+                          {tech}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
               </div>
             ))}
           </div>

@@ -2,7 +2,18 @@
 
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Textarea } from "@/components/ui/textarea"
+import { Label } from "@/components/ui/label"
+import { Separator } from "@/components/ui/separator"
 import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
 import Link from "next/link"
 
 export function ContactSection() {
@@ -60,108 +71,140 @@ export function ContactSection() {
   }
 
   return (
-    <section id="contact" ref={sectionRef} className="py-12 md:py-20 bg-dark-surface/50 fade-in-section">
+    <section id="contact" ref={sectionRef} className="py-12 md:py-20 bg-muted/30 fade-in-section">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
           <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-dark-accent">#</span> Contact
+            <span className="text-primary">#</span> Contact
           </h2>
-          <div className="grid gap-8 md:grid-cols-[1fr_1fr]">
-            <div>
-              <p className="text-dark-secondary mb-6">
+          <div className="grid gap-6 md:grid-cols-2">
+            {/* Contact info */}
+            <div className="space-y-6">
+              <p className="text-muted-foreground leading-relaxed">
                 I'm interested in software development opportunities. If you have any questions or want to discuss a
                 project, feel free to contact me.
               </p>
               <div className="space-y-4">
-                <div className="flex items-center">
-                  <MapPin className="h-5 w-5 text-dark-accent mr-3" />
-                  <span>Lima, Perú</span>
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary/10 p-2 rounded-md">
+                    <MapPin className="h-4 w-4 text-primary" />
+                  </div>
+                  <span className="text-sm">Lima, Perú</span>
                 </div>
-                <div className="flex items-center">
-                  <Phone className="h-5 w-5 text-dark-accent mr-3" />
-                  <span>+51 951 665 323</span>
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary/10 p-2 rounded-md">
+                    <Phone className="h-4 w-4 text-primary" />
+                  </div>
+                  <span className="text-sm">+51 951 665 323</span>
                 </div>
-                <div className="flex items-center">
-                  <Mail className="h-5 w-5 text-dark-accent mr-3" />
-                  <a href="mailto:johan.amador@pucp.edu.pe" className="hover:text-dark-accent transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="bg-primary/10 p-2 rounded-md">
+                    <Mail className="h-4 w-4 text-primary" />
+                  </div>
+                  <a href="mailto:johan.amador@pucp.edu.pe" className="text-sm hover:text-primary transition-colors">
                     johan.amador@pucp.edu.pe
                   </a>
                 </div>
               </div>
-              <div className="flex space-x-4 mt-6">
-                <Link
-                  href="https://github.com/UltimateCosmic"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-dark-background hover:bg-dark-border p-3 rounded-full transition-colors"
-                >
-                  <Github className="h-5 w-5" />
-                  <span className="sr-only">GitHub</span>
-                </Link>
-                <Link
-                  href="https://linkedin.com/in/cosmodev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-dark-background hover:bg-dark-border p-3 rounded-full transition-colors"
-                >
-                  <Linkedin className="h-5 w-5" />
-                  <span className="sr-only">LinkedIn</span>
-                </Link>
-                <Link
-                  href="mailto:johan.amador@pucp.edu.pe"
-                  className="bg-dark-background hover:bg-dark-border p-3 rounded-full transition-colors"
-                >
-                  <Mail className="h-5 w-5" />
-                  <span className="sr-only">Email</span>
-                </Link>
+
+              <Separator />
+
+              <div className="flex gap-2">
+                <TooltipProvider>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" asChild>
+                        <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
+                          <Github className="h-4 w-4" />
+                          <span className="sr-only">GitHub</span>
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>GitHub</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" asChild>
+                        <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
+                          <Linkedin className="h-4 w-4" />
+                          <span className="sr-only">LinkedIn</span>
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>LinkedIn</TooltipContent>
+                  </Tooltip>
+                  <Tooltip>
+                    <TooltipTrigger asChild>
+                      <Button variant="outline" size="icon" asChild>
+                        <Link href="mailto:johan.amador@pucp.edu.pe">
+                          <Mail className="h-4 w-4" />
+                          <span className="sr-only">Email</span>
+                        </Link>
+                      </Button>
+                    </TooltipTrigger>
+                    <TooltipContent>Email</TooltipContent>
+                  </Tooltip>
+                </TooltipProvider>
               </div>
             </div>
-            <div className="bg-dark-background p-6 rounded-lg border border-dark-border">
-                <h3 className="text-xl font-semibold mb-2">Send me a message<span className="text-dark-accent">*</span></h3>
-                <p className="italic text-sm text-dark-secondary mb-4">
-                This form is connected to Formspree. Submissions will be sent to your email.
-                </p>
-              <form className="space-y-4" onSubmit={handleSubmit}>
-                <div>
-                  <input
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    type="text"
-                    placeholder="Name"
-                    required
-                    className="w-full bg-dark-surface border border-dark-border rounded-md p-3 text-dark-foreground focus:outline-none focus:ring-1 focus:ring-dark-accent"
-                  />
-                </div>
-                <div>
-                  <input
-                    name="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    type="email"
-                    placeholder="Email"
-                    required
-                    className="w-full bg-dark-surface border border-dark-border rounded-md p-3 text-dark-foreground focus:outline-none focus:ring-1 focus:ring-dark-accent"
-                  />
-                </div>
-                <div>
-                  <textarea
-                    name="message"
-                    value={form.message}
-                    onChange={handleChange}
-                    placeholder="Message"
-                    rows={4}
-                    required
-                    className="w-full bg-dark-surface border border-dark-border rounded-md p-3 text-dark-foreground focus:outline-none focus:ring-1 focus:ring-dark-accent"
-                  ></textarea>
-                </div>
-                <Button type="submit" className="w-full bg-dark-accent hover:bg-dark-accent/90 text-black font-medium" disabled={loading}>
-                  {loading ? "Sending..." : "Send Message"}
-                </Button>
-                {status === "success" && <p className="text-green-500 mt-2">Message sent!</p>}
-                {status === "error" && <p className="text-red-500 mt-2">Error sending message.</p>}
-              </form>
-            </div>
+
+            {/* Contact form */}
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Send me a message</CardTitle>
+                <CardDescription>
+                  This form is connected to Formspree. Submissions will be sent to my email.
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <form className="space-y-4" onSubmit={handleSubmit}>
+                  <div className="space-y-2">
+                    <Label htmlFor="name">Name</Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={form.name}
+                      onChange={handleChange}
+                      placeholder="Your name"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="email">Email</Label>
+                    <Input
+                      id="email"
+                      name="email"
+                      type="email"
+                      value={form.email}
+                      onChange={handleChange}
+                      placeholder="your@email.com"
+                      required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="message">Message</Label>
+                    <Textarea
+                      id="message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      placeholder="Your message..."
+                      rows={4}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full" disabled={loading}>
+                    {loading ? "Sending..." : "Send Message"}
+                  </Button>
+                  {status === "success" && (
+                    <p className="text-sm text-primary mt-2">Message sent successfully!</p>
+                  )}
+                  {status === "error" && (
+                    <p className="text-sm text-destructive mt-2">Error sending message. Try again.</p>
+                  )}
+                </form>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </div>

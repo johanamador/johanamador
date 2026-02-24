@@ -2,7 +2,17 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import Image from "next/image"
+import { Menu } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
+import { Separator } from "@/components/ui/separator"
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -16,8 +26,8 @@ const navItems = [
 ]
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,63 +41,68 @@ export function Navbar() {
   return (
     <nav
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-dark-background/95 backdrop-blur-sm shadow-md" : "bg-transparent"
+        scrolled
+          ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link href="#home" className="font-bold text-xl">
-              <span className="text-dark-accent">cosmo</span>
-              <span className="text-dark-foreground">dev</span>
+            <Link href="#home">
+              <Image src="/cosmodev.svg" alt="cosmodev" width={132} height={64} priority />
             </Link>
           </div>
+
+          {/* Desktop nav */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-6">
+            <div className="ml-10 flex items-baseline space-x-1">
               {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-dark-secondary hover:text-dark-accent px-3 py-2 text-sm font-medium transition-colors relative group"
-                >
-                  {item.name}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-dark-accent transition-all duration-300 group-hover:w-full"></span>
-                </Link>
+                <Button key={item.name} variant="ghost" size="sm" asChild>
+                  <Link href={item.href}>
+                    {item.name}
+                  </Link>
+                </Button>
               ))}
             </div>
           </div>
+
+          {/* Mobile nav - Sheet */}
           <div className="md:hidden">
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-dark-secondary hover:text-dark-accent focus:outline-none"
-            >
-              {isOpen ? (
-                <X className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <Menu className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </button>
+            <Sheet open={open} onOpenChange={setOpen}>
+              <SheetTrigger asChild>
+                <Button variant="ghost" size="icon">
+                  <Menu className="h-5 w-5" />
+                  <span className="sr-only">Open menu</span>
+                </Button>
+              </SheetTrigger>
+              <SheetContent side="right" className="w-[280px]">
+                <SheetHeader>
+                  <SheetTitle>
+                    <Image src="/cosmodev.svg" alt="cosmodev" width={120} height={32} />
+                  </SheetTitle>
+                </SheetHeader>
+                <Separator className="my-4" />
+                <div className="flex flex-col space-y-1">
+                  {navItems.map((item) => (
+                    <Button
+                      key={item.name}
+                      variant="ghost"
+                      className="justify-start"
+                      asChild
+                      onClick={() => setOpen(false)}
+                    >
+                      <Link href={item.href}>
+                        {item.name}
+                      </Link>
+                    </Button>
+                  ))}
+                </div>
+              </SheetContent>
+            </Sheet>
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-dark-surface border-b border-dark-border">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="text-dark-secondary hover:text-dark-accent block px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      )}
     </nav>
   )
 }

@@ -32,8 +32,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${geistMono.className} ${anton.variable}`} suppressHydrationWarning>
-      <body className="bg-dark-background text-dark-foreground min-h-screen">
-        <ThemeProvider attribute="class" defaultTheme="dark">
+      <body className="min-h-screen bg-background text-foreground antialiased">
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
           {children}
         </ThemeProvider>
       </body>

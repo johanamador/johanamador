@@ -1,6 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import { GraduationCap, Globe } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
 
 const education = [
   {
@@ -55,18 +58,29 @@ export function EducationSection() {
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
           <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-dark-accent">#</span> Education
+            <span className="text-primary">#</span> Education
           </h2>
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {education.map((item, index) => (
-              <div key={index} className="bg-dark-surface p-6 rounded-lg border border-dark-border">
-                <h3 className="text-xl font-semibold text-dark-foreground mb-2">{item.institution}</h3>
-                <p className="text-dark-accent mb-1">{item.degree}</p>
-                <div className="flex justify-between text-dark-secondary text-sm">
-                  <span>{item.period}</span>
-                  <span>{item.location}</span>
-                </div>
-              </div>
+              <Card key={index} className="transition-all duration-300 hover:border-primary/50 hover:shadow-md">
+                <CardHeader>
+                  <div className="flex items-start justify-between">
+                    <div className="bg-primary/10 p-2 rounded-md mb-3">
+                      {item.location === "Online" ? (
+                        <Globe className="h-5 w-5 text-primary" />
+                      ) : (
+                        <GraduationCap className="h-5 w-5 text-primary" />
+                      )}
+                    </div>
+                    <Badge variant="outline" className="text-xs">{item.period}</Badge>
+                  </div>
+                  <CardTitle className="text-lg">{item.institution}</CardTitle>
+                  <CardDescription>{item.degree}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-sm text-muted-foreground">{item.location}</p>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
