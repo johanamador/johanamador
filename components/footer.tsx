@@ -1,4 +1,6 @@
-import { Github, Linkedin, Mail } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
@@ -19,19 +21,19 @@ export function Footer() {
           <div className="flex gap-1">
             <Button variant="ghost" size="icon" asChild>
               <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4" />
+                <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                 <span className="sr-only">GitHub</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
-                <Linkedin className="h-4 w-4" />
+                <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
             </Button>
             <Button variant="ghost" size="icon" asChild>
               <Link href="mailto:johan.amador@pucp.edu.pe">
-                <Mail className="h-4 w-4" />
+                <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
                 <span className="sr-only">Email</span>
               </Link>
             </Button>

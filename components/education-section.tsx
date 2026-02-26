@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { GraduationCap, Globe } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGlobe, faGraduationCap } from "@fortawesome/free-solid-svg-icons"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
@@ -67,9 +68,9 @@ export function EducationSection() {
                   <div className="flex items-start justify-between">
                     <div className="bg-primary/10 p-2 rounded-md mb-3">
                       {item.location === "Online" ? (
-                        <Globe className="h-5 w-5 text-primary" />
+                        <FontAwesomeIcon icon={faGlobe} className="h-5 w-5 text-primary" />
                       ) : (
-                        <GraduationCap className="h-5 w-5 text-primary" />
+                        <FontAwesomeIcon icon={faGraduationCap} className="h-5 w-5 text-primary" />
                       )}
                     </div>
                     <Badge variant="outline" className="text-xs">{item.period}</Badge>

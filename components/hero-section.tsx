@@ -1,7 +1,9 @@
 "use client"
 
 import { useEffect, useRef, useState } from "react"
-import { ArrowRight, Github, Linkedin, Mail, Download } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
+import { faArrowRight, faDownload, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -110,7 +112,7 @@ export function HeroSection() {
               <Button asChild>
                 <Link href="#projects">
                   View Projects
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  <FontAwesomeIcon icon={faArrowRight} className="ml-2 h-4 w-4" />
                 </Link>
               </Button>
               <Button variant="outline" asChild>
@@ -118,7 +120,7 @@ export function HeroSection() {
               </Button>
               <Button variant="secondary" asChild>
                 <a href="/johan-amador-cv.pdf" download>
-                  <Download className="mr-2 h-4 w-4" />
+                  <FontAwesomeIcon icon={faDownload} className="mr-2 h-4 w-4" />
                   Download CV
                 </a>
               </Button>
@@ -132,7 +134,7 @@ export function HeroSection() {
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon" asChild>
                       <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
-                        <Github className="h-5 w-5" />
+                        <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
                         <span className="sr-only">GitHub</span>
                       </Link>
                     </Button>
@@ -143,7 +145,7 @@ export function HeroSection() {
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon" asChild>
                       <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
-                        <Linkedin className="h-5 w-5" />
+                        <FontAwesomeIcon icon={faLinkedinIn} className="h-5 w-5" />
                         <span className="sr-only">LinkedIn</span>
                       </Link>
                     </Button>
@@ -154,7 +156,7 @@ export function HeroSection() {
                   <TooltipTrigger asChild>
                     <Button variant="ghost" size="icon" asChild>
                       <Link href="mailto:johan.amador@pucp.edu.pe">
-                        <Mail className="h-5 w-5" />
+                        <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5" />
                         <span className="sr-only">Email</span>
                       </Link>
                     </Button>

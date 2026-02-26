@@ -4,6 +4,10 @@ import { Anton } from "next/font/google"
 import "./globals.css"
 import type { Metadata } from "next"
 import { ThemeProvider } from "@/components/theme-provider"
+import { config } from "@fortawesome/fontawesome-svg-core"
+import "@fortawesome/fontawesome-svg-core/styles.css"
+
+config.autoAddCss = false
 
 const geistMono = GeistMono({
   subsets: ["latin"],
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
   title: "Johan Amador | Computer Science Student | Software Developer",
   description: "Johan Amador, Computer Science Student and Software Developer",
   icons: {
-    icon: "/johan-icon.png",
+    icon: "/favicon.svg",
   },
 }
 

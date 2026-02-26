@@ -1,91 +1,81 @@
 "use client"
 
 import React, { useEffect, useRef } from "react"
-import { Code } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCode, faDatabase, faLeaf, faLaptopCode, faNoteSticky, faUsers, faUserGroup, faCodeBranch, faPenRuler, faFileLines, faPlug, faDiagramProject, faMobileScreen, faGamepad, faLayerGroup, faToolbox, faPuzzlePiece } from "@fortawesome/free-solid-svg-icons"
+import { faJava, faPython, faSquareJs, faReact, faNodeJs, faGitAlt, faAws, faFigma, faJira, faLinux, faDocker, faJenkins, faMicrosoft } from "@fortawesome/free-brands-svg-icons"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-// Importaciones de react-icons
-import { FaJava, FaReact, FaNodeJs, FaGitAlt, FaAws, FaFigma, FaDocker, FaDatabase, FaCodeBranch } from "react-icons/fa"
-import { RiJavaLine } from "react-icons/ri"
-import { SiCplusplus, SiSharp, SiPython, SiJavascript, SiTypescript, SiNextdotjs, SiDotnet, SiSpring, SiExpress, SiNotion, SiOracle, SiMongodb, SiGraphql, SiJenkins, SiTailwindcss, SiJira } from "react-icons/si"
-import { DiScrum, DiMsqlServer } from "react-icons/di"
-import { BsFileEarmarkText } from "react-icons/bs"
-import { MdOutlineDesignServices } from "react-icons/md"
-import { ImUsers } from "react-icons/im"
-import { TbBrandNetbeans, TbBrandMysql, TbBrandMongodb } from "react-icons/tb"
-import { VscVscode, VscTerminalLinux } from "react-icons/vsc"
-import { AiOutlineApi } from "react-icons/ai"
-import { BiGame, BiLogoPostgresql } from "react-icons/bi"
 
 const skillIcons: Record<string, React.ReactNode> = {
-  Java: <RiJavaLine className="h-3.5 w-3.5" />,
-  "C/C++": <SiCplusplus className="h-3.5 w-3.5" />,
-  "C#": <SiSharp className="h-3.5 w-3.5" />,
-  Python: <SiPython className="h-3.5 w-3.5" />,
-  JavaScript: <SiJavascript className="h-3.5 w-3.5" />,
-  TypeScript: <SiTypescript className="h-3.5 w-3.5" />,
-  SQL: <FaDatabase className="h-3.5 w-3.5" />,
-  React: <FaReact className="h-3.5 w-3.5" />,
-  "Next.js": <SiNextdotjs className="h-3.5 w-3.5" />,
-  "ASP.NET": <SiDotnet className="h-3.5 w-3.5" />,
-  "Spring Boot": <SiSpring className="h-3.5 w-3.5" />,
-  "Express.js": <SiExpress className="h-3.5 w-3.5" />,
-  "Git/GitHub": <FaGitAlt className="h-3.5 w-3.5" />,
-  "AWS (RDS)": <FaAws className="h-3.5 w-3.5" />,
-  Figma: <FaFigma className="h-3.5 w-3.5" />,
-  Jira: <SiJira className="h-3.5 w-3.5" />,
-  "VS Code": <VscVscode className="h-3.5 w-3.5" />,
-  NetBeans: <TbBrandNetbeans className="h-3.5 w-3.5" />,
-  Linux: <VscTerminalLinux className="h-3.5 w-3.5" />,
-  Notion: <SiNotion className="h-3.5 w-3.5" />,
-  Scrum: <DiScrum className="h-3.5 w-3.5" />,
-  "Collaborative Work": <ImUsers className="h-3.5 w-3.5" />,
-  "Version Control": <FaCodeBranch className="h-3.5 w-3.5" />,
-  Prototyping: <MdOutlineDesignServices className="h-3.5 w-3.5" />,
-  "Technical Documentation": <BsFileEarmarkText className="h-3.5 w-3.5" />,
-  "SQL Server": <DiMsqlServer className="h-3.5 w-3.5" />,
-  MySQL: <TbBrandMysql className="h-3.5 w-3.5" />,
-  PostgreSQL: <BiLogoPostgresql className="h-3.5 w-3.5" />,
-  "Oracle SQL": <SiOracle className="h-3.5 w-3.5" />,
-  MongoDB: <TbBrandMongodb className="h-3.5 w-3.5" />,
-  "REST APIs": <AiOutlineApi className="h-3.5 w-3.5" />,
-  GraphQL: <SiGraphql className="h-3.5 w-3.5" />,
-  Docker: <FaDocker className="h-3.5 w-3.5" />,
-  "CI/CD": <SiJenkins className="h-3.5 w-3.5" />,
-  "Responsive Design": <SiTailwindcss className="h-3.5 w-3.5" />,
-  "Game Development": <BiGame className="h-3.5 w-3.5" />,
+  Java: <FontAwesomeIcon icon={faJava} className="h-3.5 w-3.5" />,
+  "C/C++": <FontAwesomeIcon icon={faCode} className="h-3.5 w-3.5" />,
+  "C#": <FontAwesomeIcon icon={faCode} className="h-3.5 w-3.5" />,
+  Python: <FontAwesomeIcon icon={faPython} className="h-3.5 w-3.5" />,
+  JavaScript: <FontAwesomeIcon icon={faSquareJs} className="h-3.5 w-3.5" />,
+  TypeScript: <FontAwesomeIcon icon={faCode} className="h-3.5 w-3.5" />,
+  SQL: <FontAwesomeIcon icon={faDatabase} className="h-3.5 w-3.5" />,
+  React: <FontAwesomeIcon icon={faReact} className="h-3.5 w-3.5" />,
+  "Next.js": <FontAwesomeIcon icon={faReact} className="h-3.5 w-3.5" />,
+  "ASP.NET": <FontAwesomeIcon icon={faMicrosoft} className="h-3.5 w-3.5" />,
+  "Spring Boot": <FontAwesomeIcon icon={faLeaf} className="h-3.5 w-3.5" />,
+  "Express.js": <FontAwesomeIcon icon={faNodeJs} className="h-3.5 w-3.5" />,
+  "Git/GitHub": <FontAwesomeIcon icon={faGitAlt} className="h-3.5 w-3.5" />,
+  "AWS (RDS)": <FontAwesomeIcon icon={faAws} className="h-3.5 w-3.5" />,
+  Figma: <FontAwesomeIcon icon={faFigma} className="h-3.5 w-3.5" />,
+  Jira: <FontAwesomeIcon icon={faJira} className="h-3.5 w-3.5" />,
+  "VS Code": <FontAwesomeIcon icon={faLaptopCode} className="h-3.5 w-3.5" />,
+  NetBeans: <FontAwesomeIcon icon={faLaptopCode} className="h-3.5 w-3.5" />,
+  Linux: <FontAwesomeIcon icon={faLinux} className="h-3.5 w-3.5" />,
+  Notion: <FontAwesomeIcon icon={faNoteSticky} className="h-3.5 w-3.5" />,
+  Scrum: <FontAwesomeIcon icon={faUsers} className="h-3.5 w-3.5" />,
+  "Collaborative Work": <FontAwesomeIcon icon={faUserGroup} className="h-3.5 w-3.5" />,
+  "Version Control": <FontAwesomeIcon icon={faCodeBranch} className="h-3.5 w-3.5" />,
+  Prototyping: <FontAwesomeIcon icon={faPenRuler} className="h-3.5 w-3.5" />,
+  "Technical Documentation": <FontAwesomeIcon icon={faFileLines} className="h-3.5 w-3.5" />,
+  "SQL Server": <FontAwesomeIcon icon={faDatabase} className="h-3.5 w-3.5" />,
+  MySQL: <FontAwesomeIcon icon={faDatabase} className="h-3.5 w-3.5" />,
+  PostgreSQL: <FontAwesomeIcon icon={faDatabase} className="h-3.5 w-3.5" />,
+  "Oracle SQL": <FontAwesomeIcon icon={faDatabase} className="h-3.5 w-3.5" />,
+  MongoDB: <FontAwesomeIcon icon={faDatabase} className="h-3.5 w-3.5" />,
+  "REST APIs": <FontAwesomeIcon icon={faPlug} className="h-3.5 w-3.5" />,
+  GraphQL: <FontAwesomeIcon icon={faDiagramProject} className="h-3.5 w-3.5" />,
+  Docker: <FontAwesomeIcon icon={faDocker} className="h-3.5 w-3.5" />,
+  "CI/CD": <FontAwesomeIcon icon={faJenkins} className="h-3.5 w-3.5" />,
+  "Responsive Design": <FontAwesomeIcon icon={faMobileScreen} className="h-3.5 w-3.5" />,
+  "Game Development": <FontAwesomeIcon icon={faGamepad} className="h-3.5 w-3.5" />,
 }
 
 const skillCategories = [
   {
     name: "Languages",
-    icon: <VscVscode className="h-5 w-5" />,
+    icon: <FontAwesomeIcon icon={faCode} className="h-5 w-5" />,
     skills: ["Java", "C/C++", "C#", "Python", "JavaScript", "TypeScript", "SQL"],
   },
   {
     name: "Frameworks",
-    icon: <FaReact className="h-5 w-5" />,
+    icon: <FontAwesomeIcon icon={faLayerGroup} className="h-5 w-5" />,
     skills: ["React", "Next.js", "ASP.NET", "Spring Boot", "Express.js"],
   },
   {
     name: "Tools",
-    icon: <FaGitAlt className="h-5 w-5" />,
+    icon: <FontAwesomeIcon icon={faToolbox} className="h-5 w-5" />,
     skills: ["Git/GitHub", "AWS (RDS)", "Figma", "Jira", "Bizagi (BPMN)", "VS Code", "NetBeans", "Linux", "Notion"],
   },
   {
     name: "Methodologies",
-    icon: <DiScrum className="h-5 w-5" />,
+    icon: <FontAwesomeIcon icon={faUsers} className="h-5 w-5" />,
     skills: ["Scrum", "Collaborative Work", "Version Control", "Prototyping", "Technical Documentation"],
   },
   {
     name: "Databases",
-    icon: <FaDatabase className="h-5 w-5" />,
+    icon: <FontAwesomeIcon icon={faDatabase} className="h-5 w-5" />,
     skills: ["SQL Server", "MySQL", "PostgreSQL", "Oracle SQL", "MongoDB"],
   },
   {
     name: "Other",
-    icon: <SiGraphql className="h-5 w-5" />,
+    icon: <FontAwesomeIcon icon={faPuzzlePiece} className="h-5 w-5" />,
     skills: ["REST APIs", "GraphQL", "Docker", "CI/CD", "Responsive Design", "Game Development"],
   },
 ]
@@ -142,7 +132,7 @@ export function SkillsSection() {
                         className="gap-1.5 px-3 py-1 text-sm transition-colors hover:bg-primary/10 hover:text-primary cursor-default"
                       >
                         <span className="text-primary">
-                          {skillIcons[skill] || <Code className="h-3.5 w-3.5" />}
+                          {skillIcons[skill] || <FontAwesomeIcon icon={faCode} className="h-3.5 w-3.5" />}
                         </span>
                         {skill}
                       </Badge>

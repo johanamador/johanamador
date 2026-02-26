@@ -2,8 +2,8 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import Image from "next/image"
-import { Menu } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -15,7 +15,6 @@ import {
 import { Separator } from "@/components/ui/separator"
 
 const navItems = [
-  { name: "Home", href: "#home" },
   { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
@@ -49,9 +48,11 @@ export function Navbar() {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <div className="flex-shrink-0">
-            <Link href="#home">
-              <Image src="/cosmodev.svg" alt="cosmodev" width={132} height={64} priority />
-            </Link>
+            <Button variant="ghost" size="sm" asChild>
+              <Link href="#home">
+                <img src="/ja.svg" alt="JA" className="h-5 w-auto dark:invert" />
+              </Link>
+            </Button>
           </div>
 
           {/* Desktop nav */}
@@ -72,14 +73,14 @@ export function Navbar() {
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
-                  <Menu className="h-5 w-5" />
+                  <FontAwesomeIcon icon={faBars} className="h-5 w-5" />
                   <span className="sr-only">Open menu</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-[280px]">
                 <SheetHeader>
                   <SheetTitle>
-                    <Image src="/cosmodev.svg" alt="cosmodev" width={120} height={32} />
+                    <img src="/ja.svg" alt="JA" className="h-9 w-auto dark:invert" />
                   </SheetTitle>
                 </SheetHeader>
                 <Separator className="my-4" />

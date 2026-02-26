@@ -1,7 +1,8 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Download, MapPin, Phone, Mail, MessageCircle } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faDownload, faLocationDot, faComment, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -73,7 +74,7 @@ export function AboutSection() {
 
               <Button variant="outline" asChild className="mt-4">
                 <a href="/johan-amador-cv.pdf" download>
-                  <Download className="mr-2 h-4 w-4" />
+                  <FontAwesomeIcon icon={faDownload} className="mr-2 h-4 w-4" />
                   Download CV
                 </a>
               </Button>
@@ -93,19 +94,19 @@ export function AboutSection() {
                 <Separator />
                 <ul className="space-y-3 w-full text-sm">
                   <li className="flex items-start gap-2">
-                    <MapPin className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <FontAwesomeIcon icon={faLocationDot} className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <span>Lima, Peru</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <MessageCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <FontAwesomeIcon icon={faComment} className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <span>cosmodev</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Phone className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <FontAwesomeIcon icon={faPhone} className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <span>+51 951 665 323</span>
                   </li>
                   <li className="flex items-start gap-2">
-                    <Mail className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                    <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <a href="mailto:johan.amador@pucp.edu.pe" className="text-primary hover:underline">
                       johan.amador@pucp.edu.pe
                     </a>

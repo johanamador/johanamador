@@ -7,7 +7,9 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Separator } from "@/components/ui/separator"
-import { Github, Linkedin, Mail, MapPin, Phone } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faLocationDot, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import {
   Tooltip,
   TooltipContent,
@@ -87,19 +89,19 @@ export function ContactSection() {
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <div className="bg-primary/10 p-2 rounded-md">
-                    <MapPin className="h-4 w-4 text-primary" />
+                    <FontAwesomeIcon icon={faLocationDot} className="h-4 w-4 text-primary" />
                   </div>
                   <span className="text-sm">Lima, Perú</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="bg-primary/10 p-2 rounded-md">
-                    <Phone className="h-4 w-4 text-primary" />
+                    <FontAwesomeIcon icon={faPhone} className="h-4 w-4 text-primary" />
                   </div>
                   <span className="text-sm">+51 951 665 323</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="bg-primary/10 p-2 rounded-md">
-                    <Mail className="h-4 w-4 text-primary" />
+                    <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 text-primary" />
                   </div>
                   <a href="mailto:johan.amador@pucp.edu.pe" className="text-sm hover:text-primary transition-colors">
                     johan.amador@pucp.edu.pe
@@ -115,7 +117,7 @@ export function ContactSection() {
                     <TooltipTrigger asChild>
                       <Button variant="outline" size="icon" asChild>
                         <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
-                          <Github className="h-4 w-4" />
+                          <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                           <span className="sr-only">GitHub</span>
                         </Link>
                       </Button>
@@ -126,7 +128,7 @@ export function ContactSection() {
                     <TooltipTrigger asChild>
                       <Button variant="outline" size="icon" asChild>
                         <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
-                          <Linkedin className="h-4 w-4" />
+                          <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
                           <span className="sr-only">LinkedIn</span>
                         </Link>
                       </Button>
@@ -137,7 +139,7 @@ export function ContactSection() {
                     <TooltipTrigger asChild>
                       <Button variant="outline" size="icon" asChild>
                         <Link href="mailto:johan.amador@pucp.edu.pe">
-                          <Mail className="h-4 w-4" />
+                          <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
                           <span className="sr-only">Email</span>
                         </Link>
                       </Button>

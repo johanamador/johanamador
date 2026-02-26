@@ -1,7 +1,9 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { Github, ExternalLink, Figma, Code } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faArrowUpRightFromSquare, faCode } from "@fortawesome/free-solid-svg-icons"
+import { faGithub, faFigma } from "@fortawesome/free-brands-svg-icons"
 import Link from "next/link"
 import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -206,20 +208,20 @@ export function ProjectsSection() {
           {project.github ? (
             <Button variant="ghost" size="sm" asChild>
               <Link href={project.github} target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4 mr-1" />
+                <FontAwesomeIcon icon={faGithub} className="h-4 w-4 mr-1" />
                 Code
               </Link>
             </Button>
           ) : project.figma ? (
             <Button variant="ghost" size="sm" asChild>
               <Link href={project.figma} target="_blank" rel="noopener noreferrer">
-                <Figma className="h-4 w-4 mr-1" />
+                <FontAwesomeIcon icon={faFigma} className="h-4 w-4 mr-1" />
                 Design
               </Link>
             </Button>
           ) : (
             <Button variant="ghost" size="sm" disabled>
-              <Github className="h-4 w-4 mr-1" />
+              <FontAwesomeIcon icon={faGithub} className="h-4 w-4 mr-1" />
               Private
             </Button>
           )}
@@ -227,7 +229,7 @@ export function ProjectsSection() {
         {project.demo && (
           <Button variant="ghost" size="sm" asChild>
             <Link href={project.demo} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4 mr-1" />
+              <FontAwesomeIcon icon={faArrowUpRightFromSquare} className="h-4 w-4 mr-1" />
               Demo
             </Link>
           </Button>
@@ -247,11 +249,11 @@ export function ProjectsSection() {
           <Tabs defaultValue="projects" className="w-full">
             <TabsList className="w-full md:w-auto grid grid-cols-2 md:inline-flex mb-6">
               <TabsTrigger value="projects" className="gap-2">
-                <Code className="h-4 w-4" />
+                <FontAwesomeIcon icon={faCode} className="h-4 w-4" />
                 Projects
               </TabsTrigger>
               <TabsTrigger value="designs" className="gap-2">
-                <Figma className="h-4 w-4" />
+                <FontAwesomeIcon icon={faFigma} className="h-4 w-4" />
                 Designs
               </TabsTrigger>
             </TabsList>

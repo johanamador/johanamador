@@ -2,7 +2,8 @@
 
 import * as React from "react"
 import { OTPInput, OTPInputContext } from "input-otp"
-import { Dot } from "lucide-react"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faMinus } from "@fortawesome/free-solid-svg-icons"
 
 import { cn } from "@/lib/utils"
 
@@ -63,7 +64,7 @@ const InputOTPSeparator = React.forwardRef<
   React.ComponentPropsWithoutRef<"div">
 >(({ ...props }, ref) => (
   <div ref={ref} role="separator" {...props}>
-    <Dot />
+    <FontAwesomeIcon icon={faMinus} />
   </div>
 ))
 InputOTPSeparator.displayName = "InputOTPSeparator"
