@@ -8,8 +8,7 @@ import { Separator } from "@/components/ui/separator"
 export function Footer() {
   return (
     <footer className="py-6">
-      <Separator />
-      <div className="container px-4 md:px-6 pt-6">
+      <div className="container px-4 md:px-6">
         <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-sm text-muted-foreground">
             &copy; {new Date().getFullYear()} Johan Amador (@cosmodev). All rights reserved.

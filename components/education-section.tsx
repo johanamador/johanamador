@@ -1,8 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGlobe, faGraduationCap } from "@fortawesome/free-solid-svg-icons"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
@@ -10,20 +8,23 @@ const education = [
   {
     institution: "Pontificia Universidad Católica del Perú",
     degree: "Bachelor in Computer Science",
-    period: "2020-2025",
+    period: "2020-2026",
     location: "Lima, Peru",
+    icon: "/icons/pucp.svg",
   },
   {
     institution: "Platzi",
     degree: "Full Stack Developer Path",
     period: "2022-2023",
     location: "Online",
+    icon: "/icons/platzi.svg",
   },
   {
     institution: "Coursera",
     degree: "Software Development",
     period: "2025",
     location: "Online",
+    icon: "/icons/coursera.svg",
   },
 ]
 
@@ -66,12 +67,8 @@ export function EducationSection() {
               <Card key={index} className="transition-all duration-300 hover:border-primary/50 hover:shadow-md">
                 <CardHeader>
                   <div className="flex items-start justify-between">
-                    <div className="bg-primary/10 p-2 rounded-md mb-3">
-                      {item.location === "Online" ? (
-                        <FontAwesomeIcon icon={faGlobe} className="h-5 w-5 text-primary" />
-                      ) : (
-                        <FontAwesomeIcon icon={faGraduationCap} className="h-5 w-5 text-primary" />
-                      )}
+                    <div className="bg-primary/10 p-3 rounded-md mb-3">
+                      <img src={item.icon} alt={item.institution} className="h-10 w-10 dark:invert" />
                     </div>
                     <Badge variant="outline" className="text-xs">{item.period}</Badge>
                   </div>

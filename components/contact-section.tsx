@@ -151,7 +151,7 @@ export function ContactSection() {
             </div>
 
             {/* Contact form */}
-            <Card>
+            <Card className="bg-background">
               <CardHeader>
                 <CardTitle className="text-lg">Send me a message</CardTitle>
                 <CardDescription>
@@ -169,6 +169,7 @@ export function ContactSection() {
                       onChange={handleChange}
                       placeholder="Your name"
                       required
+                      className="bg-card"
                     />
                   </div>
                   <div className="space-y-2">
@@ -181,6 +182,7 @@ export function ContactSection() {
                       onChange={handleChange}
                       placeholder="your@email.com"
                       required
+                      className="bg-card"
                     />
                   </div>
                   <div className="space-y-2">
@@ -193,6 +195,7 @@ export function ContactSection() {
                       placeholder="Your message..."
                       rows={4}
                       required
+                      className="bg-card"
                     />
                   </div>
                   <Button type="submit" className="w-full" disabled={loading}>
