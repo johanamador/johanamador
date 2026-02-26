@@ -86,7 +86,7 @@ export function HeroSection() {
 
       <div className="container px-4 md:px-6 relative z-10">
         <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px]">
-          <div className="flex flex-col justify-center space-y-8">
+          <div className="flex flex-col justify-center space-y-4">
             <div className={`transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}>
               <div className="flex items-center gap-3 mb-4">
                 <Badge variant="outline" className="text-primary border-primary/30">
@@ -124,46 +124,6 @@ export function HeroSection() {
                   Download CV
                 </a>
               </Button>
-            </div>
-
-            <div
-              className={`flex space-x-2 transition-opacity duration-1000 delay-700 ${isVisible ? "opacity-100" : "opacity-0"}`}
-            >
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" asChild>
-                      <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={faGithub} className="h-5 w-5" />
-                        <span className="sr-only">GitHub</span>
-                      </Link>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>GitHub</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" asChild>
-                      <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
-                        <FontAwesomeIcon icon={faLinkedinIn} className="h-5 w-5" />
-                        <span className="sr-only">LinkedIn</span>
-                      </Link>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>LinkedIn</TooltipContent>
-                </Tooltip>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button variant="ghost" size="icon" asChild>
-                      <Link href="mailto:johan.amador@pucp.edu.pe">
-                        <FontAwesomeIcon icon={faEnvelope} className="h-5 w-5" />
-                        <span className="sr-only">Email</span>
-                      </Link>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>Email</TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
             </div>
           </div>
 

@@ -116,7 +116,7 @@ export function SkillsSection() {
           </h2>
           <div className="grid gap-6 md:grid-cols-2">
             {skillCategories.map((category, index) => (
-              <Card key={index}>
+              <Card key={index} className="bg-background">
                 <CardHeader className="pb-3">
                   <CardTitle className="flex items-center gap-3 text-lg">
                     <div className="text-primary">{category.icon}</div>

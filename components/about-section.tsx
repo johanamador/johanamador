@@ -67,8 +67,8 @@ export function AboutSection() {
               <div>
                 <h3 className="text-lg font-semibold mb-2">Languages</h3>
                 <div className="flex flex-wrap gap-2">
-                  <Badge variant="outline">English: B2 – FCE Cambridge</Badge>
-                  <Badge variant="outline">Spanish: Native</Badge>
+                  <Badge variant="secondary">English: B2 – FCE Cambridge</Badge>
+                  <Badge variant="secondary">Spanish: Native</Badge>
                 </div>
               </div>
 
@@ -80,7 +80,7 @@ export function AboutSection() {
               </Button>
             </div>
 
-            <Card>
+            <Card className="bg-background">
               <CardHeader className="text-center">
                 <CardTitle className="text-lg text-primary">Contact Info</CardTitle>
               </CardHeader>
@@ -96,10 +96,6 @@ export function AboutSection() {
                   <li className="flex items-start gap-2">
                     <FontAwesomeIcon icon={faLocationDot} className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                     <span>Lima, Peru</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <FontAwesomeIcon icon={faComment} className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                    <span>cosmodev</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <FontAwesomeIcon icon={faPhone} className="h-4 w-4 text-primary mt-0.5 shrink-0" />

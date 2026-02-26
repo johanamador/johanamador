@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faBars } from "@fortawesome/free-solid-svg-icons"
+import { faBars, faEnvelope } from "@fortawesome/free-solid-svg-icons"
+import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
 import { Button } from "@/components/ui/button"
 import {
   Sheet,
@@ -57,7 +58,7 @@ export function Navbar() {
 
           {/* Desktop nav */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-1">
+            <div className="ml-10 flex items-center space-x-1">
               {navItems.map((item) => (
                 <Button key={item.name} variant="ghost" size="sm" asChild>
                   <Link href={item.href}>
@@ -65,6 +66,23 @@ export function Navbar() {
                   </Link>
                 </Button>
               ))}
+              <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
+                <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
+                <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
+                  <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
+                  <span className="sr-only">LinkedIn</span>
+                </Link>
+              </Button>
+              <Button variant="ghost" size="icon" className="h-9 w-9" asChild>
+                <Link href="mailto:johan.amador@pucp.edu.pe">
+                  <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
+                  <span className="sr-only">Email</span>
+                </Link>
+              </Button>
             </div>
           </div>
 
@@ -98,6 +116,27 @@ export function Navbar() {
                       </Link>
                     </Button>
                   ))}
+                  <Separator className="my-2" />
+                  <div className="flex gap-1">
+                    <Button variant="ghost" size="icon" asChild onClick={() => setOpen(false)}>
+                      <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
+                        <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
+                        <span className="sr-only">GitHub</span>
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild onClick={() => setOpen(false)}>
+                      <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
+                        <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
+                        <span className="sr-only">LinkedIn</span>
+                      </Link>
+                    </Button>
+                    <Button variant="ghost" size="icon" asChild onClick={() => setOpen(false)}>
+                      <Link href="mailto:johan.amador@pucp.edu.pe">
+                        <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
+                        <span className="sr-only">Email</span>
+                      </Link>
+                    </Button>
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>

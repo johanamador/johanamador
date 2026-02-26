@@ -171,7 +171,7 @@ export function ProjectsSection() {
   }, [])
 
   const renderProjectCard = (project: typeof projects[0] & { figma?: string }) => (
-    <Card key={project.id} className="overflow-hidden flex flex-col h-full transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
+    <Card key={project.id} className="bg-background overflow-hidden flex flex-col h-full transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/5">
       <div className="h-48 overflow-hidden">
         {project.demo ? (
           <Link href={project.demo} target="_blank" rel="noopener noreferrer">

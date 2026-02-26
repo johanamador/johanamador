@@ -76,12 +76,12 @@ export function ContactSection() {
     <section id="contact" ref={sectionRef} className="py-12 md:py-20 bg-muted/30 fade-in-section">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-primary">#</span> Contact
-          </h2>
           <div className="grid gap-6 md:grid-cols-2">
             {/* Contact info */}
             <div className="space-y-6">
+              <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
+                <span className="text-primary">#</span> Contact
+              </h2>
               <p className="text-muted-foreground leading-relaxed">
                 I'm interested in software development opportunities. If you have any questions or want to discuss a
                 project, feel free to contact me.
@@ -111,11 +111,11 @@ export function ContactSection() {
 
               <Separator />
 
-              <div className="flex gap-2">
+              <div className="flex gap-2 justify-end">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
+                      <Button variant="ghost" size="icon" asChild>
                         <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
                           <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                           <span className="sr-only">GitHub</span>
@@ -126,7 +126,7 @@ export function ContactSection() {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
+                      <Button variant="ghost" size="icon" asChild>
                         <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
                           <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
                           <span className="sr-only">LinkedIn</span>
@@ -137,7 +137,7 @@ export function ContactSection() {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
+                      <Button variant="ghost" size="icon" asChild>
                         <Link href="mailto:johan.amador@pucp.edu.pe">
                           <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
                           <span className="sr-only">Email</span>
