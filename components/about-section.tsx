@@ -13,6 +13,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
+import { SectionTitle } from "@/components/section-title";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -49,9 +50,7 @@ export function AboutSection() {
     >
       <div className="container px-4 md:px-6">
         <div className="mx-auto flex max-w-[58rem] flex-col items-start justify-center gap-4">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
-            <span className="text-primary">#</span> About Me
-          </h2>
+          <SectionTitle title="About Me" />
           <div className="mt-4 grid gap-6 md:grid-cols-[2fr_1fr]">
             <div className="space-y-4">
               <p className="text-foreground leading-relaxed">
