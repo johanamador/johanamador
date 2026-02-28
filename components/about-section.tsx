@@ -40,9 +40,9 @@ export function AboutSection() {
       className="py-16 md:py-24 bg-muted/30 fade-in-section"
     >
       <div className="container px-4 md:px-6">
-        <div className="mx-auto flex max-w-[58rem] flex-col items-start justify-center gap-4">
+        <div className="mx-auto flex max-w-[72rem] flex-col items-start justify-center gap-4">
           <SectionTitle title="About Me" />
-          <div className="mt-4 grid gap-6 md:grid-cols-[1.5fr_1fr]">
+          <div className="mt-4 grid gap-6 md:grid-cols-[1.25fr_1fr]">
             <div className="space-y-4">
               <p className="text-foreground leading-relaxed">
                 Computer Science student in my final semester at PUCP{" "}
@@ -65,6 +65,11 @@ export function AboutSection() {
                 participating in game jams, and designing illustrations or logos
                 as a hobby. These activities strengthen my creative thinking and
                 practical approach.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                What I enjoy most is developing systems, web applications, ERPs,
+                and CRMs. I'm passionate about building robust and scalable
+                solutions that solve real-world problems.
               </p>
 
               <Separator className="my-4" />
