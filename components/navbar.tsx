@@ -51,7 +51,7 @@ export function Navbar() {
           <div className="flex-shrink-0">
             <Button variant="ghost" size="sm" asChild>
               <Link href="#home">
-                <img src="/ja.svg" alt="JA" className="h-5 w-auto dark:invert" />
+                <img src="/ja.svg" alt="JA" className="h-5 w-auto" />
               </Link>
             </Button>
           </div>
@@ -98,7 +98,7 @@ export function Navbar() {
               <SheetContent side="right" className="w-[280px]">
                 <SheetHeader>
                   <SheetTitle>
-                    <img src="/ja.svg" alt="JA" className="h-9 w-auto dark:invert" />
+                    <img src="/ja.svg" alt="JA" className="h-9 w-auto" />
                   </SheetTitle>
                 </SheetHeader>
                 <Separator className="my-4" />

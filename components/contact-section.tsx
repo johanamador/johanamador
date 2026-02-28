@@ -78,7 +78,7 @@ export function ContactSection() {
         <div className="mx-auto max-w-[58rem]">
           <div className="grid gap-6 md:grid-cols-2">
             {/* Contact info */}
-            <div className="space-y-6">
+            <div className="flex flex-col gap-6">
               <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
                 <span className="text-primary">#</span> Contact
               </h2>
@@ -111,11 +111,11 @@ export function ContactSection() {
 
               <Separator />
 
-              <div className="flex gap-2 justify-end">
+              <div className="flex gap-2">
                 <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" asChild>
+                      <Button variant="outline" size="icon" asChild>
                         <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
                           <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
                           <span className="sr-only">GitHub</span>
@@ -126,7 +126,7 @@ export function ContactSection() {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" asChild>
+                      <Button variant="outline" size="icon" asChild>
                         <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
                           <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
                           <span className="sr-only">LinkedIn</span>
@@ -137,7 +137,7 @@ export function ContactSection() {
                   </Tooltip>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="ghost" size="icon" asChild>
+                      <Button variant="outline" size="icon" asChild>
                         <Link href="mailto:johan.amador@pucp.edu.pe">
                           <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
                           <span className="sr-only">Email</span>

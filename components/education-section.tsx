@@ -68,7 +68,7 @@ export function EducationSection() {
                 <CardHeader>
                   <div className="flex items-start justify-between">
                     <div className="bg-primary/10 p-3 rounded-md mb-3">
-                      <img src={item.icon} alt={item.institution} className="h-10 w-10 dark:invert" />
+                      <img src={item.icon} alt={item.institution} className="h-10 w-10" />
                     </div>
                     <Badge variant="outline" className="text-xs">{item.period}</Badge>
                   </div>

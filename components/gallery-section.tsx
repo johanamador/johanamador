@@ -20,7 +20,7 @@ const images = [
   {
     src: "./gallery/hl7-peru-reunion.png",
     alt: "Meeting with HL7 Peru members",
-    description: "SIH SALUS team meeting with HL7 Perú members.",
+    description: "SIH.SALUS team meeting with HL7 Perú members.",
   },
   {
     src: "./gallery/health-minister.jpg",
