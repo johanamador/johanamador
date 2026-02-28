@@ -10,6 +10,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { SectionTitle } from "@/components/section-title"
 
 const images = [
   {
@@ -72,9 +73,7 @@ export function GallerySection() {
     >
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem] px-10">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-primary">#</span> Gallery
-          </h2>
+          <SectionTitle title="Gallery" className="mb-8" />
           <Carousel
             opts={{ align: "start", loop: true }}
             className="w-full"

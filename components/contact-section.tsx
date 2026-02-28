@@ -17,6 +17,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip"
 import Link from "next/link"
+import { SectionTitle } from "@/components/section-title"
 
 export function ContactSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -76,12 +77,10 @@ export function ContactSection() {
     <section id="contact" ref={sectionRef} className="py-12 md:py-20 bg-muted/30 fade-in-section">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
+          <SectionTitle title="Contact" className="mb-8" />
           <div className="grid gap-6 md:grid-cols-2">
             {/* Contact info */}
             <div className="flex flex-col gap-6">
-              <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl">
-                <span className="text-primary">#</span> Contact
-              </h2>
               <p className="text-muted-foreground leading-relaxed">
                 I'm interested in software development opportunities. If you have any questions or want to discuss a
                 project, feel free to contact me.

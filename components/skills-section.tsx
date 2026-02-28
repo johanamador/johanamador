@@ -6,7 +6,7 @@ import { faCode, faDatabase, faLeaf, faLaptopCode, faNoteSticky, faUsers, faUser
 import { faJava, faPython, faSquareJs, faReact, faNodeJs, faGitAlt, faAws, faFigma, faJira, faLinux, faDocker, faJenkins, faMicrosoft } from "@fortawesome/free-brands-svg-icons"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-
+import { SectionTitle } from "@/components/section-title"
 
 const skillIcons: Record<string, React.ReactNode> = {
   Java: <FontAwesomeIcon icon={faJava} className="h-3.5 w-3.5" />,
@@ -111,9 +111,7 @@ export function SkillsSection() {
     <section id="skills" ref={sectionRef} className="py-12 md:py-20 bg-muted/30 fade-in-section">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-primary">#</span> Skills
-          </h2>
+          <SectionTitle title="Skills" className="mb-8" />
           <div className="grid gap-6 md:grid-cols-2">
             {skillCategories.map((category, index) => (
               <Card key={index} className="bg-background">

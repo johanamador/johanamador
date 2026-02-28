@@ -1,19 +1,10 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faDownload,
-  faLocationDot,
-  faComment,
-  faPhone,
-  faEnvelope,
-} from "@fortawesome/free-solid-svg-icons";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { SectionTitle } from "@/components/section-title";
+import { GitHubProfileCard } from "@/components/github-profile-card";
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -51,7 +42,7 @@ export function AboutSection() {
       <div className="container px-4 md:px-6">
         <div className="mx-auto flex max-w-[58rem] flex-col items-start justify-center gap-4">
           <SectionTitle title="About Me" />
-          <div className="mt-4 grid gap-6 md:grid-cols-[2fr_1fr]">
+          <div className="mt-4 grid gap-6 md:grid-cols-[1.5fr_1fr]">
             <div className="space-y-4">
               <p className="text-foreground leading-relaxed">
                 Computer Science student in my final semester at PUCP{" "}
@@ -87,59 +78,7 @@ export function AboutSection() {
               </div>
             </div>
 
-            <Card className="bg-background">
-              <CardHeader className="text-center">
-                <CardTitle className="text-lg text-primary">
-                  Contact Info
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="flex flex-col items-center space-y-4">
-                <img
-                  src="./johan-white.png"
-                  alt="Johan Amador"
-                  className="w-28 h-28 mb-2"
-                  style={{ animation: "fadeIn 1s ease-in" }}
-                />
-                <Separator />
-                <ul className="space-y-3 w-full text-sm">
-                  <li className="flex items-start gap-2">
-                    <FontAwesomeIcon
-                      icon={faLocationDot}
-                      className="h-4 w-4 text-primary mt-0.5 shrink-0"
-                    />
-                    <span>Lima, Peru</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <FontAwesomeIcon
-                      icon={faPhone}
-                      className="h-4 w-4 text-primary mt-0.5 shrink-0"
-                    />
-                    <span>+51 951 665 323</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <FontAwesomeIcon
-                      icon={faEnvelope}
-                      className="h-4 w-4 text-primary mt-0.5 shrink-0"
-                    />
-                    <a
-                      href="mailto:johan.amador@pucp.edu.pe"
-                      className="text-primary hover:underline"
-                    >
-                      johan.amador@pucp.edu.pe
-                    </a>
-                  </li>
-                </ul>
-                {/*<Button variant="secondary" asChild className="w-full mt-4">
-                  <a href="/johan-amador-cv.pdf" download>
-                    Download CV
-                    <FontAwesomeIcon
-                      icon={faDownload}
-                      className="ml-1 h-4 w-4"
-                    />
-                  </a>
-                </Button>*/}
-              </CardContent>
-            </Card>
+            <GitHubProfileCard />
           </div>
         </div>
       </div>

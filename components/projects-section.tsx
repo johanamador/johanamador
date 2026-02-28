@@ -10,6 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Separator } from "@/components/ui/separator"
+import { SectionTitle } from "@/components/section-title"
 
 const projects = [
   {
@@ -242,9 +243,7 @@ export function ProjectsSection() {
     <section id="projects" ref={sectionRef} className="py-12 md:py-20 bg-muted/30 fade-in-section">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[72rem]">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-primary">#</span> Projects
-          </h2>
+          <SectionTitle title="Projects" className="mb-8" />
 
           <Tabs defaultValue="projects" className="w-full">
             <TabsList className="w-full md:w-auto grid grid-cols-2 md:inline-flex mb-6">

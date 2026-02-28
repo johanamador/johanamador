@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
+import { SectionTitle } from "@/components/section-title"
 
 const projects = [
   {
@@ -71,9 +72,7 @@ export function ExperienceSection() {
     <section id="experience" ref={sectionRef} className="py-16 md:py-24 fade-in-section">
       <div className="container px-4 md:px-6">
         <div className="mx-auto max-w-[58rem]">
-          <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl mb-8">
-            <span className="text-primary">#</span> Project Experience
-          </h2>
+          <SectionTitle title="Project Experience" className="mb-8" />
           <div className="relative space-y-6 pl-8 before:absolute before:left-3 before:top-2 before:bottom-2 before:w-px before:bg-border">
             {projects.map((project, index) => (
               <div key={index} className="relative">
