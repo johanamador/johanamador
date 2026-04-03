@@ -15,45 +15,59 @@ import { SectionTitle } from "@/components/section-title"
 const projects = [
   {
     id: 11,
-    title: "SercomFire",
-    description: "Corporate B2B landing page for SercomFire: services, products and training. Premium editorial UI/UX for a fire protection company with 22+ years of experience and SGS homologation.",
-    image: "./projects/sercomfire.png",
-    technologies: ["Next.js 15", "TypeScript", "Tailwind CSS"],
+    title: "Grupo Sercom",
+    description:
+      "Corporate B2B landing page for Grupo Sercom: services, products and training. Premium editorial UI/UX for a fire protection company with 22+ years of experience and SGS homologation.",
+    image: "./projects/grupo-sercom.png",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     github: "",
-    demo: "",
+    demo: "https://sercomfire.vercel.app/",
   },
   {
     id: 16,
-    title: "PROSEDAIN",
-    description: "E-commerce platform for industrial automation distribution. 385+ products auto-synced from Google Sheets, quote cart with Google Drive/Gmail API integration, advanced search, and SEO-optimized responsive design.",
+    title: "Prosedain",
+    description:
+      "B2B catalog and quotation platform for industrial automation distribution. 385+ products auto-synced from Google Sheets, non-transactional quote cart, WhatsApp inquiries, Google Drive/Gmail API integration, advanced search, and SEO-optimized responsive design.",
     image: "./projects/prosedain.png",
-    technologies: ["Next.js 14", "React 18", "TypeScript", "Tailwind CSS", "shadcn/ui", "Framer Motion", "Google Sheets API", "Gmail API"],
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Google Sheets API",
+      "Gmail API",
+      "Cloudinary"
+    ],
     github: "",
-    demo: "",
+    demo: "https://prosedain.com/",
   },
   {
     id: 15,
     title: "Nebu",
-    description: "Full-stack SaaS platform with SSR frontend, NestJS backend, PostgreSQL master-slave replication, real-time voice/video via LiveKit, AI embeddings with ChromaDB, Culqi payments, and full observability stack.",
+    description:
+      "Full-stack platform with SSR frontend, NestJS backend, PostgreSQL master-slave replication, real-time voice/video via LiveKit, AI embeddings with ChromaDB, Culqi payments, and full observability stack.",
     image: "./projects/nebu.png",
     technologies: ["Remix", "NestJS", "TypeScript", "PostgreSQL", "Docker", "LiveKit", "OpenAI API", "Grafana"],
     github: "",
-    demo: "",
+    demo: "https://flow-telligence.com/",
   },
   {
     id: 13,
     title: "Farmasalud Inversiones",
-    description: "Professional responsive website for an online pharmacy. PostgreSQL + REST API backend, customizable Hero Section, WhatsApp consultation cart, SEO score 98/100, and full admin panel.",
-    image: "./projects/farmasalud.png",
+    description:
+      "Professional responsive website for an online pharmacy. PostgreSQL + REST API backend, customizable Hero Section, WhatsApp consultation cart, SEO score 98/100, and full admin panel.",
+    image: "./projects/farmasalud-inversiones.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS", "shadcn/ui", "PostgreSQL", "Prisma", "NextAuth", "Cloudinary"],
     github: "",
-    demo: "",
+    demo: "https://farmasaludinversiones.com/",
   },
   {
     id: 1,
     title: "3D Artist Portfolio",
-    description: "Interactive 3D artist portfolio featuring Sketchfab Viewer API integration, cyberpunk design, and embedded 3D model visualizations.",
-    image: "./projects/3d-artist.jpeg",
+    description:
+      "Interactive 3D artist portfolio featuring Sketchfab Viewer API integration, terminal design, and embedded 3D model visualizations.",
+    image: "./projects/cuadot.png",
     technologies: ["Next.js", "React", "Sketchfab API", "Three.js", "Tailwind CSS", "TypeScript"],
     github: "",
     demo: "https://cuadot.vercel.app/",
@@ -61,8 +75,9 @@ const projects = [
   {
     id: 17,
     title: "Academia Pásalo",
-    description: "University-focused academic platform for PUCP and UTEC students. Course catalog, study resources, and academic tools built with a modern full-stack architecture.",
-    image: "./projects/academia-pasalo.png",
+    description:
+      "University-focused academic platform for PUCP and UTEC students. Course catalog, study resources, and academic tools built with a modern full-stack architecture.",
+    image: "./projects/pasalo-academia.png",
     technologies: ["Next.js", "NestJS", "TypeScript", "Tailwind CSS", "shadcn/ui"],
     github: "",
     demo: "https://www.academiapasalo.com",
@@ -70,7 +85,8 @@ const projects = [
   {
     id: 14,
     title: "IPED",
-    description: "Institutional website for the Instituto Peruano de Enfermedades Digestivas (IPED). Built with Next.js for a clear, professional and trustworthy patient experience.",
+    description:
+      "Institutional website for the Instituto Peruano de Enfermedades Digestivas (IPED). Built with Next.js for a clear, professional and trustworthy patient experience.",
     image: "./projects/iped.png",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
     github: "",
@@ -78,17 +94,19 @@ const projects = [
   },
   {
     id: 12,
-    title: "SercomFire Portal",
-    description: "Corporate document portal for Sercomfire. Clients securely access technical documents (certificates, reports) via RUC with integrated PDF preview. Admins manage companies, services and documents with real-time stats.",
-    image: "./projects/sercomfire-portal.png",
+    title: "Grupo Sercom Portal",
+    description:
+      "Corporate document portal for Grupo Sercom. Clients securely access technical documents (certificates, reports) via RUC with integrated PDF preview. Admins manage companies, services and documents with real-time stats.",
+    image: "./projects/grupo-sercom-portal.png",
     technologies: ["Next.js 14", "TypeScript", "Supabase", "PostgreSQL", "shadcn/ui", "Cloudflare Turnstile"],
     github: "",
-    demo: "",
+    demo: "https://portalsercomfire.vercel.app/",
   },
   {
     id: 2,
     title: "Grunge Merch",
-    description: "Official grunge and rock band merch store web interface, with detailed product pages and HD image gallery.",
+    description:
+      "Official grunge and rock band merch store web interface, with detailed product pages and HD image gallery.",
     image: "./projects/grunge.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "APIs", "Web Scraping"],
     github: "https://github.com/UltimateCosmic/grunge",
@@ -106,7 +124,8 @@ const projects = [
   {
     id: 5,
     title: "Personal Portfolio",
-    description: "My personal portfolio website built with Next.js, React, Tailwind CSS, and TypeScript. Features a modern UI, animated hero section, project gallery, and responsive design.",
+    description:
+      "My personal portfolio website built with Next.js, React, Tailwind CSS, and TypeScript. Features a modern UI, animated hero section, project gallery, and responsive design.",
     image: "./projects/cosmodev.png",
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "Shadcn/ui", "Lucide Icons"],
     github: "https://github.com/UltimateCosmic/UltimateCosmic.github.io",

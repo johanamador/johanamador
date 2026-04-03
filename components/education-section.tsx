@@ -8,7 +8,7 @@ import { SectionTitle } from "@/components/section-title"
 const education = [
   {
     institution: "Pontificia Universidad Católica del Perú",
-    degree: "Bachelor in Computer Science",
+    degree: "Ingeniería Informática",
     period: "2020-2026",
     location: "Lima, Peru",
     icon: "/icons/pucp.svg",
