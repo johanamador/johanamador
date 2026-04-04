@@ -1,0 +1,175 @@
+%-------------------------
+% CV - Johan Carlo Amador Egoavil (English)
+% Overleaf / LaTeX
+%-------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[margin=0.7in]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+
+% Colors
+\definecolor{primary}{HTML}{2563EB}
+\definecolor{darktext}{HTML}{1a1a1a}
+\definecolor{graytext}{HTML}{555555}
+
+% Hyperlinks
+\hypersetup{
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=primary,
+}
+
+% Section formatting
+\titleformat{\section}{\large\bfseries\color{darktext}}{}{0em}{}[\titlerule]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+% Remove page numbers
+\pagenumbering{gobble}
+
+% Custom commands
+\newcommand{\cvsubheading}[4]{
+  \vspace{4pt}
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textit{\small #2} \\
+    \textit{\small\color{graytext} #3} & \textit{\small\color{graytext} #4} \\
+  \end{tabular*}\vspace{-2pt}
+}
+
+\newcommand{\cvproject}[3]{
+  \vspace{4pt}
+  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & \textit{\small #2} \\
+  \end{tabular*}
+  {\small\color{graytext} #3}\vspace{-2pt}
+}
+
+\begin{document}
+
+%----------HEADER----------
+\begin{center}
+  {\LARGE\bfseries Johan Carlo Amador Egoavil} \\[6pt]
+  \small
+  \faIcon{map-marker-alt} Lima, Peru \quad
+  \faIcon{envelope} \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
+  \faIcon{phone} +51 951 665 323 \\[3pt]
+  \faIcon{globe} \href{https://cosmodev.me}{cosmodev.me} \quad
+  \faIcon{github} \href{https://github.com/UltimateCosmic}{UltimateCosmic} \quad
+  \faIcon{linkedin} \href{https://linkedin.com/in/johanamador}{johanamador}
+\end{center}
+
+%----------PROFILE----------
+\section{Professional Profile}
+Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del Per\'u (PUCP). Experience building web platforms and systems for real clients as a freelancer and in large-scale academic projects. Strong foundations in data structures, algorithms, software architecture, and full-stack development. Interested in managing projects and contributing to the development of robust and scalable technology solutions.
+
+%----------EXPERIENCE----------
+\section{Professional Experience}
+
+\cvsubheading
+  {Software Engineer (Freelance)}{November 2024 -- Present}
+  {Full Stack Developer -- End-to-end project management}{Lima, Peru}
+
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+  \item Self-managed end-to-end delivery: requirements analysis, full-stack development, deployment tailored to each client's budget and hosting capabilities, client training, and ongoing maintenance.
+  \item Iterative feedback cycles, bug fixes, and post-launch feature enhancements.
+\end{itemize}
+
+\vspace{4pt}
+{\small\textbf{Featured projects:}}
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=2pt]
+  \item \textbf{Prosedain} {\small(\href{https://prosedain.com}{prosedain.com})} -- B2B catalog and quotation platform for industrial automation distribution. 385+ products synced from Google Sheets, quote cart, Gmail API and Cloudinary integration. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS $\cdot$ shadcn/ui $\cdot$ Google APIs}
+  \item \textbf{Farmasalud Inversiones} {\small(\href{https://farmasaludinversiones.com}{farmasaludinversiones.com})} -- Online pharmacy platform. PostgreSQL + REST API backend, full admin panel, WhatsApp consultation cart, SEO score 98/100. {\scriptsize\color{graytext} Next.js $\cdot$ PostgreSQL $\cdot$ Prisma $\cdot$ NextAuth $\cdot$ Cloudinary}
+  \item \textbf{Grupo Sercom} {\small(\href{https://sercomfire.vercel.app}{sercomfire.vercel.app})} -- Corporate B2B landing page for a fire protection company. Premium editorial UI/UX. Document portal with RUC-based access and PDF preview. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Supabase $\cdot$ PostgreSQL}
+  \item \textbf{Nebu} {\small(\href{https://flow-telligence.com}{flow-telligence.com})} -- Full-stack platform with real-time voice/video via LiveKit, AI embeddings with ChromaDB, Culqi payments, PostgreSQL master-slave replication, and full observability stack. {\scriptsize\color{graytext} Remix $\cdot$ NestJS $\cdot$ PostgreSQL $\cdot$ Docker $\cdot$ OpenAI API}
+  \item \textbf{MITS Peru} {\small(\href{https://mitsperu.com}{mitsperu.com})} -- Corporate website for an IT solutions company. Infrastructure, cloud, web development, and IT support services. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+  \item \textbf{Academia P\'asalo} {\small(\href{https://academiapasalo.com}{academiapasalo.com})} -- Educational platform for PUCP and UTEC university students. Frontend development following Figma prototype with API integration. {\scriptsize\color{graytext} Next.js $\cdot$ NestJS $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+  \item \textbf{Mora} {\small(\href{https://www.moraazul.xyz}{moraazul.xyz})} -- Portfolio website for a Technical Artist specialized in Unity and Unreal Engine. Immersive interactive experiences with 3D modeling, rigging, and real-time animation. {\scriptsize\color{graytext} Next.js $\cdot$ React $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+\end{itemize}
+
+%----------THESIS----------
+\section{Thesis}
+
+\cvsubheading
+  {Interoperability Component for Hospital Information System}{}
+  {Pontificia Universidad Cat\'olica del Per\'u}{2025 -- 2026}
+
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+  \item Interoperability module for OpenMRS integrated with RENHICE (Peru's National Electronic Health Records Registry) using HL7 FHIR R4 and Dyaku profiles.
+  \item Implementation of automatic IPS clinical summary submission and bidirectional data query/import.
+  \item Asynchronous architecture with event queues and deferred processing for environments with unstable connectivity.
+\end{itemize}
+{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR R4 $\cdot$ Clinical interoperability} \quad {\small \faIcon{github} \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{Repository}}
+
+%----------ACADEMIC PROJECTS----------
+\section{Academic Projects}
+
+\cvproject{Thesis Management System}{March 2025 -- July 2025}{React $\cdot$ Spring Boot $\cdot$ PostgreSQL}
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+  \item Capstone project with a 38-member team simulating a real professional environment.
+  \item Developed the review module and integrated GoWinston API for plagiarism detection.
+  \item Technical management with quality control, CI/CD, and collaborative code review.
+\end{itemize}
+
+\cvproject{Logistics Operations Planning System}{August 2024 -- December 2024}{Java $\cdot$ React $\cdot$ Figma}
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+  \item Delivery route planning algorithm with constraints and blockages.
+  \item Backend with optimization engine in Java and modular React interface.
+\end{itemize}
+
+\cvproject{Academic Tutoring Management System}{March 2024 -- July 2024}{React $\cdot$ ASP.NET}
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+  \item University tutoring coordination platform with scheduling, notifications, and session management.
+  \item Agile development with Scrum and interactive prototyping in Figma.
+\end{itemize}
+
+\cvproject{Banking Risk Management System}{August 2023 -- December 2023}{Java $\cdot$ C\# $\cdot$ Figma}
+\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+  \item Academic prototype for comprehensive risk management in digital banking entities.
+  \item Registration, analysis, hierarchy, and reporting modules with filters.
+\end{itemize}
+
+%----------EDUCATION----------
+\section{Education}
+
+\cvsubheading
+  {Computer Science Engineering (Graduated)}{2020 -- 2026}
+  {Pontificia Universidad Cat\'olica del Per\'u (PUCP)}{Lima, Peru}
+
+\vspace{2pt}
+\cvsubheading
+  {Full Stack Developer Path}{2022 -- 2023}
+  {Platzi}{Online}
+
+\vspace{2pt}
+\cvsubheading
+  {Software Development}{2025}
+  {Coursera}{Online}
+
+%----------SKILLS----------
+\section{Technical Skills}
+
+\begin{tabular}{@{}l p{12cm}}
+  \textbf{Languages:} & Java, JavaScript, TypeScript, C/C++, C\#, Python, SQL \\[3pt]
+  \textbf{Frameworks:} & React, Next.js, NestJS, Spring Boot, ASP.NET, Express.js, Remix \\[3pt]
+  \textbf{Databases:} & PostgreSQL, MySQL, SQL Server, Oracle SQL, MongoDB, Supabase \\[3pt]
+  \textbf{DevOps \& Cloud:} & Docker, CI/CD, Vercel, cPanel, AWS (RDS), Namecheap, Cloudflare, Linux, Git/GitHub \\[3pt]
+  \textbf{Tools:} & Figma, Jira, VS Code, Notion, Bizagi (BPMN), Postman \\[3pt]
+  \textbf{Other:} & REST APIs, GraphQL, HL7 FHIR, Tailwind CSS, shadcn/ui, Prisma, NextAuth, Cloudinary \\[3pt]
+  \textbf{Methodologies:} & Scrum, agile development, continuous deployment, version control, collaborative work, technical documentation \\
+\end{tabular}
+
+%----------LANGUAGES----------
+\section{Languages}
+
+\begin{tabular}{@{}l l}
+  \textbf{Spanish:} & Native \\[3pt]
+  \textbf{English:} & Upper-Intermediate (B2 -- FCE Cambridge) \\
+\end{tabular}
+
+\end{document}

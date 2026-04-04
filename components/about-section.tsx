@@ -55,10 +55,11 @@ export function AboutSection() {
                 projects that pose real technical challenges.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Currently developing my thesis on healthcare systems
-                interoperability, learning about standards like HL7 FHIR and
-                service-oriented architectures. This experience has brought me
-                closer to designing scalable and connected systems.
+                For my thesis, I built an interoperability module for OpenMRS
+                integrating with Peru&apos;s National Electronic Health Records
+                Registry (RENHICE) using HL7 FHIR R4 and Dyaku profiles. This
+                deepened my understanding of healthcare standards and
+                service-oriented architectures.
               </p>
               <p className="text-muted-foreground leading-relaxed">
                 Outside of academics, I enjoy exploring game development,

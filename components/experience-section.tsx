@@ -8,8 +8,16 @@ import { SectionTitle } from "@/components/section-title"
 
 const projects = [
   {
+    title: "Freelance Web Developer",
+    period: "November 2024 - Present",
+    role: "Full Stack Developer",
+    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "PostgreSQL", "NestJS", "shadcn/ui"],
+    description:
+      "Self-managed end-to-end delivery of web solutions for multiple clients: requirements analysis, full-stack development, deployment tailored to each client's budget and hosting capabilities, client training, and ongoing maintenance. Projects include Grupo Sercom (corporate B2B landing page), Prosedain (B2B catalog with 385+ products synced via Google Sheets and Gmail API), Farmasalud Inversiones (pharmacy e-commerce with admin panel, SEO 98/100), Nebu (real-time video platform with LiveKit, AI embeddings, and Culqi payments), and Mora (Technical Artist portfolio). Handled iterative feedback cycles, bug fixes, and feature enhancements post-launch.",
+  },
+  {
     title: "Academic Thesis Management System",
-    period: "March 2025 - Present",
+    period: "March 2025 - July 2025",
     role: "Full Stack Developer",
     technologies: ["React", "Spring Boot", "PostgreSQL"],
     description:
