@@ -1,91 +1,122 @@
 # Johan Amador | Portfolio
 
-Welcome to my personal portfolio! Here you can find my featured projects, skills, and a bit about me as a developer. This site is built with the latest technologies and designed to be fast, modern, and responsive.
+Personal portfolio website showcasing my projects, skills, experience, and education as a Software Developer and Computer Science Engineer.
+
+**Live at [cosmodev.me](https://cosmodev.me)**
 
 ## Tech Stack
 
-- **Next.js 14**
+- **Next.js 15** with static export
 - **React 19**
-- **TypeScript**
-- **Tailwind CSS**
-- **shadcn/ui**
-- **Lucide Icons**
+- **TypeScript 5**
+- **Tailwind CSS 3** with CSS variables theming (dark mode)
+- **shadcn/ui** (Radix UI primitives)
+- **FontAwesome**, **Lucide React**, **React Icons**
+- **Recharts** for GitHub contributions chart
+- **Embla Carousel** with autoplay
+
+## Sections
+
+| Section | Description |
+|---|---|
+| **Hero** | Name, role, featured projects carousel (autoplay), CTA buttons |
+| **About** | Bio, languages, GitHub profile card with live stats and contributions chart |
+| **Experience** | Timeline with freelance and academic project experience |
+| **Projects** | Tabbed grid (Projects / Designs) with modal detail view and live iframe preview |
+| **Education** | PUCP, Platzi, Coursera |
+| **Skills** | 6 categories: Languages, Frameworks, Tools, Methodologies, Databases, Other |
+| **Gallery** | Photo carousel from professional events |
+| **Contact** | Contact form via Formspree + social links |
 
 ## Featured Projects
 
 <div align="center">
-
 <table>
   <tr>
     <td align="center" width="25%">
-      <a href="https://grunge.vercel.app/">
-        <img src="./public/projects/grunge.png" alt="Grunge Merch Preview" width="200"/><br/>
-        <strong>Grunge Merch</strong>
+      <a href="https://sercomfire.vercel.app/">
+        <img src="./public/projects/grupo-sercom.png" alt="Grupo Sercom" width="200"/><br/>
+        <strong>Grupo Sercom</strong>
       </a>
-      <br/>
-      Web interface for an official grunge and rock bands merch store.<br/>
-      <a href="https://github.com/UltimateCosmic/grunge">Code</a>
     </td>
     <td align="center" width="25%">
-      <a href="https://cinemark-peru.vercel.app/">
-        <img src="./public/projects/cinemark-peru.png" alt="Cinemark Perú Clone Preview" width="200"/><br/>
-        <strong>Cinemark Perú Clone</strong>
+      <a href="https://prosedain.com/">
+        <img src="./public/projects/prosedain.png" alt="Prosedain" width="200"/><br/>
+        <strong>Prosedain</strong>
       </a>
-      <br/>
-      Responsive clone of the Cinemark Perú website. Works with official API.<br/>
-      <a href="https://github.com/UltimateCosmic/cinemark-peru">Code</a>
     </td>
     <td align="center" width="25%">
-      <a href="https://anniversary-project-sage.vercel.app/">
-        <img src="./public/projects/anniversary-project.png" alt="Anniversary Project Preview" width="200"/><br/>
-        <strong>Anniversary Project</strong>
+      <a href="https://farmasaludinversiones.com/">
+        <img src="./public/projects/farmasalud-inversiones.png" alt="Farmasalud" width="200"/><br/>
+        <strong>Farmasalud Inversiones</strong>
       </a>
-      <br/>
-      A digital memory corner and gift for a loved one.<br/>
-      <a href="https://github.com/UltimateCosmic/anniversary-project">Code</a>
     </td>
     <td align="center" width="25%">
-      <a href="https://github.com/UltimateCosmic/UltimateCosmic.github.io">
-        <img src="./public/projects/cosmodev.png" alt="Portfolio Preview" width="200"/><br/>
-        <strong>Personal Portfolio</strong>
+      <a href="https://flow-telligence.com/">
+        <img src="./public/projects/nebu.png" alt="Nebu" width="200"/><br/>
+        <strong>Nebu</strong>
       </a>
-      <br/>
-      This very site! Modern UI, animated hero, project gallery, and more.<br/>
-      <a href="https://github.com/UltimateCosmic/cosmodev">Code</a>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="25%">
+      <a href="https://mitsperu.com/">
+        <img src="./public/projects/mits.png" alt="MITS Peru" width="200"/><br/>
+        <strong>MITS Peru</strong>
+      </a>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://www.academiapasalo.com/">
+        <img src="./public/projects/pasalo-academia.png" alt="Academia Pasalo" width="200"/><br/>
+        <strong>Academia Pasalo</strong>
+      </a>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://www.moraazul.xyz/">
+        <img src="./public/projects/mora.png" alt="Mora" width="200"/><br/>
+        <strong>Mora</strong>
+      </a>
+    </td>
+    <td align="center" width="25%">
+      <a href="https://cuadot.vercel.app/">
+        <img src="./public/projects/cuadot.png" alt="3D Artist Portfolio" width="200"/><br/>
+        <strong>3D Artist Portfolio</strong>
+      </a>
     </td>
   </tr>
 </table>
-
 </div>
 
-## Features
+## Key Features
 
-- Animated hero section with spotlight effects
-- Project gallery with live demos
-- Responsive and accessible design
-- Custom UI components
-- Real-time data integration (Cinemark API)
+- Single-page app with smooth scroll navigation
+- Project modal with live iframe preview (desktop) and fallback for blocked sites
+- Featured projects carousel with autoplay in hero section
+- GitHub profile card with live API data (repos, stars, languages, contributions chart)
+- Dark mode by default with CSS variables theming
+- Fade-in animations via Intersection Observer
+- Contact form with Formspree integration
+- Fully responsive (mobile sheet drawer, adaptive grids)
+- Static export deployed to Namecheap via GitHub Actions
 
 ## Getting Started
 
 ```bash
 # Clone the repo
-https://github.com/UltimateCosmic/cosmodev.git
+git clone https://github.com/UltimateCosmic/UltimateCosmic.github.io.git
 
 # Install dependencies
-pnpm install # or npm install
+npm install
 
 # Run locally
-pnpm dev # or npm run dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the site.
 
 ## Deployment
 
-The website is live at [https://cosmodev.me](https://cosmodev.me).
-
-This site is deployed to Namecheap using GitHub Actions for automated static export and upload. GitHub Pages only allows HTML, CSS, and JS files, so a custom workflow is used to deploy the generated static files to Namecheap hosting.
+Deployed as a static export (`output: 'export'`) to Namecheap hosting via GitHub Actions. Custom domain configured with CNAME.
 
 ## License
 
@@ -93,4 +124,4 @@ This project is MIT licensed.
 
 ---
 
-> Built with Next.js and Tailwind CSS by Johan Amador (@cosmodev)
+> Built with Next.js 15, React 19, and Tailwind CSS by Johan Amador ([@cosmodev](https://cosmodev.me))
