@@ -53,7 +53,7 @@ export function HeroSection() {
                 </span>
               </div>
               <h2 className="text-xl sm:text-2xl text-primary mb-4">
-                Computer Science Student | Software Developer
+                Software Developer | Computer Science Engineer
               </h2>
               <p className="max-w-[600px] text-muted-foreground text-lg mb-6">
                 Focused on building efficient solutions with modern

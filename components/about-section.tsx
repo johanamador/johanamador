@@ -45,7 +45,7 @@ export function AboutSection() {
           <div className="mt-4 grid gap-6 md:grid-cols-[1.25fr_1fr]">
             <div className="space-y-4">
               <p className="text-foreground leading-relaxed">
-                Computer Science student in my final semester at PUCP{" "}
+                Computer Science graduate from PUCP{" "}
                 <Badge variant="secondary" className="ml-1">
                   No. 1 university in Peru – Ranking QS
                 </Badge>
