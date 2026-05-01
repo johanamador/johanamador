@@ -180,7 +180,7 @@ export function GitHubProfileCard() {
       <Card className="bg-background">
         <CardContent className="flex flex-col items-center space-y-4 pt-6">
           <Avatar className="h-24 w-24">
-            <AvatarImage src="./johan-white.png" alt="Johan Amador" />
+            <AvatarImage src="./johan-white.webp" alt="Johan Amador" loading="lazy" decoding="async" />
             <AvatarFallback>JA</AvatarFallback>
           </Avatar>
           <div className="text-center">

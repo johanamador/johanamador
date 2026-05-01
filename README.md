@@ -35,25 +35,25 @@ Personal portfolio website showcasing my projects, skills, experience, and educa
   <tr>
     <td align="center" width="25%">
       <a href="https://sercomfire.vercel.app/">
-        <img src="./public/projects/grupo-sercom.png" alt="Grupo Sercom" width="200"/><br/>
+        <img src="./public/projects/grupo-sercom.webp" alt="Grupo Sercom" width="200"/><br/>
         <strong>Grupo Sercom</strong>
       </a>
     </td>
     <td align="center" width="25%">
       <a href="https://prosedain.com/">
-        <img src="./public/projects/prosedain.png" alt="Prosedain" width="200"/><br/>
+        <img src="./public/projects/prosedain.webp" alt="Prosedain" width="200"/><br/>
         <strong>Prosedain</strong>
       </a>
     </td>
     <td align="center" width="25%">
       <a href="https://farmasaludinversiones.com/">
-        <img src="./public/projects/farmasalud-inversiones.png" alt="Farmasalud" width="200"/><br/>
+        <img src="./public/projects/farmasalud-inversiones.webp" alt="Farmasalud" width="200"/><br/>
         <strong>Farmasalud Inversiones</strong>
       </a>
     </td>
     <td align="center" width="25%">
       <a href="https://flow-telligence.com/">
-        <img src="./public/projects/nebu.png" alt="Nebu" width="200"/><br/>
+        <img src="./public/projects/nebu.webp" alt="Nebu" width="200"/><br/>
         <strong>Nebu</strong>
       </a>
     </td>
@@ -61,25 +61,25 @@ Personal portfolio website showcasing my projects, skills, experience, and educa
   <tr>
     <td align="center" width="25%">
       <a href="https://mitsperu.com/">
-        <img src="./public/projects/mits.png" alt="MITS Peru" width="200"/><br/>
+        <img src="./public/projects/mits.webp" alt="MITS Peru" width="200"/><br/>
         <strong>MITS Peru</strong>
       </a>
     </td>
     <td align="center" width="25%">
       <a href="https://www.academiapasalo.com/">
-        <img src="./public/projects/pasalo-academia.png" alt="Academia Pasalo" width="200"/><br/>
+        <img src="./public/projects/pasalo-academia.webp" alt="Academia Pasalo" width="200"/><br/>
         <strong>Academia Pasalo</strong>
       </a>
     </td>
     <td align="center" width="25%">
       <a href="https://www.moraazul.xyz/">
-        <img src="./public/projects/mora.png" alt="Mora" width="200"/><br/>
+        <img src="./public/projects/mora.webp" alt="Mora" width="200"/><br/>
         <strong>Mora</strong>
       </a>
     </td>
     <td align="center" width="25%">
       <a href="https://cuadot.vercel.app/">
-        <img src="./public/projects/cuadot.png" alt="3D Artist Portfolio" width="200"/><br/>
+        <img src="./public/projects/cuadot.webp" alt="3D Artist Portfolio" width="200"/><br/>
         <strong>3D Artist Portfolio</strong>
       </a>
     </td>

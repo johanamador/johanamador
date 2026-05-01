@@ -14,27 +14,27 @@ import { SectionTitle } from "@/components/section-title"
 
 const images = [
   {
-    src: "./gallery/conectaton-ips-2025.jpg",
+    src: "./gallery/conectaton-ips-2025.webp",
     alt: "Conectatón IPS Perú 2025",
     description: "At IPS Perú 2025 with teammates, representing Hospital Santa Clotilde & university.",
   },
   {
-    src: "./gallery/hl7-peru-reunion.png",
+    src: "./gallery/hl7-peru-reunion.webp",
     alt: "Meeting with HL7 Peru members",
     description: "SIH.SALUS team meeting with HL7 Perú members.",
   },
   {
-    src: "./gallery/health-minister.jpg",
+    src: "./gallery/health-minister.webp",
     alt: "With Dr. César Vásquez (Minister of Health) and José Pérez Lu (General Director of IT, MINSA)",
     description: "With Dr. César Vásquez, Minister of Health, and José Pérez Lu, General Director of IT at MINSA.",
   },
   {
-    src: "./gallery/diresa-huanuco-sanmartin.jpg",
+    src: "./gallery/diresa-huanuco-sanmartin.webp",
     alt: "With DIRESA Huánuco and San Martín members",
     description: "With members of DIRESA Huánuco and San Martín during a regional health digitalization meeting.",
   },
   {
-    src: "./gallery/xpostem-2025.jpg",
+    src: "./gallery/xpostem-2025.webp",
     alt: "XPOSTEM 2025",
     description: "At XPOSTEM 2025, a fair of innovation by PUCP showcasing 90+ solutions transforming lives through science and engineering.",
   },
@@ -86,6 +86,8 @@ export function GallerySection() {
                       <img
                         src={img.src}
                         alt={img.alt}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover select-none"
                         draggable={false}
                       />

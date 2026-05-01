@@ -75,6 +75,8 @@ function ProjectModal({
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="absolute inset-0 w-full h-full object-cover object-top opacity-10"
                 />
                 <div className="relative z-10 flex flex-col items-center gap-3 text-center">
@@ -124,6 +126,8 @@ function ProjectModal({
                 <img
                   src={project.image || "/placeholder.svg"}
                   alt={project.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover object-top"
                 />
               </AspectRatio>
@@ -246,6 +250,8 @@ export function ProjectsSection() {
         <img
           src={project.image || "/placeholder.svg"}
           alt={project.title}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover object-top transition-transform duration-500 hover:scale-105"
         />
       </div>
