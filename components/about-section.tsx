@@ -1,91 +1,57 @@
-"use client";
-
-import { useEffect, useRef } from "react";
-import { Badge } from "@/components/ui/badge";
-import { Separator } from "@/components/ui/separator";
+import { ArrowUpRight, Download } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
 import { GitHubProfileCard } from "@/components/github-profile-card";
 
 export function AboutSection() {
-  const sectionRef = useRef<HTMLElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
-          }
-        });
-      },
-      { threshold: 0.1 },
-    );
-
-    const section = sectionRef.current;
-    if (section) {
-      observer.observe(section);
-    }
-
-    return () => {
-      if (section) {
-        observer.unobserve(section);
-      }
-    };
-  }, []);
-
   return (
-    <section
-      id="about"
-      ref={sectionRef}
-      className="py-16 md:py-24 bg-muted/30 fade-in-section"
-    >
-      <div className="container px-4 md:px-6">
-        <div className="mx-auto flex max-w-[72rem] flex-col items-start justify-center gap-4">
-          <SectionTitle title="About Me" />
-          <div className="mt-4 grid gap-6 md:grid-cols-[1.25fr_1fr]">
-            <div className="space-y-4">
-              <p className="text-foreground leading-relaxed">
-                Computer Science graduate from PUCP{" "}
-                <Badge variant="secondary" className="ml-1">
-                  No. 1 university in Peru – Ranking QS
-                </Badge>
-                . I'm focused on software development and motivated to build
-                efficient solutions with modern technologies like Java, React,
-                SQL, and .NET. Self-taught and passionate about participating in
-                projects that pose real technical challenges.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                For my thesis, I built an interoperability module for OpenMRS
-                integrating with Peru&apos;s National Electronic Health Records
-                Registry (RENHICE) using HL7 FHIR R4 and Dyaku profiles. This
-                deepened my understanding of healthcare standards and
-                service-oriented architectures.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Outside of academics, I enjoy exploring game development,
-                participating in game jams, and designing illustrations or logos
-                as a hobby. These activities strengthen my creative thinking and
-                practical approach.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                What I enjoy most is developing systems, web applications, ERPs,
-                and CRMs. I'm passionate about building robust and scalable
-                solutions that solve real-world problems.
-              </p>
-
-              <Separator className="my-4" />
-
+    <section id="about" className="portfolio-section about-section">
+      <div className="site-container">
+        <SectionTitle
+          index="02"
+          eyebrow="Behind the work"
+          title="A little about me."
+        />
+        <div className="about-layout">
+          <div className="about-copy">
+            <p className="large-copy">
+              I’m Johan, a software developer based in Lima. I like
+              understanding how things work — and making them work better.
+            </p>
+            <p>
+              A Computer Science graduate from PUCP, I build web applications,
+              ERPs and CRMs with a focus on practical, reliable solutions. My
+              work spans full-stack development, deployment and the details that
+              make a product useful.
+            </p>
+            <p>
+              For my thesis, I built an OpenMRS module that connects with Peru’s
+              National Electronic Health Records Registry using HL7 FHIR R4 and
+              Dyaku profiles. It brought together two things I enjoy: complex
+              systems and work with a real-world impact.
+            </p>
+            <p>
+              Outside of development, you’ll find me exploring game jams,
+              drawing illustrations or designing logos. Making things is the
+              common thread.
+            </p>
+            <div className="about-facts">
               <div>
-                <h3 className="text-lg font-semibold mb-2">Languages</h3>
-                <div className="flex flex-wrap gap-2">
-                  <Badge variant="default">English: B2 – FCE Cambridge</Badge>
-                  <Badge variant="default">Spanish: Native</Badge>
-                </div>
+                <span className="eyebrow">Based in</span>
+                <span>
+                  Lima, Peru <ArrowUpRight size={14} />
+                </span>
+              </div>
+              <div>
+                <span className="eyebrow">Languages</span>
+                <span>Spanish · Native</span>
+                <span className="muted">English · B2, Cambridge FCE</span>
               </div>
             </div>
-
-            <GitHubProfileCard />
+            <a className="text-link" href="/johan-amador-cv.pdf" download>
+              Download my résumé <Download size={15} />
+            </a>
           </div>
+          <GitHubProfileCard />
         </div>
       </div>
     </section>

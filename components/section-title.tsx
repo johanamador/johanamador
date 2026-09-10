@@ -1,21 +1,31 @@
-interface SectionTitleProps {
-  title: string;
-  className?: string;
-}
+import { BlurReveal } from "@/components/spell/blur-reveal";
 
-export function SectionTitle({ title, className = "" }: SectionTitleProps) {
+export function SectionTitle({
+  title,
+  index,
+  eyebrow,
+  description,
+  className = "",
+}: {
+  title: string;
+  index?: string;
+  eyebrow?: string;
+  description?: string;
+  className?: string;
+}) {
   return (
-    <div className={`flex items-baseline gap-4 w-full ${className}`}>
-      <h2 className="text-3xl font-bold leading-tight tracking-tighter md:text-4xl shrink-0">
-        {title}
-      </h2>
-      <div className="flex-1 overflow-hidden">
-        <span
-          className="text-primary text-3xl md:text-4xl font-bold tracking-tighter whitespace-nowrap select-none"
-          aria-hidden="true"
-        >
-          {"/".repeat(50)}
-        </span>
+    <div className={`section-heading ${className}`}>
+      {(index || eyebrow) && (
+        <p className="eyebrow">
+          <span>{index}</span>
+          {eyebrow}
+        </p>
+      )}
+      <div className="section-heading-row">
+        <BlurReveal as="h2" inView className="section-title">
+          {title}
+        </BlurReveal>
+        {description && <p className="section-description">{description}</p>}
       </div>
     </div>
   );

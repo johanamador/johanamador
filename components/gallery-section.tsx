@@ -1,111 +1,133 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { AspectRatio } from "@/components/ui/aspect-ratio"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "@/components/ui/carousel"
-import { SectionTitle } from "@/components/section-title"
-
-const images = [
-  {
-    src: "./gallery/conectaton-ips-2025.webp",
-    alt: "Conectatón IPS Perú 2025",
-    description: "At IPS Perú 2025 with teammates, representing Hospital Santa Clotilde & university.",
-  },
-  {
-    src: "./gallery/hl7-peru-reunion.webp",
-    alt: "Meeting with HL7 Peru members",
-    description: "SIH.SALUS team meeting with HL7 Perú members.",
-  },
-  {
-    src: "./gallery/health-minister.webp",
-    alt: "With Dr. César Vásquez (Minister of Health) and José Pérez Lu (General Director of IT, MINSA)",
-    description: "With Dr. César Vásquez, Minister of Health, and José Pérez Lu, General Director of IT at MINSA.",
-  },
-  {
-    src: "./gallery/diresa-huanuco-sanmartin.webp",
-    alt: "With DIRESA Huánuco and San Martín members",
-    description: "With members of DIRESA Huánuco and San Martín during a regional health digitalization meeting.",
-  },
-  {
-    src: "./gallery/xpostem-2025.webp",
-    alt: "XPOSTEM 2025",
-    description: "At XPOSTEM 2025, a fair of innovation by PUCP showcasing 90+ solutions transforming lives through science and engineering.",
-  },
-]
+import { useRef, useState } from "react";
+import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { SectionTitle } from "@/components/section-title";
+import { PortfolioDialog } from "@/components/portfolio-dialog";
+import { galleryImages } from "@/lib/profile";
 
 export function GallerySection() {
-  const sectionRef = useRef<HTMLElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible")
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    const section = sectionRef.current
-    if (section) {
-      observer.observe(section)
-    }
-    return () => {
-      if (section) {
-        observer.unobserve(section)
-      }
-    }
-  }, [])
-
+  const track = useRef<HTMLDivElement>(null);
+  const [selected, setSelected] = useState<number | null>(null);
+  function scroll(direction: number) {
+    track.current?.scrollBy({
+      left: direction * track.current.clientWidth * 0.75,
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+        ? "instant"
+        : "smooth",
+    });
+  }
   return (
-    <section
-      id="gallery"
-      ref={sectionRef}
-      className="py-12 md:py-20 fade-in-section"
-    >
-      <div className="container px-4 md:px-6">
-        <div className="mx-auto max-w-[58rem] px-10">
-          <SectionTitle title="Gallery" className="mb-8" />
-          <Carousel
-            opts={{ align: "start", loop: true }}
-            className="w-full"
-          >
-            <CarouselContent>
-              {images.map((img, idx) => (
-                <CarouselItem key={img.src + idx} className="md:basis-1/2 lg:basis-1/3">
-                  <Card className="overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-md">
-                    <AspectRatio ratio={16 / 9}>
-                      <img
-                        src={img.src}
-                        alt={img.alt}
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover select-none"
-                        draggable={false}
-                      />
-                    </AspectRatio>
-                    <CardContent className="p-4">
-                      <p className="text-sm text-muted-foreground text-center leading-relaxed">
-                        {img.description}
-                      </p>
-                    </CardContent>
-                  </Card>
-                </CarouselItem>
-              ))}
-            </CarouselContent>
-            <CarouselPrevious />
-            <CarouselNext />
-          </Carousel>
+    <section id="gallery" className="portfolio-section">
+      <div className="site-container">
+        <SectionTitle
+          index="04"
+          eyebrow="Beyond the screen"
+          title="People & moments."
+          description="A few snapshots from the communities and projects I’ve been part of."
+        />
+        <div className="gallery-controls">
+          <span className="mono muted">A few moments along the way</span>
+          <div>
+            <button
+              className="icon-button"
+              type="button"
+              onClick={() => scroll(-1)}
+              aria-label="Previous photos"
+            >
+              <ArrowLeft size={18} />
+            </button>
+            <button
+              className="icon-button"
+              type="button"
+              onClick={() => scroll(1)}
+              aria-label="Next photos"
+            >
+              <ArrowRight size={18} />
+            </button>
+          </div>
+        </div>
+        <div
+          className="gallery-track"
+          ref={track}
+          tabIndex={0}
+          role="region"
+          aria-label="Photo gallery"
+        >
+          {galleryImages.map((photo, index) => (
+            <figure className="gallery-item" key={photo.src}>
+              <button
+                type="button"
+                onClick={() => setSelected(index)}
+                aria-label={`Enlarge photo: ${photo.alt}`}
+              >
+                <img
+                  src={photo.src}
+                  alt={photo.alt}
+                  width={640}
+                  height={480}
+                  loading="lazy"
+                />
+                <span>
+                  <ArrowUpRight size={18} />
+                </span>
+              </button>
+              <figcaption>
+                <span className="mono">0{index + 1}</span>
+                <p>{photo.description}</p>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
+      <PortfolioDialog
+        open={selected !== null}
+        onClose={() => setSelected(null)}
+        titleId="gallery-dialog-title"
+        className="gallery-dialog"
+      >
+        {selected !== null && (
+          <>
+            <img
+              src={galleryImages[selected].src}
+              alt={galleryImages[selected].alt}
+              className="gallery-full-image"
+            />
+            <div className="gallery-dialog-caption">
+              <h2 id="gallery-dialog-title">{galleryImages[selected].alt}</h2>
+              <p className="muted">{galleryImages[selected].description}</p>
+              <div className="project-pagination">
+                <button
+                  type="button"
+                  className="text-link"
+                  onClick={() =>
+                    setSelected(
+                      (selected - 1 + galleryImages.length) %
+                        galleryImages.length,
+                    )
+                  }
+                >
+                  <ArrowLeft size={16} />
+                  Previous
+                </button>
+                <span className="mono">
+                  {selected + 1} / {galleryImages.length}
+                </span>
+                <button
+                  type="button"
+                  className="text-link"
+                  onClick={() =>
+                    setSelected((selected + 1) % galleryImages.length)
+                  }
+                >
+                  Next
+                  <ArrowRight size={16} />
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+      </PortfolioDialog>
     </section>
-  )
+  );
 }

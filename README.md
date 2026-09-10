@@ -1,127 +1,82 @@
 # Johan Amador | Portfolio
 
-Personal portfolio website showcasing my projects, skills, experience, and education as a Software Developer and Computer Science Engineer.
+Personal website of Johan Amador, software developer and Computer Science graduate from PUCP.
 
-**Live at [cosmodev.me](https://cosmodev.me)**
+**Live at [johanamador.com](https://johanamador.com)**
 
-## Tech Stack
+## Design
 
-- **Next.js 15** with static export
-- **React 19**
-- **TypeScript 5**
-- **Tailwind CSS 3** with CSS variables theming (dark mode)
-- **shadcn/ui** (Radix UI primitives)
-- **FontAwesome**, **Lucide React**, **React Icons**
-- **Recharts** for GitHub contributions chart
-- **Embla Carousel** with autoplay
+A monochrome portfolio with Geist typography, generous spacing, large project previews and a compact searchable archive. The interface uses locally adapted [Spell UI](https://spell.sh/docs/components) components: Blur Reveal, Tilt Card and Copy Button. Attribution and the MIT license are in [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md).
+
+The centered hero pairs a concise introduction and two actions with Sonar Grid, a local canvas component supplied through a 21st.dev integration prompt. Its monochrome waves respond to background clicks, pause offscreen and become a static dot grid with reduced motion. The sections use semantic HTML, native dialogs and the selected Spell components.
+
+## Stack
+
+- Next.js 15, React 19 and TypeScript
+- Tailwind CSS 3 with CSS variables
+- Motion for Spell text reveals
+- Native dialogs for project details, gallery and mobile navigation
+- Lucide icons
+- Static export in `out/`
 
 ## Sections
 
-| Section | Description |
-|---|---|
-| **Hero** | Name, role, featured projects carousel (autoplay), CTA buttons |
-| **About** | Bio, languages, GitHub profile card with live stats and contributions chart |
-| **Experience** | Timeline with freelance and academic project experience |
-| **Projects** | Tabbed grid (Projects / Designs) with modal detail view and live iframe preview |
-| **Education** | PUCP, Platzi, Coursera |
-| **Skills** | 6 categories: Languages, Frameworks, Tools, Methodologies, Databases, Other |
-| **Gallery** | Photo carousel from professional events |
-| **Contact** | Contact form via Formspree + social links |
+- **Loading:** JA logo, Sonar Grid and a subtle indeterminate indicator until the page and fonts are ready; bounded waiting, reduced motion and a no-JavaScript fallback.
+- **Hero:** minimal introduction, interactive Sonar Grid background, selected work link and CV download.
+- **Selected work:** four large previews with project details and external links.
+- **Archive:** all remaining development projects and Figma studies, with filters and search.
+- **About:** biography, languages and live GitHub profile/activity with independent failure states.
+- **Experience:** expandable entries; full descriptions remain available.
+- **Education / toolkit:** compact lists.
+- **Gallery:** scrollable photo strip with an enlarged view and previous/next navigation.
+- **Contact:** email copy, social links and a Formspree form with sending, success and failure states.
 
-## Featured Projects
+Keyboard navigation, focus restoration, reduced motion and accessible form labels are built into the new interactions.
 
-<div align="center">
-<table>
-  <tr>
-    <td align="center" width="25%">
-      <a href="https://sercomfire.vercel.app/">
-        <img src="./public/projects/grupo-sercom.webp" alt="Grupo Sercom" width="200"/><br/>
-        <strong>Grupo Sercom</strong>
-      </a>
-    </td>
-    <td align="center" width="25%">
-      <a href="https://prosedain.com/">
-        <img src="./public/projects/prosedain.webp" alt="Prosedain" width="200"/><br/>
-        <strong>Prosedain</strong>
-      </a>
-    </td>
-    <td align="center" width="25%">
-      <a href="https://farmasaludinversiones.com/">
-        <img src="./public/projects/farmasalud-inversiones.webp" alt="Farmasalud" width="200"/><br/>
-        <strong>Farmasalud Inversiones</strong>
-      </a>
-    </td>
-    <td align="center" width="25%">
-      <a href="https://flow-telligence.com/">
-        <img src="./public/projects/nebu.webp" alt="Nebu" width="200"/><br/>
-        <strong>Nebu</strong>
-      </a>
-    </td>
-  </tr>
-  <tr>
-    <td align="center" width="25%">
-      <a href="https://mitsperu.com/">
-        <img src="./public/projects/mits.webp" alt="MITS Peru" width="200"/><br/>
-        <strong>MITS Peru</strong>
-      </a>
-    </td>
-    <td align="center" width="25%">
-      <a href="https://www.academiapasalo.com/">
-        <img src="./public/projects/pasalo-academia.webp" alt="Academia Pasalo" width="200"/><br/>
-        <strong>Academia Pasalo</strong>
-      </a>
-    </td>
-    <td align="center" width="25%">
-      <a href="https://www.moraazul.xyz/">
-        <img src="./public/projects/mora.webp" alt="Mora" width="200"/><br/>
-        <strong>Mora</strong>
-      </a>
-    </td>
-    <td align="center" width="25%">
-      <a href="https://cuadot.vercel.app/">
-        <img src="./public/projects/cuadot.webp" alt="3D Artist Portfolio" width="200"/><br/>
-        <strong>3D Artist Portfolio</strong>
-      </a>
-    </td>
-  </tr>
-</table>
-</div>
-
-## Key Features
-
-- Single-page app with smooth scroll navigation
-- Project modal with live iframe preview (desktop) and fallback for blocked sites
-- Featured projects carousel with autoplay in hero section
-- GitHub profile card with live API data (repos, stars, languages, contributions chart)
-- Dark mode by default with CSS variables theming
-- Fade-in animations via Intersection Observer
-- Contact form with Formspree integration
-- Fully responsive (mobile sheet drawer, adaptive grids)
-- Static export deployed to Namecheap via GitHub Actions
-
-## Getting Started
+## Development
 
 ```bash
-# Clone the repo
-git clone https://github.com/UltimateCosmic/UltimateCosmic.github.io.git
-
-# Install dependencies
 npm install
-
-# Run locally
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the site.
+Open [localhost:3000](http://localhost:3000).
 
-## Deployment
+Use `npm run dev` while editing. Development artifacts live in `.next-dev`; production builds use `.next`, so running a build does not overwrite the active development server's CSS and JavaScript.
 
-Deployed as a static export (`output: 'export'`) to Namecheap hosting via GitHub Actions. Custom domain configured with CNAME.
+```bash
+npm run typecheck
+npm run build
+```
+
+The build validates TypeScript and generates a static site in `out/`. The GitHub Actions workflow uses npm and publishes the static export.
+
+## Editing content
+
+- `lib/projects.ts`: complete project and design data.
+- `components/hero-section.tsx`: introduction, actions and Sonar Grid settings.
+- `components/projects-section.tsx`: four selected projects, short captions and cover paths.
+- `lib/profile.ts`: experience, education, skills and gallery captions.
+- `components/about-section.tsx`: biography.
+- `app/globals.css`: visual tokens and section styles.
+- `public/cv-en.tex`, `public/cv-es.tex`: CV sources. The downloadable PDF is a separate asset.
+
+## Project previews
+
+The local WebP previews in `public/projects/previews/` were captured from the public project websites on 2026-09-10:
+
+- [Grupo Sercom](https://gruposercom.pe/)
+- [Prosedain](https://prosedain.com/)
+- [Iserma](https://www.isermaperu.com/)
+
+The OpenMRS project uses the existing project artwork. Previews are grayscale in the portfolio and reveal their original colors on hover or keyboard focus.
+
+## Integrations
+
+GitHub profile/repository statistics use the public GitHub API. Monthly contribution totals use the existing GitHub contributions API. Failures leave the profile link available.
+
+The contact form posts to the existing Formspree endpoint. During automated verification, requests are intercepted with simulated responses so no messages are sent.
 
 ## License
 
-This project is MIT licensed.
-
----
-
-> Built with Next.js 15, React 19, and Tailwind CSS by Johan Amador ([@cosmodev](https://cosmodev.me))
+MIT. Third-party component notices are maintained separately.

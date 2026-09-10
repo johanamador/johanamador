@@ -150,7 +150,7 @@ export const projects: Project[] = [
       "Institutional website for the Instituto Peruano de Enfermedades Digestivas (IPED). Built with Next.js for a clear, professional and trustworthy patient experience.",
     image: "./projects/iped.webp",
     technologies: ["Next.js", "TypeScript", "Tailwind CSS"],
-    github: "https://github.com/UltimateCosmic?tab=repositories",
+    github: "https://github.com/johanamador?tab=repositories",
     demo: "https://iped.vercel.app/",
   },
   {
@@ -180,7 +180,7 @@ export const projects: Project[] = [
       "Official grunge and rock band merch store web interface, with detailed product pages and HD image gallery.",
     image: "./projects/grunge.webp",
     technologies: ["Next.js", "React", "Tailwind CSS", "APIs", "Web Scraping"],
-    github: "https://github.com/UltimateCosmic/grunge",
+    github: "https://github.com/johanamador/grunge",
     demo: "https://grunge.vercel.app/",
   },
   {
@@ -189,7 +189,7 @@ export const projects: Project[] = [
     description: "Responsive Cinemark Perú website clone using Next.js, TypeScript, and Cinemark API.",
     image: "./projects/cinemark-peru.webp",
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript"],
-    github: "https://github.com/UltimateCosmic/cinemark-peru",
+    github: "https://github.com/johanamador/cinemark-peru",
     demo: "https://cinemark-peru.vercel.app/",
   },
   {
@@ -199,8 +199,8 @@ export const projects: Project[] = [
       "My personal portfolio website built with Next.js, React, Tailwind CSS, and TypeScript. Features a modern UI, animated hero section, project gallery, and responsive design.",
     image: "./projects/cosmodev.webp",
     technologies: ["Next.js", "React", "Tailwind CSS", "TypeScript", "shadcn/ui", "Lucide Icons"],
-    github: "https://github.com/UltimateCosmic/UltimateCosmic.github.io",
-    demo: "https://cosmodev.me/",
+    github: "https://github.com/johanamador/johanamador",
+    demo: "https://johanamador.com/",
   },
 ]
 

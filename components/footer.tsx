@@ -1,44 +1,36 @@
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
-import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+import { ArrowUp } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="py-6">
-      <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Johan Amador (@cosmodev). All rights reserved.
-          </p>
-          <p className="text-sm text-muted-foreground">
-            Built with <span className="text-primary font-medium">Next.js</span> and{" "}
-            <span className="text-primary font-medium">Tailwind CSS</span>
-          </p>
-          <div className="flex gap-1">
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
-                <span className="sr-only">GitHub</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
-                <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
-                <span className="sr-only">LinkedIn</span>
-              </Link>
-            </Button>
-            <Button variant="ghost" size="icon" asChild>
-              <Link href="mailto:johan.amador@pucp.edu.pe">
-                <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
-                <span className="sr-only">Email</span>
-              </Link>
-            </Button>
-          </div>
+    <footer className="site-footer">
+      <div className="site-container footer-top">
+        <a href="#home" className="footer-wordmark">
+          Johan Amador<span>.</span>
+        </a>
+        <a href="#home" className="icon-button" aria-label="Back to top">
+          <ArrowUp size={19} />
+        </a>
+      </div>
+      <div className="site-container footer-bottom">
+        <p>© {new Date().getFullYear()} Johan Amador</p>
+        <p>Made with care in Lima, Peru.</p>
+        <div>
+          <a
+            href="https://github.com/johanamador"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHub
+          </a>
+          <a
+            href="https://linkedin.com/in/cosmodev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            LinkedIn
+          </a>
         </div>
       </div>
     </footer>
-  )
+  );
 }

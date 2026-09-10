@@ -1,217 +1,169 @@
-"use client"
+"use client";
 
-import { useEffect, useRef, useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Label } from "@/components/ui/label"
-import { Separator } from "@/components/ui/separator"
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faLocationDot, faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons"
-import { faGithub, faLinkedinIn } from "@fortawesome/free-brands-svg-icons"
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from "@/components/ui/tooltip"
-import Link from "next/link"
-import { SectionTitle } from "@/components/section-title"
+import { useRef, useState, type FormEvent } from "react";
+import { ArrowUpRight, ArrowRight, Loader2 } from "lucide-react";
+import { CopyButton } from "@/components/spell/copy-button";
+import { SectionTitle } from "@/components/section-title";
+
+const email = "johan.amador@pucp.edu.pe";
 
 export function ContactSection() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
-  const [status, setStatus] = useState<null | "success" | "error">(null)
-  const [loading, setLoading] = useState(false)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible")
-          }
-        })
-      },
-      { threshold: 0.1 },
-    )
-    const section = sectionRef.current
-    if (section) {
-      observer.observe(section)
-    }
-    return () => {
-      if (section) {
-        observer.unobserve(section)
-      }
-    }
-  }, [])
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value })
-  }
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setStatus(null)
-    setLoading(true)
-    const res = await fetch("https://formspree.io/f/xldlblvl", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name: form.name,
-        email: form.email,
-        message: form.message,
-      }),
-    })
-    setLoading(false)
-    if (res.ok) {
-      setStatus("success")
-      setForm({ name: "", email: "", message: "" })
-    } else {
-      setStatus("error")
+  const [status, setStatus] = useState<
+    "idle" | "sending" | "success" | "error"
+  >("idle");
+  const submitting = useRef(false);
+  async function submit(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (submitting.current) return;
+    submitting.current = true;
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    setStatus("sending");
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 15000);
+    try {
+      const response = await fetch("https://formspree.io/f/xldlblvl", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: data.get("name"),
+          email: data.get("email"),
+          message: data.get("message"),
+        }),
+        signal: controller.signal,
+      });
+      if (!response.ok) throw new Error("Message could not be sent");
+      setStatus("success");
+      form.reset();
+    } catch {
+      setStatus("error");
+    } finally {
+      clearTimeout(timeout);
+      submitting.current = false;
     }
   }
-
   return (
-    <section id="contact" ref={sectionRef} className="py-12 md:py-20 bg-muted/30 fade-in-section">
-      <div className="container px-4 md:px-6">
-        <div className="mx-auto max-w-[58rem]">
-          <SectionTitle title="Contact" className="mb-8" />
-          <div className="grid gap-6 md:grid-cols-2">
-            {/* Contact info */}
-            <div className="flex flex-col gap-6">
-              <p className="text-muted-foreground leading-relaxed">
-                I'm interested in software development opportunities. If you have any questions or want to discuss a
-                project, feel free to contact me.
-              </p>
-              <div className="space-y-4">
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-2 rounded-md">
-                    <FontAwesomeIcon icon={faLocationDot} className="h-4 w-4 text-primary" />
-                  </div>
-                  <span className="text-sm">Lima, Perú</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-2 rounded-md">
-                    <FontAwesomeIcon icon={faPhone} className="h-4 w-4 text-primary" />
-                  </div>
-                  <span className="text-sm">+51 951 665 323</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="bg-primary/10 p-2 rounded-md">
-                    <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4 text-primary" />
-                  </div>
-                  <a href="mailto:johan.amador@pucp.edu.pe" className="text-sm hover:text-primary transition-colors">
-                    johan.amador@pucp.edu.pe
-                  </a>
-                </div>
-              </div>
-
-              <Separator />
-
-              <div className="flex gap-2">
-                <TooltipProvider>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
-                        <Link href="https://github.com/UltimateCosmic" target="_blank" rel="noopener noreferrer">
-                          <FontAwesomeIcon icon={faGithub} className="h-4 w-4" />
-                          <span className="sr-only">GitHub</span>
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>GitHub</TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
-                        <Link href="https://linkedin.com/in/cosmodev" target="_blank" rel="noopener noreferrer">
-                          <FontAwesomeIcon icon={faLinkedinIn} className="h-4 w-4" />
-                          <span className="sr-only">LinkedIn</span>
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>LinkedIn</TooltipContent>
-                  </Tooltip>
-                  <Tooltip>
-                    <TooltipTrigger asChild>
-                      <Button variant="outline" size="icon" asChild>
-                        <Link href="mailto:johan.amador@pucp.edu.pe">
-                          <FontAwesomeIcon icon={faEnvelope} className="h-4 w-4" />
-                          <span className="sr-only">Email</span>
-                        </Link>
-                      </Button>
-                    </TooltipTrigger>
-                    <TooltipContent>Email</TooltipContent>
-                  </Tooltip>
-                </TooltipProvider>
-              </div>
+    <section id="contact" className="portfolio-section contact-section">
+      <div className="site-container">
+        <SectionTitle
+          index="05"
+          eyebrow="Get in touch"
+          title="Let’s make something good."
+        />
+        <div className="contact-layout">
+          <div className="contact-copy">
+            <p className="large-copy">
+              Have a project in mind,
+              <br />
+              or just want to say hello?
+            </p>
+            <p className="muted">
+              I’m open to software development opportunities and interesting
+              collaborations. Let’s talk.
+            </p>
+            <div className="email-line">
+              <a href={`mailto:${email}`}>{email}</a>
+              <CopyButton value={email} />
             </div>
-
-            {/* Contact form */}
-            <Card className="bg-background">
-              <CardHeader>
-                <CardTitle className="text-lg">Send me a message</CardTitle>
-                <CardDescription>
-                  This form is connected to Formspree. Submissions will be sent to my email.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form className="space-y-4" onSubmit={handleSubmit}>
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={form.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      required
-                      className="bg-card"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="email">Email</Label>
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      value={form.email}
-                      onChange={handleChange}
-                      placeholder="your@email.com"
-                      required
-                      className="bg-card"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="message">Message</Label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      value={form.message}
-                      onChange={handleChange}
-                      placeholder="Your message..."
-                      rows={4}
-                      required
-                      className="bg-card"
-                    />
-                  </div>
-                  <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Sending..." : "Send Message"}
-                  </Button>
-                  {status === "success" && (
-                    <p className="text-sm text-primary mt-2">Message sent successfully!</p>
-                  )}
-                  {status === "error" && (
-                    <p className="text-sm text-destructive mt-2">Error sending message. Try again.</p>
-                  )}
-                </form>
-              </CardContent>
-            </Card>
+            <div className="contact-socials">
+              <a
+                className="text-link"
+                href="https://github.com/johanamador"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+                <ArrowUpRight size={15} />
+              </a>
+              <a
+                className="text-link"
+                href="https://linkedin.com/in/cosmodev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+                <ArrowUpRight size={15} />
+              </a>
+            </div>
+            <div className="contact-location">
+              <span className="availability-dot" />
+              <span>Lima, Peru</span>
+              <a href="tel:+51951665323">+51 951 665 323</a>
+            </div>
           </div>
+          <form
+            className="contact-form"
+            onSubmit={submit}
+            aria-label="Contact Johan"
+            aria-busy={status === "sending"}
+          >
+            <div className="form-row">
+              <label>
+                Your name
+                <input
+                  name="name"
+                  autoComplete="name"
+                  placeholder="Alex Smith"
+                  required
+                  maxLength={120}
+                />
+              </label>
+              <label>
+                Email address
+                <input
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  placeholder="alex@example.com"
+                  required
+                  maxLength={254}
+                />
+              </label>
+            </div>
+            <label>
+              What are you working on?
+              <textarea
+                name="message"
+                placeholder="A little about your project, idea, or opportunity…"
+                required
+                rows={4}
+                maxLength={5000}
+              />
+            </label>
+            <div className="form-bottom">
+              <span className="muted">A conversation starts here.</span>
+              <button
+                className="pill-button"
+                type="submit"
+                disabled={status === "sending"}
+              >
+                {status === "sending" ? (
+                  <>
+                    Sending <Loader2 size={16} className="animate-spin" />
+                  </>
+                ) : (
+                  <>
+                    Send message <ArrowRight size={16} />
+                  </>
+                )}
+              </button>
+            </div>
+            <p
+              role="status"
+              className={`form-status ${status === "error" ? "form-error" : ""}`}
+            >
+              {status === "success"
+                ? "Thanks! Your message is on its way. I’ll get back to you soon."
+                : status === "error"
+                  ? "Your message couldn’t be sent. Please try again, or email me directly."
+                  : ""}
+            </p>
+          </form>
         </div>
       </div>
     </section>
-  )
+  );
 }
