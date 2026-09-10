@@ -252,8 +252,8 @@ export const galleryImages: GalleryImage[] = [
     description: "Training hospital staff to use SIH.SALUS.",
   },
   {
-    src: "/gallery/optimized/thesis-XpoSTEM-2025.webp",
-    thumbnail: "/gallery/thumbnails/thesis-XpoSTEM-2025.webp",
+    src: "/gallery/optimized/thesis-xpostem-2025.webp",
+    thumbnail: "/gallery/thumbnails/thesis-xpostem-2025.webp",
     width: 899,
     height: 1599,
     alt: "Thesis project at XpoSTEM 2025",
@@ -298,8 +298,8 @@ export const galleryImages: GalleryImage[] = [
       "Meeting on digital health with DIRESA Huánuco and San Martín.",
   },
   {
-    src: "/gallery/optimized/XpoSTEM-2025.webp",
-    thumbnail: "/gallery/thumbnails/XpoSTEM-2025.webp",
+    src: "/gallery/optimized/xpostem-2025.webp",
+    thumbnail: "/gallery/thumbnails/xpostem-2025.webp",
     width: 900,
     height: 1199,
     alt: "XpoSTEM 2025",

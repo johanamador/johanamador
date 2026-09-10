@@ -33,7 +33,7 @@ export function AboutSection() {
             <div className="about-details">
               <p>
                 {t(
-                  "For my thesis, I built an OpenMRS module that connects with Perú’s National Electronic Health Records Registry using HL7 FHIR and Dyaku profiles. It brought together two things I enjoy: complex systems and work with a real-world impact.",
+                  "For my thesis, I built an OpenMRS module that connects with Perú’s National Electronic Health Records Registry using HL7 FHIR. It brought together two things I enjoy: complex systems and work with a real-world impact.",
                 )}
               </p>
               <p>

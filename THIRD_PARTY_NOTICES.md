@@ -1,6 +1,6 @@
 # Spell UI
 
-The components in `components/spell/` are adapted from [Spell UI](https://github.com/xxtomm/spell-ui), registry files `blur-reveal.tsx`, `copy-button.tsx`, and `tilt-card.tsx`. Local changes cover reduced motion, progressive enhancement, and clipboard error handling.
+The components in `components/spell/` are adapted from [Spell UI](https://github.com/xxtomm/spell-ui), registry files `blur-reveal.tsx` and `copy-button.tsx`. Local changes cover reduced motion, progressive enhancement, and clipboard error handling.
 
 MIT License
 

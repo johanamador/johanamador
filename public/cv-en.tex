@@ -13,6 +13,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage{tabularx}
+\usepackage{fontawesome5}
 \setlength{\parindent}{0pt}
 \setlength{\emergencystretch}{2em}
 
@@ -57,19 +58,20 @@
 
 %----------HEADER----------
 \begin{center}
-  {\LARGE\bfseries Johan Carlo Amador Egoavil} \\[6pt]
+  {\LARGE\bfseries Johan Carlo Amador Egoavil} \\[3pt]
+  {\small\color{graytext} Full-Stack Development | Healthcare Interoperability} \\[6pt]
   \small
-  Lima, Per\'u \quad
-  \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
-  +51 951 665 323 \\[3pt]
-  \href{https://johanamador.com}{johanamador.com} \quad
-  \href{https://github.com/johanamador}{johanamador} \quad
-  \href{https://linkedin.com/in/johanamador}{johanamador}
+  \faIcon{map-marker-alt}\enspace Lima, Per\'u \quad
+  \faIcon{envelope}\enspace \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
+  \faIcon{phone}\enspace +51 951 665 323 \\[3pt]
+  \faIcon{globe}\enspace \href{https://johanamador.com}{johanamador.com} \quad
+  \faIcon{github}\enspace \href{https://github.com/johanamador}{johanamador} \quad
+  \faIcon{linkedin}\enspace \href{https://www.linkedin.com/in/johanamadordev/}{johanamadordev}
 \end{center}
 
 %----------PROFILE----------
 \section{Professional Profile}
-Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del Per\'u (PUCP). Experience building and deploying web platforms, B2B catalogs, admin panels, and internal systems for real clients. Strong foundations in software architecture, full-stack development, APIs, databases, and VPS deployment. Interested in leading projects and building robust, maintainable, and scalable technology solutions.
+Informatics Engineering graduate from PUCP with experience in full-stack development, hospital systems and healthcare interoperability. At PUCP / GIDIS, I develop SIH.SALUS admissions workflows and an HL7 FHIR / IPS interoperability module for RENHICE. I deliver web platforms, APIs and internal systems from requirements to deployment, training and maintenance, including environments with limited connectivity.
 
 %----------EXPERIENCE----------
 \section{Professional Experience}
@@ -85,77 +87,72 @@ Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del P
 
 
 \cvsubheading
+  {Frontend Developer}{June 2026 -- Present}
+  {NexoDev -- Contract}{Remote}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
+  \item Development of production web interfaces and integration with APIs and existing backend services.
+  \item Remote collaboration on feature delivery, debugging and iterative product improvements.
+\end{itemize}
+
+\cvsubheading
   {Software Engineer (Freelance)}{November 2024 -- Present}
   {Full Stack Developer -- End-to-end project management}{Lima, Per\'u}
 
 \begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
-  \item Self-managed end-to-end delivery: requirements analysis, prototyping, full-stack development, deployment on client VPS/hosting, client training, and ongoing maintenance.
+  \item Self-managed end-to-end delivery: requirements analysis, technical design, full-stack development, deployment on client VPS/hosting, client training, and ongoing maintenance.
   \item Development of Next.js frontends and PHP + MySQL backends/APIs for catalogs, admin panels, image uploads, simple authentication, and operational workflows.
   \item Iterative feedback cycles, bug fixes, performance optimization, and post-launch feature enhancements.
 \end{itemize}
 
 \vspace{2pt}
-{\small\textbf{Featured projects:}}
+{\small\textbf{Selected client projects:}}
 \begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=2pt]
-  \item \textbf{Automotriz L\'evano ERP} {\small(\href{https://mecanicalevano.org}{mecanicalevano.org})} -- Private ERP for Mec\'anica Automotriz L\'evano, with authenticated access for its team. {\scriptsize\color{graytext} TypeScript $\cdot$ React $\cdot$ Next.js}
-  \item \textbf{Grupo Sercom} {\small(\href{https://gruposercom.pe}{gruposercom.pe})} -- Corporate B2B website for a fire protection company. End-to-end Next.js development, services, products, training sections, and VPS deployment with PM2. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS $\cdot$ PM2}
-  \item \textbf{Grupo Sercom Intranet} {\small(\href{https://intranet.gruposercom.pe}{intranet.gruposercom.pe})} -- Document portal and intranet with RUC-based access, PDF preview, and private admin panel for companies, services, and documents. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Admin panel $\cdot$ VPS}
-  \item \textbf{Iserma} {\small(\href{https://www.isermaperu.com}{isermaperu.com})} -- Corporate website and industrial catalog with a PHP/MySQL API, editable hero banners, product, brand and category management, uploads, sitemap and robots. {\scriptsize\color{graytext} Next.js $\cdot$ React $\cdot$ Mantine $\cdot$ PHP $\cdot$ MySQL}
-  \item \textbf{Prosedain} {\small(\href{https://prosedain.com}{prosedain.com})} -- B2B catalog and quotation platform for industrial automation distribution. Similar stack to Iserma with Next.js, PHP/MySQL API, admin panel, and PDF quotation generator. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ PHP $\cdot$ MySQL $\cdot$ PDF}
-  \item \textbf{Farmasalud Inversiones} {\small(\href{https://farmasaludinversiones.com}{farmasaludinversiones.com})} -- Online pharmacy platform. PostgreSQL + REST API backend, full admin panel, WhatsApp consultation cart, SEO score 98/100. {\scriptsize\color{graytext} Next.js $\cdot$ PostgreSQL $\cdot$ Prisma $\cdot$ NextAuth $\cdot$ Cloudinary}
-  \item \textbf{Nebu} {\small(\href{https://flow-telligence.com}{flow-telligence.com})} -- Full-stack platform with real-time voice/video via LiveKit, AI embeddings with ChromaDB, Culqi payments, PostgreSQL master-slave replication, and full observability stack. {\scriptsize\color{graytext} Remix $\cdot$ NestJS $\cdot$ PostgreSQL $\cdot$ Docker $\cdot$ OpenAI API}
-  \item \textbf{MITS Per\'u} {\small(\href{https://mitsperu.com}{mitsperu.com})} -- Corporate website for an IT solutions company. Infrastructure, cloud, web development, and IT support services. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS}
-  \item \textbf{Academia P\'asalo} {\small(\href{https://academiapasalo.com}{academiapasalo.com})} -- Educational platform for PUCP and UTEC university students. Frontend development and API integration. {\scriptsize\color{graytext} Next.js $\cdot$ NestJS $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+  \item \textbf{\href{https://gruposercom.pe}{Grupo Sercom} / \href{https://intranet.gruposercom.pe}{Intranet}} -- B2B website and document portal with RUC-based access, PDF preview and private administration. Next.js, TypeScript, VPS, PM2.
+  \item \textbf{\href{https://prosedain.com}{Prosedain}} -- Industrial catalog, product administration and PDF quotation generation. Next.js, PHP, MySQL.
+  \item \textbf{\href{https://www.isermaperu.com}{Iserma}} -- Industrial catalog with editable products, brands and categories. Next.js, React, Mantine, PHP, MySQL.
+  \item \textbf{\href{https://mecanicalevano.org}{Automotriz Lévano ERP}} -- Private automotive business platform with authenticated team access. TypeScript, React, Next.js.
+  \item \textbf{\href{https://flow-telligence.com}{Nebu}} -- Real-time voice/video, AI integrations and online payments. Remix, NestJS, PostgreSQL, Docker, LiveKit.
 \end{itemize}
+{\small\color{graytext} Additional projects: \href{https://farmasaludinversiones.com}{Farmasalud Inversiones}, \href{https://mitsperu.com}{MITS Perú}, \href{https://academiapasalo.com}{Academia Pásalo}.}
+
+\section{Healthcare Interoperability}
+\textbf{Conectatón IPS Perú 2025} -- Technical participation representing Hospital Santa Clotilde and PUCP in clinical information exchange using international health standards.
 
 \newpage
 %----------THESIS----------
 \section{Thesis}
 
 \cvsubheading
-  {Interoperability Component for Hospital Information System}{}
+  {SIH.SALUS -- Healthcare Interoperability Module}{}
   {Pontificia Universidad Cat\'olica del Per\'u}{2025 -- 2026}
 
 \begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
-  \item Interoperability module for OpenMRS integrated with RENHICE (Per\'u's National Electronic Health Records Registry) using HL7 FHIR and Dyaku profiles.
-  \item Implementation of automatic IPS clinical summary submission and bidirectional data query/import.
-  \item Asynchronous architecture with event queues and deferred processing for environments with unstable connectivity.
+  \item Interoperability module for OpenMRS integrated with RENHICE (Per\'u's National Electronic Health Records Registry) using HL7 FHIR.
+  \item Mapping of OpenMRS clinical data to FHIR resources and IPS bundles, with clinical summary submission and bidirectional queries/imports.
+  \item Persistent queues, deferred processing, retries and monitoring for intermittent connectivity; integration testing with HAPI FHIR.
 \end{itemize}
-{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR $\cdot$ Clinical interoperability} \quad {\small \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{Repository}}
+{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR $\cdot$ Clinical interoperability} \quad {\small \faIcon{github}\enspace \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{My interoperability module}}
 
 %----------ACADEMIC PROJECTS----------
 \section{Academic Projects}
 
 \cvproject{Thesis Management System}{March 2025 -- July 2025}{React $\cdot$ Spring Boot $\cdot$ PostgreSQL}
-\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
-  \item Capstone project with a 38-member team simulating a real professional environment.
-  \item Developed the review module and integrated GoWinston API for plagiarism detection.
-  \item Technical management with quality control, CI/CD, and collaborative code review.
-\end{itemize}
+\par\smallskip Capstone project with 38 team members. Developed the review module and GoWinston plagiarism detection integration; contributed to CI/CD, quality control and code reviews.\par\medskip
 
 \cvproject{Logistics Operations Planning System}{August 2024 -- December 2024}{Java $\cdot$ React}
-\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
-  \item Delivery route planning algorithm with constraints and blockages.
-  \item Backend with optimization engine in Java and modular React interface.
-\end{itemize}
+\par\smallskip Delivery route planning with constraints and blockages, a Java optimization engine and modular React interface.\par\medskip
 
 \cvproject{Academic Tutoring Management System}{March 2024 -- July 2024}{React $\cdot$ ASP.NET}
-\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
-  \item University tutoring coordination platform with scheduling, notifications, and session management.
-  \item Agile development with Scrum, scheduling and session management.
-\end{itemize}
+\par\smallskip University tutoring platform with schedules, notifications and session management, developed using Scrum.\par\medskip
 
 \cvproject{Banking Risk Management System}{August 2023 -- December 2023}{Java $\cdot$ C\#}
-\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
-  \item Academic prototype for comprehensive risk management in digital banking entities.
-  \item Registration, analysis, hierarchy, and reporting modules with filters.
-\end{itemize}
+\par\smallskip Academic banking risk prototype with registration, analysis, hierarchy and filtered reporting modules.\par\medskip
 
 %----------EDUCATION----------
 \section{Education}
 
 \cvsubheading
-  {Computer Science Engineering (Graduated)}{2020 -- 2026}
+  {Informatics Engineering (Coursework Completed)}{2020 -- 2026}
   {Pontificia Universidad Cat\'olica del Per\'u (PUCP)}{Lima, Per\'u}
 
 \vspace{2pt}
@@ -177,7 +174,9 @@ Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del P
   \textbf{Databases:} & PostgreSQL, MySQL, SQL Server, Oracle SQL, MongoDB, Supabase \\[3pt]
   \textbf{DevOps \& Cloud:} & Docker, CI/CD, VPS, PM2, Vercel, cPanel, AWS (RDS), Namecheap, Cloudflare, Linux, Git/GitHub \\[3pt]
   \textbf{Tools:} & Postman, Jira, VS Code, Notion, Bizagi (BPMN) \\[3pt]
-  \textbf{Other:} & REST APIs, GraphQL, HL7 FHIR, HL7 v2, Tailwind CSS, shadcn/ui, Prisma, NextAuth, Cloudinary, PDF generation \\[3pt]
+  \textbf{Healthcare:} & HL7 FHIR, HL7 v2, IPS, OpenMRS, HAPI FHIR, clinical data mapping \\[3pt]
+  \textbf{APIs \& Integration:} & REST APIs, GraphQL, Prisma, NextAuth, Cloudinary, PDF generation \\[3pt]
+  \textbf{Interface:} & Tailwind CSS, shadcn/ui \\[3pt]
   \textbf{Methodologies:} & Scrum, agile development, technical audit, continuous deployment, version control, collaborative work, technical documentation \\
 \end{tabularx}
 

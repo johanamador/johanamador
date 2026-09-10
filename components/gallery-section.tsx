@@ -79,6 +79,15 @@ export function GallerySection() {
                 aria-label={`${t("Enlarge photo")}: ${t(photo.alt)}`}
               >
                 <img
+                  className="gallery-image-backdrop gallery-thumbnail-backdrop"
+                  src={photo.thumbnail}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  decoding="async"
+                />
+                <img
+                  className="gallery-thumbnail"
                   src={photo.thumbnail}
                   alt={t(photo.alt)}
                   width={photo.width}

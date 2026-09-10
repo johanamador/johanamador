@@ -33,7 +33,7 @@ export function Footer() {
             {t("GitHub")}
           </a>
           <a
-            href="https://linkedin.com/in/cosmodev"
+            href="https://www.linkedin.com/in/johanamadordev/"
             target="_blank"
             rel="noopener noreferrer"
           >

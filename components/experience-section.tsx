@@ -20,12 +20,8 @@ export function ExperienceSection() {
           )}
         />
         <div className="experience-list">
-          {experience.map((item, index) => (
-            <details
-              key={item.title}
-              className="experience-item"
-              open={index === 0}
-            >
+          {experience.map((item) => (
+            <details key={item.title} className="experience-item">
               <summary>
                 <span className="experience-date mono">
                   {t(item.period)

@@ -60,7 +60,7 @@ export function HeroSection() {
               <FaGithub size={19} aria-hidden="true" />
             </a>
             <a
-              href="https://linkedin.com/in/cosmodev"
+              href="https://www.linkedin.com/in/johanamadordev/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

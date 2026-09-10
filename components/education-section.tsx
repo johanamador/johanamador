@@ -7,7 +7,7 @@ import { education } from "@/lib/profile";
 export function EducationSection() {
   const { t } = useLanguage();
   return (
-    <section id="education" className="education-section">
+    <section id="education" className="portfolio-section education-section">
       <div className="site-container compact-section">
         <div>
           <p className="eyebrow">{t("Always learning")}</p>
