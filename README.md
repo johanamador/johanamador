@@ -1,4 +1,5 @@
-<p align="center">
+<p align="left">
+  <a href="https://johanamador.com/"><img src="docs/assets/project-ja.svg" alt="Personal Portfolio" width="24%" /></a>
   <a href="https://www.sihsalus.org/"><img src="docs/assets/project-sihsalus.svg" alt="SIH.SALUS" width="24%" /></a>
   <a href="https://gruposercom.pe/"><img src="docs/assets/project-sercom.svg" alt="Grupo Sercom" width="24%" /></a>
   <a href="https://prosedain.com/"><img src="docs/assets/project-prosedain.svg" alt="Prosedain" width="24%" /></a>
@@ -13,5 +14,4 @@
   <a href="https://iped.vercel.app/"><img src="docs/assets/project-iped.svg" alt="IPED" width="24%" /></a>
   <a href="https://grunge.vercel.app/"><img src="docs/assets/project-grunge.svg" alt="Grunge Merch" width="24%" /></a>
   <a href="https://cinemark-peru.vercel.app/"><img src="docs/assets/project-cinemark.svg" alt="Cinemark Perú Clone" width="24%" /></a>
-  <a href="https://johanamador.com/"><img src="docs/assets/project-ja.svg" alt="Personal Portfolio" width="24%" /></a>
 </p>
