@@ -9,7 +9,7 @@
   <a href="https://mitsperu.com/"><img src="docs/assets/project-mits.svg" alt="MITS Perú" width="24%" /></a>
   <a href="https://farmasaludinversiones.com/"><img src="docs/assets/project-farmasalud.svg" alt="Farmasalud Inversiones" width="24%" /></a>
   <a href="https://cuadot.vercel.app/"><img src="docs/assets/project-cuadot.svg" alt="3D Artist Portfolio" width="24%" /></a>
-  <a href="https://www.academiapasalo.com"><img src="docs/assets/project-pasalo.svg" alt="Academia Pásalo" width="24%" /></a>
+  <a href="https://academiapasalo.com"><img src="docs/assets/project-pasalo.svg" alt="Academia Pásalo" width="24%" /></a>
   <a href="https://www.moraazul.xyz/"><img src="docs/assets/project-mora.svg" alt="Mora - Technical Artist" width="24%" /></a>
   <a href="https://iped.vercel.app/"><img src="docs/assets/project-iped.svg" alt="IPED" width="24%" /></a>
   <a href="https://grunge.vercel.app/"><img src="docs/assets/project-grunge.svg" alt="Grunge Merch" width="24%" /></a>

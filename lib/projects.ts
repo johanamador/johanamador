@@ -181,7 +181,7 @@ export const projects: Project[] = [
     logo: "/projects/logos/pasalo.svg",
     technologies: ["Next.js", "NestJS", "TypeScript", "Tailwind CSS"],
     github: "",
-    demo: "https://www.academiapasalo.com",
+    demo: "https://academiapasalo.com",
   },
   {
     id: 20,
