@@ -83,7 +83,8 @@ export function TiltCard({
       onPointerLeave={handlePointerLeave}
       className={cn("spell-tilt relative overflow-hidden", className)}
       style={{
-        transform: reducedMotion ? "none" : transform,
+        // CSS handles reduced motion without changing the server/client first render.
+        transform,
         transition: "transform 0.2s ease-out",
         transformStyle: "preserve-3d",
         ...style,

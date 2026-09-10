@@ -7,46 +7,49 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[margin=0.7in]{geometry}
+\usepackage[margin=0.65in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage{fontawesome5}
+\usepackage{tabularx}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
 
 % Colors
-\definecolor{primary}{HTML}{2563EB}
+\definecolor{primary}{HTML}{171717}
 \definecolor{darktext}{HTML}{1a1a1a}
 \definecolor{graytext}{HTML}{555555}
 
 % Hyperlinks
 \hypersetup{
     colorlinks=true,
+    hypertexnames=false,
     linkcolor=primary,
     urlcolor=primary,
 }
 
 % Section formatting
 \titleformat{\section}{\large\bfseries\color{darktext}}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\section}{0pt}{9pt}{4pt}
 
 % Remove page numbers
 \pagenumbering{gobble}
 
 % Custom commands
 \newcommand{\cvsubheading}[4]{
-  \vspace{4pt}
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \vspace{2pt}
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
     \textbf{#1} & \textit{\small #2} \\
     \textit{\small\color{graytext} #3} & \textit{\small\color{graytext} #4} \\
-  \end{tabular*}\vspace{-2pt}
+  \end{tabularx}\vspace{-2pt}
 }
 
 \newcommand{\cvproject}[3]{
-  \vspace{4pt}
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \vspace{2pt}
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
     \textbf{#1} & \textit{\small #2} \\
-  \end{tabular*}
+  \end{tabularx}
   {\small\color{graytext} #3}\vspace{-2pt}
 }
 
@@ -56,12 +59,12 @@
 \begin{center}
   {\LARGE\bfseries Johan Carlo Amador Egoavil} \\[6pt]
   \small
-  \faIcon{map-marker-alt} Lima, Per\'u \quad
-  \faIcon{envelope} \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
-  \faIcon{phone} +51 951 665 323 \\[3pt]
-  \faIcon{globe} \href{https://johanamador.com}{johanamador.com} \quad
-  \faIcon{github} \href{https://github.com/johanamador}{johanamador} \quad
-  \faIcon{linkedin} \href{https://linkedin.com/in/johanamador}{johanamador}
+  Lima, Per\'u \quad
+  \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
+  +51 951 665 323 \\[3pt]
+  \href{https://johanamador.com}{johanamador.com} \quad
+  \href{https://github.com/johanamador}{johanamador} \quad
+  \href{https://linkedin.com/in/johanamador}{johanamador}
 \end{center}
 
 %----------PROFILE----------
@@ -72,29 +75,40 @@ Ingeniero Inform\'atico egresado de la Pontificia Universidad Cat\'olica del Per
 \section{Experiencia Profesional}
 
 \cvsubheading
-  {Ingeniero de Software (Freelance)}{Noviembre 2024 -- Actualidad}
-  {Full Stack Developer -- Gesti\'on integral de proyectos}{Lima, Per\'u}
+  {Desarrollador de Software -- Sistemas de Salud}{Agosto 2025 -- Actualidad}
+  {PUCP / GIDIS -- SIH.SALUS}{H\'ibrido, Lima}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
+  \item Desarrollo e implementaci\'on del sistema de historias cl\'inicas electr\'onicas del Hospital Santa Clotilde, como parte del Grupo de Investigaci\'on y Desarrollo en Ingenier\'ia de Software (GIDIS). Responsable del m\'odulo de admisi\'on e integraci\'on de est\'andares de interoperabilidad en salud.
+  \item Despliegue presencial en agosto de 2026 en Santa Clotilde, cuenca del r\'io Napo: admisi\'on, triaje, farmacia, laboratorio y consulta externa. Traslado e instalaci\'on del servidor y una UPS con el equipo, en un hospital con energ\'ia y conectividad inestables.
+  \item Capacitaci\'on al personal de admisi\'on, seguimiento del uso del sistema y mejoras posteriores al despliegue.
+\end{itemize}
 
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
-  \item Gesti\'on aut\'onoma end-to-end: an\'alisis de requisitos, prototipado, desarrollo full-stack, despliegue en VPS/hosting del cliente, capacitaci\'on y mantenimiento continuo.
+
+\cvsubheading
+  {Ingeniero de Software (Freelance)}{Noviembre 2024 -- Actualidad}
+  {Desarrollo full stack -- Gesti\'on integral de proyectos}{Lima, Per\'u}
+
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
+  \item Gesti\'on aut\'onoma end-to-end: an\'alisis de requisitos, dise\~no t\'ecnico, desarrollo full-stack, despliegue en VPS/hosting del cliente, capacitaci\'on y mantenimiento continuo.
   \item Desarrollo de frontends en Next.js y backends/API en PHP + MySQL para cat\'alogos, paneles administrativos, carga de im\'agenes, autenticaci\'on simple y flujos operativos.
   \item Ciclos iterativos de feedback, correcci\'on de errores, optimizaci\'on de rendimiento y mejoras funcionales post-lanzamiento.
 \end{itemize}
 
-\vspace{4pt}
+\vspace{2pt}
 {\small\textbf{Proyectos destacados:}}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=2pt]
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=2pt]
+  \item \textbf{ERP Automotriz L\'evano} {\small(\href{https://mecanicalevano.org}{mecanicalevano.org})} -- ERP privado para Mec\'anica Automotriz L\'evano, con acceso autenticado para su equipo. {\scriptsize\color{graytext} TypeScript $\cdot$ React $\cdot$ Next.js}
   \item \textbf{Grupo Sercom} {\small(\href{https://gruposercom.pe}{gruposercom.pe})} -- Sitio corporativo B2B para empresa de protecci\'on contra incendios. Desarrollo end-to-end en Next.js, secciones de servicios, productos, capacitaciones y despliegue en VPS con PM2. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS $\cdot$ PM2}
   \item \textbf{Intranet Grupo Sercom} {\small(\href{https://intranet.gruposercom.pe}{intranet.gruposercom.pe})} -- Portal documental e intranet con acceso por RUC, previsualizaci\'on PDF y panel privado para administraci\'on de empresas, servicios y documentos. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Panel administrativo $\cdot$ VPS}
   \item \textbf{Iserma} {\small(\href{https://www.isermaperu.com}{isermaperu.com})} -- Sitio corporativo y cat\'alogo industrial con API PHP/MySQL, banners editables, gesti\'on de productos, marcas, categor\'ias, uploads, sitemap y robots. {\scriptsize\color{graytext} Next.js $\cdot$ React $\cdot$ Mantine $\cdot$ PHP $\cdot$ MySQL}
   \item \textbf{Prosedain} {\small(\href{https://prosedain.com}{prosedain.com})} -- Plataforma B2B de cat\'alogo y cotizaci\'on para distribuci\'on de automatizaci\'on industrial. Stack similar a Iserma con Next.js, API PHP/MySQL, panel administrativo y generador de cotizaciones en PDF. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ PHP $\cdot$ MySQL $\cdot$ PDF}
   \item \textbf{Farmasalud Inversiones} {\small(\href{https://farmasaludinversiones.com}{farmasaludinversiones.com})} -- Plataforma digital para farmacia online. Backend con PostgreSQL + REST API, panel administrativo completo, carrito de consulta por WhatsApp, SEO score 98/100. {\scriptsize\color{graytext} Next.js $\cdot$ PostgreSQL $\cdot$ Prisma $\cdot$ NextAuth $\cdot$ Cloudinary}
   \item \textbf{Nebu} {\small(\href{https://flow-telligence.com}{flow-telligence.com})} -- Plataforma full-stack con video/voz en tiempo real via LiveKit, embeddings de IA con ChromaDB, pagos con Culqi, replicaci\'on master-slave en PostgreSQL y stack de observabilidad. {\scriptsize\color{graytext} Remix $\cdot$ NestJS $\cdot$ PostgreSQL $\cdot$ Docker $\cdot$ OpenAI API}
-  \item \textbf{Coach Marres} {\small(\href{http://coachmarres.com}{coachmarres.com})} -- Auditor\'ia y supervisi\'on t\'ecnica de desarrollo: prototipado, revisi\'on de arquitectura, seguimiento de implementaci\'on y control de calidad del sistema. {\scriptsize\color{graytext} Auditor\'ia t\'ecnica $\cdot$ Arquitectura $\cdot$ QA}
   \item \textbf{MITS Per\'u} {\small(\href{https://mitsperu.com}{mitsperu.com})} -- Sitio web corporativo para empresa de soluciones IT. Servicios de infraestructura, cloud, desarrollo web y soporte t\'ecnico. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS}
-  \item \textbf{Academia P\'asalo} {\small(\href{https://academiapasalo.com}{academiapasalo.com})} -- Plataforma educativa para estudiantes universitarios de PUCP y UTEC. Desarrollo de frontend siguiendo prototipo Figma e integraci\'on con APIs. {\scriptsize\color{graytext} Next.js $\cdot$ NestJS $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+  \item \textbf{Academia P\'asalo} {\small(\href{https://academiapasalo.com}{academiapasalo.com})} -- Plataforma educativa para estudiantes universitarios de PUCP y UTEC. Desarrollo de frontend e integraci\'on con APIs. {\scriptsize\color{graytext} Next.js $\cdot$ NestJS $\cdot$ TypeScript $\cdot$ Tailwind CSS}
 \end{itemize}
 
+\newpage
 %----------THESIS----------
 \section{Tesis}
 
@@ -102,37 +116,37 @@ Ingeniero Inform\'atico egresado de la Pontificia Universidad Cat\'olica del Per
   {Componente de Interoperabilidad para Sistema de Informaci\'on Hospitalario}{}
   {Pontificia Universidad Cat\'olica del Per\'u}{2025 -- 2026}
 
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
-  \item M\'odulo de interoperabilidad para OpenMRS integrado con RENHICE (Registro Nacional de Historias Cl\'inicas Electr\'onicas del MINSA) usando HL7 FHIR R4 y perfiles Dyaku.
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
+  \item M\'odulo de interoperabilidad para OpenMRS integrado con RENHICE (Registro Nacional de Historias Cl\'inicas Electr\'onicas del MINSA) usando HL7 FHIR y perfiles Dyaku.
   \item Implementaci\'on de env\'io autom\'atico de res\'umenes cl\'inicos (IPS) y consulta/importaci\'on bidireccional de datos.
   \item Arquitectura asincr\'onica con colas de eventos y procesamiento diferido para entornos con conectividad inestable.
 \end{itemize}
-{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR R4 $\cdot$ Interoperabilidad cl\'inica} \quad {\small \faIcon{github} \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{Repositorio}}
+{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR $\cdot$ Interoperabilidad cl\'inica} \quad {\small \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{Repositorio}}
 
 %----------ACADEMIC PROJECTS----------
 \section{Proyectos Universitarios}
 
 \cvproject{Sistema de Gesti\'on de Tesis}{Marzo 2025 -- Julio 2025}{React $\cdot$ Spring Boot $\cdot$ PostgreSQL}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Proyecto final con equipo de 38 integrantes simulando entorno profesional real.
   \item Desarrollo del m\'odulo de revisi\'on e integraci\'on de GoWinston API para detecci\'on de plagio.
   \item Gesti\'on t\'ecnica con control de calidad, CI/CD y revisi\'on colaborativa de c\'odigo.
 \end{itemize}
 
-\cvproject{Sistema de Planificaci\'on de Operaciones Log\'isticas}{Agosto 2024 -- Diciembre 2024}{Java $\cdot$ React $\cdot$ Figma}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\cvproject{Sistema de Planificaci\'on de Operaciones Log\'isticas}{Agosto 2024 -- Diciembre 2024}{Java $\cdot$ React}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Algoritmo de planificaci\'on de rutas de entrega con restricciones y bloqueos.
   \item Backend con motor de optimizaci\'on en Java e interfaz modular en React.
 \end{itemize}
 
 \cvproject{Sistema de Gesti\'on de Tutor\'ias Acad\'emicas}{Marzo 2024 -- Julio 2024}{React $\cdot$ ASP.NET}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Plataforma de coordinaci\'on de tutor\'ias universitarias con horarios, notificaciones y gesti\'on de sesiones.
-  \item Desarrollo \'agil con Scrum y prototipado interactivo en Figma.
+  \item Desarrollo \'agil con Scrum, gesti\'on de horarios y sesiones.
 \end{itemize}
 
-\cvproject{Sistema de Gesti\'on de Riesgos Bancarios}{Agosto 2023 -- Diciembre 2023}{Java $\cdot$ C\# $\cdot$ Figma}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\cvproject{Sistema de Gesti\'on de Riesgos Bancarios}{Agosto 2023 -- Diciembre 2023}{Java $\cdot$ C\#}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Prototipo acad\'emico de gesti\'on integral de riesgos en entidades bancarias digitales.
   \item M\'odulos de registro, an\'alisis, jerarqu\'ia y reportes con filtros.
 \end{itemize}
@@ -157,15 +171,15 @@ Ingeniero Inform\'atico egresado de la Pontificia Universidad Cat\'olica del Per
 %----------SKILLS----------
 \section{Habilidades T\'ecnicas}
 
-\begin{tabular}{@{}l p{12cm}}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
   \textbf{Lenguajes:} & Java, JavaScript, TypeScript, PHP, C/C++, C\#, Python, SQL \\[3pt]
   \textbf{Frameworks:} & React, Next.js, NestJS, Spring Boot, ASP.NET, Express.js, Remix, Mantine \\[3pt]
   \textbf{Bases de Datos:} & PostgreSQL, MySQL, SQL Server, Oracle SQL, MongoDB, Supabase \\[3pt]
   \textbf{DevOps \& Cloud:} & Docker, CI/CD, VPS, PM2, Vercel, cPanel, AWS (RDS), Namecheap, Cloudflare, Linux, Git/GitHub \\[3pt]
-  \textbf{Herramientas:} & Figma, Jira, VS Code, Notion, Bizagi (BPMN), Postman \\[3pt]
-  \textbf{Otros:} & REST APIs, GraphQL, HL7 FHIR, Tailwind CSS, shadcn/ui, Prisma, NextAuth, Cloudinary, generaci\'on PDF \\[3pt]
+  \textbf{Herramientas:} & Postman, Jira, VS Code, Notion, Bizagi (BPMN) \\[3pt]
+  \textbf{Otros:} & REST APIs, GraphQL, HL7 FHIR, HL7 v2, Tailwind CSS, shadcn/ui, Prisma, NextAuth, Cloudinary, generaci\'on PDF \\[3pt]
   \textbf{Metodolog\'ias:} & Scrum, desarrollo \'agil, auditor\'ia t\'ecnica, despliegue continuo, control de versiones, trabajo colaborativo, documentaci\'on t\'ecnica \\
-\end{tabular}
+\end{tabularx}
 
 %----------LANGUAGES----------
 \section{Idiomas}

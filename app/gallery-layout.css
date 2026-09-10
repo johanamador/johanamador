@@ -1,0 +1,38 @@
+/* The gallery extends beyond the text column; headings retain the shared alignment. */
+#gallery > .site-container {
+  width: 100%;
+}
+
+#gallery .section-heading,
+#gallery .gallery-controls {
+  width: min(1160px, calc(100% - 96px));
+  margin-inline: auto;
+}
+
+#gallery .gallery-track {
+  padding-inline: max(48px, calc((100% - 1160px) / 2));
+  scroll-padding-inline: max(48px, calc((100% - 1160px) / 2));
+  --photo-height: 360px;
+}
+
+@media (max-width: 1023px) {
+  #gallery .section-heading,
+  #gallery .gallery-controls {
+    width: calc(100% - 64px);
+  }
+  #gallery .gallery-track {
+    padding-inline: 32px;
+    scroll-padding-inline: 32px;
+  }
+}
+@media (max-width: 767px) {
+  #gallery .section-heading,
+  #gallery .gallery-controls {
+    width: calc(100% - 40px);
+  }
+  #gallery .gallery-track {
+    --photo-height: 280px;
+    padding-inline: 20px;
+    scroll-padding-inline: 20px;
+  }
+}

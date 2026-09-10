@@ -1,7 +1,16 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, Github } from "lucide-react";
+import { useLanguage } from "@/components/language-provider";
+
+import { cloneElement, useEffect, useRef, useState } from "react";
+import { FaGithub } from "react-icons/fa6";
+import { ArrowUpRight } from "lucide-react";
+import {
+  ActivityCalendar,
+  type Activity as Contribution,
+} from "react-activity-calendar";
+import { CompactSelect } from "@/components/compact-select";
+import { parseContributions } from "@/lib/github-activity";
 
 const username = "johanamador";
 const months = [
@@ -22,11 +31,16 @@ type Stats = {
   repos: number;
   followers: number;
   stars: number;
-  languages: string[];
 };
-type Activity = { total: number; months: number[] };
+type Activity = { total: number; days: Contribution[] };
+const calendarColors = Array.from(
+  { length: 5 },
+  (_, level) => `var(--activity-${level})`,
+);
+const calendarTheme = { light: calendarColors, dark: calendarColors };
 
 export function GitHubProfileCard() {
+  const { t, locale } = useLanguage();
   const [stats, setStats] = useState<Stats | null>(null);
   const [profileState, setProfileState] = useState("loading");
   const currentYear = new Date().getFullYear();
@@ -47,8 +61,7 @@ export function GitHubProfileCard() {
         );
         if (!response.ok) throw new Error("Profile unavailable");
         const user = await response.json();
-        const repos: { language: string | null; stargazers_count: number }[] =
-          [];
+        const repos: { stargazers_count: number }[] = [];
         for (let page = 1; page <= Math.ceil(user.public_repos / 100); page++) {
           const response = await fetch(
             `https://api.github.com/users/${username}/repos?per_page=100&page=${page}`,
@@ -57,19 +70,11 @@ export function GitHubProfileCard() {
           if (!response.ok) throw new Error("Repositories unavailable");
           repos.push(...(await response.json()));
         }
-        const languages: Record<string, number> = {};
-        repos.forEach((repo) => {
-          if (repo.language)
-            languages[repo.language] = (languages[repo.language] || 0) + 1;
-        });
         if (active) {
           setStats({
             repos: user.public_repos,
             followers: user.followers,
             stars: repos.reduce((sum, repo) => sum + repo.stargazers_count, 0),
-            languages: Object.keys(languages)
-              .sort((a, b) => languages[b] - languages[a])
-              .slice(0, 4),
           });
           setProfileState("ready");
         }
@@ -105,17 +110,7 @@ export function GitHubProfileCard() {
           { signal: controller.signal },
         );
         if (!response.ok) throw new Error("Activity unavailable");
-        const data: { contributions: { date: string; count: number }[] } =
-          await response.json();
-        const monthly = Array<number>(12).fill(0);
-        data.contributions.forEach(({ date, count }) => {
-          if (date.slice(0, 4) === year)
-            monthly[Number(date.slice(5, 7)) - 1] += count;
-        });
-        const parsed = {
-          total: monthly.reduce((sum, n) => sum + n, 0),
-          months: monthly,
-        };
+        const parsed = parseContributions(await response.json(), year);
         cache.current[year] = parsed;
         if (active) {
           setActivity(parsed);
@@ -136,100 +131,99 @@ export function GitHubProfileCard() {
   }, [year]);
 
   return (
-    <aside className="github-card" aria-label="GitHub profile">
-      <div className="github-card-top">
-        <Github size={21} />
-        <span className="eyebrow">In the open</span>
-        <ArrowUpRight size={17} />
+    <aside className="github-card" aria-label={t("GitHub profile")}>
+      <div className="github-summary">
+        <div className="github-card-top">
+          <FaGithub size={21} aria-hidden="true" />
+          <span className="eyebrow">{t("In the open")}</span>
+          <a
+            className="icon-button"
+            href={`https://github.com/${username}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={t("GitHub profile")}
+            title={t("GitHub profile")}
+          >
+            <ArrowUpRight size={19} aria-hidden="true" />
+          </a>
+        </div>
+        <h3>{t("Always building.")}</h3>
+        <p className="muted">@{username}</p>
+        <div className="github-stats" aria-busy={profileState === "loading"}>
+          {[
+            [t("Repositories"), stats?.repos],
+            [t("Followers"), stats?.followers],
+            [t("Stars"), stats?.stars],
+          ].map(([label, value]) => (
+            <div key={String(label)}>
+              <span>{value ?? "—"}</span>
+              <span>{t(String(label ?? ""))}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <img
-        src="/johan-white.webp"
-        className="github-avatar"
-        alt="Johan Amador"
-        width={72}
-        height={72}
-        loading="lazy"
-      />
-      <h3>Always building.</h3>
-      <p className="muted">@{username}</p>
-      <div className="github-stats" aria-busy={profileState === "loading"}>
-        {[
-          ["Repositories", stats?.repos],
-          ["Followers", stats?.followers],
-          ["Stars", stats?.stars],
-        ].map(([label, value]) => (
-          <div key={label}>
-            <span>{value ?? "—"}</span>
-            <span>{label}</span>
-          </div>
-        ))}
-      </div>
-      {stats && (
-        <p className="github-languages mono">{stats.languages.join(" · ")}</p>
-      )}
-      <div className="github-activity-header">
-        <span>Contributions</span>
-        <label>
-          <span className="sr-only">Contribution year</span>
-          <select
+      <div className="github-activity">
+        <div className="github-activity-header">
+          <span>{t("Contributions")}</span>
+          <CompactSelect
+            label={t("Contribution year")}
             value={year}
-            onChange={(event) => setYear(event.target.value)}
-          >
-            {Array.from({ length: 4 }, (_, index) => (
-              <option key={index}>{currentYear - index}</option>
-            ))}
-          </select>
-        </label>
-      </div>
-      {activity ? (
-        <>
-          <div
-            className="contribution-chart"
-            role="list"
-            aria-label={`Monthly contributions in ${year}`}
-          >
-            {activity.months.map((count, index) => (
-              <div
-                key={index}
-                role="listitem"
-                aria-label={`${months[index]}: ${count} contributions`}
-                title={`${months[index]}: ${count} contributions`}
-              >
-                <div className="contribution-track">
-                  <span
-                    style={{
-                      height: `${Math.max(2, (count / Math.max(1, ...activity.months)) * 100)}%`,
-                    }}
-                  />
-                </div>
-                <span>{months[index].slice(0, 1)}</span>
-              </div>
-            ))}
-          </div>
-          <p className="activity-total mono">
-            {activity.total.toLocaleString()} contributions in {year}
+            onValueChange={setYear}
+            options={Array.from({ length: 4 }, (_, index) => ({
+              value: String(currentYear - index),
+              label: String(currentYear - index),
+            }))}
+          />
+        </div>
+        {activity ? (
+          <>
+            <div
+              className="contribution-calendar"
+              role="group"
+              aria-label={`${t("Daily contributions in")} ${year}`}
+            >
+              <ActivityCalendar
+                data={activity.days}
+                blockSize={12}
+                blockMargin={3}
+                blockRadius={0}
+                fontSize={11}
+                theme={calendarTheme}
+                colorScheme="light"
+                showTotalCount={true}
+                labels={{
+                  months: months.map(t),
+                  totalCount: `${activity.total.toLocaleString(locale)} ${t("contributions in")} ${year}`,
+                  legend: { less: t("Less"), more: t("More") },
+                }}
+                tooltips={{
+                  activity: {
+                    text: (day) =>
+                      `${day.count.toLocaleString(locale)} ${t(day.count === 1 ? "contribution" : "contributions")} · ${new Intl.DateTimeFormat(locale, { dateStyle: "medium", timeZone: "UTC" }).format(new Date(day.date))}`,
+                  },
+                }}
+                renderBlock={(block, day) =>
+                  cloneElement(block, {
+                    role: "img",
+                    "aria-label": `${day.date}: ${day.count} ${t(day.count === 1 ? "contribution" : "contributions")}`,
+                  })
+                }
+              />
+            </div>
+          </>
+        ) : (
+          <p className="activity-placeholder" role="status">
+            {activityState === "loading"
+              ? t("Loading activity…")
+              : t("Activity is temporarily unavailable.")}
           </p>
-        </>
-      ) : (
-        <p className="activity-placeholder" role="status">
-          {activityState === "loading"
-            ? "Loading activity…"
-            : "Activity is temporarily unavailable."}
-        </p>
-      )}
+        )}
+      </div>
       {profileState === "error" && (
         <p className="github-fallback muted">
-          Explore my repositories on GitHub.
+          {t("Explore my repositories on GitHub.")}
         </p>
       )}
-      <a
-        className="github-link text-link"
-        href={`https://github.com/${username}`}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Explore my GitHub <ArrowUpRight size={16} />
-      </a>
     </aside>
   );
 }

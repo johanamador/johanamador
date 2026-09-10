@@ -1,6 +1,8 @@
 // Adapted from Spell UI (MIT). See THIRD_PARTY_NOTICES.md.
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
+
 import { useEffect, useRef, useState } from "react";
 import { CheckIcon, CopyIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -12,6 +14,7 @@ export function CopyButton({
   value: string;
   className?: string;
 }) {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<"idle" | "copied" | "error">("idle");
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(
@@ -35,7 +38,9 @@ export function CopyButton({
       <button
         type="button"
         onClick={handleCopy}
-        aria-label={status === "copied" ? "Email copied" : "Copy email address"}
+        aria-label={
+          status === "copied" ? t("Email copied") : t("Copy email address")
+        }
         disabled={status === "copied"}
         className="icon-button relative"
       >
@@ -63,9 +68,9 @@ export function CopyButton({
         className={status === "error" ? "copy-error" : "sr-only"}
       >
         {status === "copied"
-          ? "Email address copied."
+          ? t("Email address copied.")
           : status === "error"
-            ? "Couldn’t copy. Select the email address to copy it manually."
+            ? t("Couldn’t copy. Select the email address to copy it manually.")
             : ""}
       </span>
     </span>

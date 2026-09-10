@@ -1,8 +1,11 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
+
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, Menu } from "lucide-react";
 import { PortfolioDialog } from "@/components/portfolio-dialog";
+import { AppearanceControls } from "@/components/appearance-controls";
 
 const links = [
   { title: "Work", href: "#projects" },
@@ -11,8 +14,37 @@ const links = [
   { title: "Contact", href: "#contact" },
 ];
 export function Navbar() {
+  const { t } = useLanguage();
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState("");
+  const headerRef = useRef<HTMLElement>(null);
+  useEffect(() => {
+    let frame = 0;
+    let previous = "";
+    const update = () => {
+      frame = 0;
+      const progress = Math.min(1, Math.max(0, window.scrollY / 160)).toFixed(
+        3,
+      );
+      if (progress !== previous) {
+        headerRef.current?.style.setProperty("--header-progress", progress);
+        headerRef.current?.setAttribute(
+          "data-scrolled",
+          window.scrollY > 0 ? "true" : "false",
+        );
+        previous = progress;
+      }
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, []);
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -30,14 +62,22 @@ export function Navbar() {
   return (
     <>
       <a href="#main-content" className="skip-link">
-        Skip to content
+        {t("Skip to content")}
       </a>
-      <header className="site-header">
-        <nav className="site-container nav-inner" aria-label="Main navigation">
-          <a href="#home" className="wordmark" aria-label="Johan Amador — home">
+      <header className="site-header" ref={headerRef} data-scrolled="false">
+        <nav
+          className="site-container nav-inner"
+          aria-label={t("Main navigation")}
+        >
+          <a
+            href="#home"
+            className="wordmark"
+            aria-label={t("Johan Amador — home")}
+          >
             <img src="/ja.svg" width="30" height="24" alt="" />
             <span>
-              Johan Amador<span className="wordmark-dot">.</span>
+              {t("Johan Amador")}
+              <span className="wordmark-dot">.</span>
             </span>
           </a>
           <div className="desktop-nav">
@@ -47,22 +87,22 @@ export function Navbar() {
                 href={link.href}
                 aria-current={active === link.href ? "location" : undefined}
               >
-                {link.title}
+                {t(link.title)}
               </a>
             ))}
           </div>
-          <a className="nav-cta" href="mailto:johan.amador@pucp.edu.pe">
-            Let’s talk <ArrowUpRight size={15} />
-          </a>
-          <button
-            type="button"
-            className="icon-button mobile-menu-toggle"
-            aria-label="Open navigation"
-            aria-haspopup="dialog"
-            onClick={() => setOpen(true)}
-          >
-            <Menu size={22} />
-          </button>
+          <div className="nav-tools">
+            <AppearanceControls />
+            <button
+              type="button"
+              className="icon-button mobile-menu-toggle"
+              aria-label={t("Open navigation")}
+              aria-haspopup="dialog"
+              onClick={() => setOpen(true)}
+            >
+              <Menu size={22} />
+            </button>
+          </div>
         </nav>
       </header>
       <PortfolioDialog
@@ -72,18 +112,18 @@ export function Navbar() {
         className="mobile-nav-dialog"
       >
         <h2 id="mobile-nav-title" className="eyebrow">
-          Navigation
+          {t("Navigation")}
         </h2>
-        <nav aria-label="Mobile navigation">
+        <nav aria-label={t("Mobile navigation")}>
           {links.map((link, index) => (
             <a href={link.href} key={link.href} onClick={() => setOpen(false)}>
               <span className="mono">0{index + 1}</span>
-              {link.title}
+              {t(link.title)}
               <ArrowUpRight />
             </a>
           ))}
         </nav>
-        <p className="muted">Based in Lima, Peru.</p>
+        <p className="muted">{t("Based in Lima, Perú.")}</p>
       </PortfolioDialog>
     </>
   );

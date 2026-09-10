@@ -1,5 +1,8 @@
 "use client";
 
+import { FaGithub, FaLinkedinIn } from "react-icons/fa6";
+import { useLanguage } from "@/components/language-provider";
+
 import { useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, ArrowRight, Loader2 } from "lucide-react";
 import { CopyButton } from "@/components/spell/copy-button";
@@ -8,6 +11,7 @@ import { SectionTitle } from "@/components/section-title";
 const email = "johan.amador@pucp.edu.pe";
 
 export function ContactSection() {
+  const { t } = useLanguage();
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
@@ -50,19 +54,20 @@ export function ContactSection() {
       <div className="site-container">
         <SectionTitle
           index="05"
-          eyebrow="Get in touch"
-          title="Let’s make something good."
+          eyebrow={t("Get in touch")}
+          title={t("Let’s make something good.")}
         />
         <div className="contact-layout">
           <div className="contact-copy">
             <p className="large-copy">
-              Have a project in mind,
+              {t("Have a project in mind,")}
               <br />
-              or just want to say hello?
+              {t("or just want to say hello?")}
             </p>
             <p className="muted">
-              I’m open to software development opportunities and interesting
-              collaborations. Let’s talk.
+              {t(
+                "I’m open to software development opportunities and interesting collaborations. Let’s talk.",
+              )}
             </p>
             <div className="email-line">
               <a href={`mailto:${email}`}>{email}</a>
@@ -75,7 +80,8 @@ export function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                GitHub
+                <FaGithub size={17} aria-hidden="true" />
+                {t("GitHub")}
                 <ArrowUpRight size={15} />
               </a>
               <a
@@ -84,57 +90,60 @@ export function ContactSection() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                LinkedIn
+                <FaLinkedinIn size={17} aria-hidden="true" />
+                {t("LinkedIn")}
                 <ArrowUpRight size={15} />
               </a>
             </div>
             <div className="contact-location">
               <span className="availability-dot" />
-              <span>Lima, Peru</span>
+              <span>{t("Lima, Perú")}</span>
               <a href="tel:+51951665323">+51 951 665 323</a>
             </div>
           </div>
           <form
             className="contact-form"
             onSubmit={submit}
-            aria-label="Contact Johan"
+            aria-label={t("Contact Johan")}
             aria-busy={status === "sending"}
           >
             <div className="form-row">
               <label>
-                Your name
+                {t("Your name")}
                 <input
                   name="name"
                   autoComplete="name"
-                  placeholder="Alex Smith"
+                  placeholder={t("Alex Smith")}
                   required
                   maxLength={120}
                 />
               </label>
               <label>
-                Email address
+                {t("Email address")}
                 <input
                   name="email"
                   type="email"
                   autoComplete="email"
-                  placeholder="alex@example.com"
+                  placeholder={t("alex@example.com")}
                   required
                   maxLength={254}
                 />
               </label>
             </div>
             <label>
-              What are you working on?
+              {t("What are you working on?")}
               <textarea
                 name="message"
-                placeholder="A little about your project, idea, or opportunity…"
+                placeholder={t(
+                  "A little about your project, idea, or opportunity…",
+                )}
                 required
                 rows={4}
                 maxLength={5000}
               />
             </label>
             <div className="form-bottom">
-              <span className="muted">A conversation starts here.</span>
+              <span className="muted">{t("A conversation starts here.")}</span>
               <button
                 className="pill-button"
                 type="submit"
@@ -142,11 +151,13 @@ export function ContactSection() {
               >
                 {status === "sending" ? (
                   <>
-                    Sending <Loader2 size={16} className="animate-spin" />
+                    {t("Sending")}
+                    <Loader2 size={16} className="animate-spin" />
                   </>
                 ) : (
                   <>
-                    Send message <ArrowRight size={16} />
+                    {t("Send message")}
+                    <ArrowRight size={16} />
                   </>
                 )}
               </button>
@@ -156,9 +167,13 @@ export function ContactSection() {
               className={`form-status ${status === "error" ? "form-error" : ""}`}
             >
               {status === "success"
-                ? "Thanks! Your message is on its way. I’ll get back to you soon."
+                ? t(
+                    "Thanks! Your message is on its way. I’ll get back to you soon.",
+                  )
                 : status === "error"
-                  ? "Your message couldn’t be sent. Please try again, or email me directly."
+                  ? t(
+                      "Your message couldn’t be sent. Please try again, or email me directly.",
+                    )
                   : ""}
             </p>
           </form>

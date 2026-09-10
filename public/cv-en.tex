@@ -7,46 +7,49 @@
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[margin=0.7in]{geometry}
+\usepackage[margin=0.65in]{geometry}
 \usepackage{titlesec}
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{xcolor}
-\usepackage{fontawesome5}
+\usepackage{tabularx}
+\setlength{\parindent}{0pt}
+\setlength{\emergencystretch}{2em}
 
 % Colors
-\definecolor{primary}{HTML}{2563EB}
+\definecolor{primary}{HTML}{171717}
 \definecolor{darktext}{HTML}{1a1a1a}
 \definecolor{graytext}{HTML}{555555}
 
 % Hyperlinks
 \hypersetup{
     colorlinks=true,
+    hypertexnames=false,
     linkcolor=primary,
     urlcolor=primary,
 }
 
 % Section formatting
 \titleformat{\section}{\large\bfseries\color{darktext}}{}{0em}{}[\titlerule]
-\titlespacing*{\section}{0pt}{12pt}{6pt}
+\titlespacing*{\section}{0pt}{9pt}{4pt}
 
 % Remove page numbers
 \pagenumbering{gobble}
 
 % Custom commands
 \newcommand{\cvsubheading}[4]{
-  \vspace{4pt}
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \vspace{2pt}
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
     \textbf{#1} & \textit{\small #2} \\
     \textit{\small\color{graytext} #3} & \textit{\small\color{graytext} #4} \\
-  \end{tabular*}\vspace{-2pt}
+  \end{tabularx}\vspace{-2pt}
 }
 
 \newcommand{\cvproject}[3]{
-  \vspace{4pt}
-  \begin{tabular*}{\textwidth}{l@{\extracolsep{\fill}}r}
+  \vspace{2pt}
+  \begin{tabularx}{\textwidth}{@{}X r@{}}
     \textbf{#1} & \textit{\small #2} \\
-  \end{tabular*}
+  \end{tabularx}
   {\small\color{graytext} #3}\vspace{-2pt}
 }
 
@@ -56,12 +59,12 @@
 \begin{center}
   {\LARGE\bfseries Johan Carlo Amador Egoavil} \\[6pt]
   \small
-  \faIcon{map-marker-alt} Lima, Peru \quad
-  \faIcon{envelope} \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
-  \faIcon{phone} +51 951 665 323 \\[3pt]
-  \faIcon{globe} \href{https://johanamador.com}{johanamador.com} \quad
-  \faIcon{github} \href{https://github.com/johanamador}{johanamador} \quad
-  \faIcon{linkedin} \href{https://linkedin.com/in/johanamador}{johanamador}
+  Lima, Per\'u \quad
+  \href{mailto:johan.amador@pucp.edu.pe}{johan.amador@pucp.edu.pe} \quad
+  +51 951 665 323 \\[3pt]
+  \href{https://johanamador.com}{johanamador.com} \quad
+  \href{https://github.com/johanamador}{johanamador} \quad
+  \href{https://linkedin.com/in/johanamador}{johanamador}
 \end{center}
 
 %----------PROFILE----------
@@ -72,29 +75,40 @@ Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del P
 \section{Professional Experience}
 
 \cvsubheading
-  {Software Engineer (Freelance)}{November 2024 -- Present}
-  {Full Stack Developer -- End-to-end project management}{Lima, Peru}
+  {Software Developer -- Health Systems}{August 2025 -- Present}
+  {PUCP / GIDIS -- SIH.SALUS}{Hybrid, Lima}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
+  \item Development and implementation of the electronic health record system for Hospital Santa Clotilde with PUCP's Software Engineering Research and Development Group (GIDIS). Responsible for the admissions module and integration of healthcare interoperability standards.
+  \item On-site deployment in August 2026 in Santa Clotilde, Napo River basin: admissions, triage, pharmacy, laboratory and outpatient consultation. Transported and installed the server and a UPS with the team in a hospital with unstable power and connectivity.
+  \item Personally trained admissions staff, followed up on system use and delivered improvements after deployment.
+\end{itemize}
 
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+
+\cvsubheading
+  {Software Engineer (Freelance)}{November 2024 -- Present}
+  {Full Stack Developer -- End-to-end project management}{Lima, Per\'u}
+
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Self-managed end-to-end delivery: requirements analysis, prototyping, full-stack development, deployment on client VPS/hosting, client training, and ongoing maintenance.
   \item Development of Next.js frontends and PHP + MySQL backends/APIs for catalogs, admin panels, image uploads, simple authentication, and operational workflows.
   \item Iterative feedback cycles, bug fixes, performance optimization, and post-launch feature enhancements.
 \end{itemize}
 
-\vspace{4pt}
+\vspace{2pt}
 {\small\textbf{Featured projects:}}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=2pt]
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=2pt]
+  \item \textbf{Automotriz L\'evano ERP} {\small(\href{https://mecanicalevano.org}{mecanicalevano.org})} -- Private ERP for Mec\'anica Automotriz L\'evano, with authenticated access for its team. {\scriptsize\color{graytext} TypeScript $\cdot$ React $\cdot$ Next.js}
   \item \textbf{Grupo Sercom} {\small(\href{https://gruposercom.pe}{gruposercom.pe})} -- Corporate B2B website for a fire protection company. End-to-end Next.js development, services, products, training sections, and VPS deployment with PM2. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS $\cdot$ PM2}
   \item \textbf{Grupo Sercom Intranet} {\small(\href{https://intranet.gruposercom.pe}{intranet.gruposercom.pe})} -- Document portal and intranet with RUC-based access, PDF preview, and private admin panel for companies, services, and documents. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Admin panel $\cdot$ VPS}
   \item \textbf{Iserma} {\small(\href{https://www.isermaperu.com}{isermaperu.com})} -- Corporate website and industrial catalog with a PHP/MySQL API, editable hero banners, product, brand and category management, uploads, sitemap and robots. {\scriptsize\color{graytext} Next.js $\cdot$ React $\cdot$ Mantine $\cdot$ PHP $\cdot$ MySQL}
   \item \textbf{Prosedain} {\small(\href{https://prosedain.com}{prosedain.com})} -- B2B catalog and quotation platform for industrial automation distribution. Similar stack to Iserma with Next.js, PHP/MySQL API, admin panel, and PDF quotation generator. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ PHP $\cdot$ MySQL $\cdot$ PDF}
   \item \textbf{Farmasalud Inversiones} {\small(\href{https://farmasaludinversiones.com}{farmasaludinversiones.com})} -- Online pharmacy platform. PostgreSQL + REST API backend, full admin panel, WhatsApp consultation cart, SEO score 98/100. {\scriptsize\color{graytext} Next.js $\cdot$ PostgreSQL $\cdot$ Prisma $\cdot$ NextAuth $\cdot$ Cloudinary}
   \item \textbf{Nebu} {\small(\href{https://flow-telligence.com}{flow-telligence.com})} -- Full-stack platform with real-time voice/video via LiveKit, AI embeddings with ChromaDB, Culqi payments, PostgreSQL master-slave replication, and full observability stack. {\scriptsize\color{graytext} Remix $\cdot$ NestJS $\cdot$ PostgreSQL $\cdot$ Docker $\cdot$ OpenAI API}
-  \item \textbf{Coach Marres} {\small(\href{http://coachmarres.com}{coachmarres.com})} -- Development audit and technical supervision: prototyping, architecture review, implementation tracking, and system quality control. {\scriptsize\color{graytext} Technical audit $\cdot$ Architecture $\cdot$ QA}
-  \item \textbf{MITS Peru} {\small(\href{https://mitsperu.com}{mitsperu.com})} -- Corporate website for an IT solutions company. Infrastructure, cloud, web development, and IT support services. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS}
-  \item \textbf{Academia P\'asalo} {\small(\href{https://academiapasalo.com}{academiapasalo.com})} -- Educational platform for PUCP and UTEC university students. Frontend development following Figma prototype with API integration. {\scriptsize\color{graytext} Next.js $\cdot$ NestJS $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+  \item \textbf{MITS Per\'u} {\small(\href{https://mitsperu.com}{mitsperu.com})} -- Corporate website for an IT solutions company. Infrastructure, cloud, web development, and IT support services. {\scriptsize\color{graytext} Next.js $\cdot$ TypeScript $\cdot$ Tailwind CSS}
+  \item \textbf{Academia P\'asalo} {\small(\href{https://academiapasalo.com}{academiapasalo.com})} -- Educational platform for PUCP and UTEC university students. Frontend development and API integration. {\scriptsize\color{graytext} Next.js $\cdot$ NestJS $\cdot$ TypeScript $\cdot$ Tailwind CSS}
 \end{itemize}
 
+\newpage
 %----------THESIS----------
 \section{Thesis}
 
@@ -102,37 +116,37 @@ Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del P
   {Interoperability Component for Hospital Information System}{}
   {Pontificia Universidad Cat\'olica del Per\'u}{2025 -- 2026}
 
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
-  \item Interoperability module for OpenMRS integrated with RENHICE (Peru's National Electronic Health Records Registry) using HL7 FHIR R4 and Dyaku profiles.
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
+  \item Interoperability module for OpenMRS integrated with RENHICE (Per\'u's National Electronic Health Records Registry) using HL7 FHIR and Dyaku profiles.
   \item Implementation of automatic IPS clinical summary submission and bidirectional data query/import.
   \item Asynchronous architecture with event queues and deferred processing for environments with unstable connectivity.
 \end{itemize}
-{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR R4 $\cdot$ Clinical interoperability} \quad {\small \faIcon{github} \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{Repository}}
+{\scriptsize\color{graytext} OpenMRS 3 $\cdot$ Java $\cdot$ HL7 FHIR $\cdot$ Clinical interoperability} \quad {\small \href{https://github.com/sihsalus/openmrs-module-sihsalusinterop}{Repository}}
 
 %----------ACADEMIC PROJECTS----------
 \section{Academic Projects}
 
 \cvproject{Thesis Management System}{March 2025 -- July 2025}{React $\cdot$ Spring Boot $\cdot$ PostgreSQL}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Capstone project with a 38-member team simulating a real professional environment.
   \item Developed the review module and integrated GoWinston API for plagiarism detection.
   \item Technical management with quality control, CI/CD, and collaborative code review.
 \end{itemize}
 
-\cvproject{Logistics Operations Planning System}{August 2024 -- December 2024}{Java $\cdot$ React $\cdot$ Figma}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\cvproject{Logistics Operations Planning System}{August 2024 -- December 2024}{Java $\cdot$ React}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Delivery route planning algorithm with constraints and blockages.
   \item Backend with optimization engine in Java and modular React interface.
 \end{itemize}
 
 \cvproject{Academic Tutoring Management System}{March 2024 -- July 2024}{React $\cdot$ ASP.NET}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item University tutoring coordination platform with scheduling, notifications, and session management.
-  \item Agile development with Scrum and interactive prototyping in Figma.
+  \item Agile development with Scrum, scheduling and session management.
 \end{itemize}
 
-\cvproject{Banking Risk Management System}{August 2023 -- December 2023}{Java $\cdot$ C\# $\cdot$ Figma}
-\begin{itemize}[leftmargin=16pt, itemsep=2pt, parsep=0pt, topsep=4pt]
+\cvproject{Banking Risk Management System}{August 2023 -- December 2023}{Java $\cdot$ C\#}
+\begin{itemize}[leftmargin=16pt, itemsep=1.5pt, parsep=0pt, topsep=3pt]
   \item Academic prototype for comprehensive risk management in digital banking entities.
   \item Registration, analysis, hierarchy, and reporting modules with filters.
 \end{itemize}
@@ -142,7 +156,7 @@ Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del P
 
 \cvsubheading
   {Computer Science Engineering (Graduated)}{2020 -- 2026}
-  {Pontificia Universidad Cat\'olica del Per\'u (PUCP)}{Lima, Peru}
+  {Pontificia Universidad Cat\'olica del Per\'u (PUCP)}{Lima, Per\'u}
 
 \vspace{2pt}
 \cvsubheading
@@ -157,15 +171,15 @@ Computer Science Engineer graduated from Pontificia Universidad Cat\'olica del P
 %----------SKILLS----------
 \section{Technical Skills}
 
-\begin{tabular}{@{}l p{12cm}}
+\begin{tabularx}{\textwidth}{@{}l X@{}}
   \textbf{Languages:} & Java, JavaScript, TypeScript, PHP, C/C++, C\#, Python, SQL \\[3pt]
   \textbf{Frameworks:} & React, Next.js, NestJS, Spring Boot, ASP.NET, Express.js, Remix, Mantine \\[3pt]
   \textbf{Databases:} & PostgreSQL, MySQL, SQL Server, Oracle SQL, MongoDB, Supabase \\[3pt]
   \textbf{DevOps \& Cloud:} & Docker, CI/CD, VPS, PM2, Vercel, cPanel, AWS (RDS), Namecheap, Cloudflare, Linux, Git/GitHub \\[3pt]
-  \textbf{Tools:} & Figma, Jira, VS Code, Notion, Bizagi (BPMN), Postman \\[3pt]
-  \textbf{Other:} & REST APIs, GraphQL, HL7 FHIR, Tailwind CSS, shadcn/ui, Prisma, NextAuth, Cloudinary, PDF generation \\[3pt]
+  \textbf{Tools:} & Postman, Jira, VS Code, Notion, Bizagi (BPMN) \\[3pt]
+  \textbf{Other:} & REST APIs, GraphQL, HL7 FHIR, HL7 v2, Tailwind CSS, shadcn/ui, Prisma, NextAuth, Cloudinary, PDF generation \\[3pt]
   \textbf{Methodologies:} & Scrum, agile development, technical audit, continuous deployment, version control, collaborative work, technical documentation \\
-\end{tabular}
+\end{tabularx}
 
 %----------LANGUAGES----------
 \section{Languages}

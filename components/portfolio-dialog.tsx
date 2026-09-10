@@ -1,5 +1,7 @@
 "use client";
 
+import { useLanguage } from "@/components/language-provider";
+
 import { useEffect, useRef, type ReactNode } from "react";
 import { X } from "lucide-react";
 
@@ -16,6 +18,7 @@ export function PortfolioDialog({
   children: ReactNode;
   className?: string;
 }) {
+  const { t } = useLanguage();
   const ref = useRef<HTMLDialogElement>(null);
   useEffect(() => {
     const dialog = ref.current;
@@ -55,7 +58,7 @@ export function PortfolioDialog({
         className="icon-button dialog-close"
         type="button"
         onClick={onClose}
-        aria-label="Close dialog"
+        aria-label={t("Close dialog")}
         autoFocus
       >
         <X size={20} />

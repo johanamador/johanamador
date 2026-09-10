@@ -1,10 +1,23 @@
 "use client";
 
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useLanguage } from "@/components/language-provider";
+
+import {
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+  type ReactNode,
+} from "react";
 import { SonarGrid } from "@/components/ui/sonar-grid";
 
+export const PageReadyContext = createContext(true);
+
 export function PageLoader({ children }: { children: ReactNode }) {
-  const [phase, setPhase] = useState<"loading" | "leaving" | "ready">("loading");
+  const { t } = useLanguage();
+  const [phase, setPhase] = useState<"loading" | "leaving" | "ready">(
+    "loading",
+  );
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -28,11 +41,16 @@ export function PageLoader({ children }: { children: ReactNode }) {
       const remaining = Math.max(0, 650 - performance.now());
       revealTimer = window.setTimeout(() => {
         setPhase("leaving");
-        const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        removeTimer = window.setTimeout(() => {
-          restore();
-          setPhase("ready");
-        }, reduce ? 0 : 400);
+        const reduce = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        removeTimer = window.setTimeout(
+          () => {
+            restore();
+            setPhase("ready");
+          },
+          reduce ? 0 : 400,
+        );
       }, remaining);
     };
     const onLoad = () => {
@@ -54,16 +72,27 @@ export function PageLoader({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <>
-      <noscript><style>{".page-loader { display: none !important; }"}</style></noscript>
+    <PageReadyContext.Provider value={phase === "ready"}>
+      <noscript>
+        <style>
+          {
+            ".page-loader, .hero-brand-logo { display: none !important; } .hero-brand-name { opacity: 1 !important; filter: none !important; transform: none !important; }"
+          }
+        </style>
+      </noscript>
       {phase !== "ready" && (
-        <div className="page-loader" data-phase={phase} role="status" aria-label="Loading portfolio">
+        <div
+          className="page-loader"
+          data-phase={phase}
+          role="status"
+          aria-label={t("Loading portfolio")}
+        >
           <SonarGrid
             className="page-loader-grid"
             spacing={30}
             dotRadius={1}
             baseOpacity={0.13}
-            color="#b8b8b8"
+            color="var(--sonar-color)"
             pingEvery={3.2}
             speed={180}
             ringWidth={70}
@@ -73,14 +102,22 @@ export function PageLoader({ children }: { children: ReactNode }) {
           >
             <div className="page-loader-wash" aria-hidden="true" />
             <div className="page-loader-mark" aria-hidden="true">
-              <img src="/ja.svg" alt="" width={112} height={60} fetchPriority="high" />
-              <span className="page-loader-track"><span /></span>
+              <img
+                src="/ja.svg"
+                alt=""
+                width={112}
+                height={60}
+                fetchPriority="high"
+              />
+              <span className="page-loader-track">
+                <span />
+              </span>
             </div>
           </SonarGrid>
-          <span className="sr-only">Loading portfolio</span>
+          <span className="sr-only">{t("Loading portfolio")}</span>
         </div>
       )}
       <div ref={contentRef}>{children}</div>
-    </>
+    </PageReadyContext.Provider>
   );
 }

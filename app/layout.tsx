@@ -2,8 +2,10 @@ import type React from "react";
 import { Geist, Geist_Mono as GeistMono } from "next/font/google";
 import { Anton } from "next/font/google";
 import "./globals.css";
+import "./gallery-layout.css";
 import type { Metadata } from "next";
 import { ThemeProvider } from "@/components/theme-provider";
+import { LanguageProvider } from "@/components/language-provider";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
@@ -54,7 +56,7 @@ export default function RootLayout({
           defaultTheme="dark"
           enableSystem={false}
         >
-          {children}
+          <LanguageProvider>{children}</LanguageProvider>
         </ThemeProvider>
       </body>
     </html>

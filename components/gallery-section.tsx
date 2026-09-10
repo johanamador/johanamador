@@ -1,12 +1,15 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useLanguage } from "@/components/language-provider";
+
+import { useRef, useState, type CSSProperties } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
 import { PortfolioDialog } from "@/components/portfolio-dialog";
 import { galleryImages } from "@/lib/profile";
 
 export function GallerySection() {
+  const { t } = useLanguage();
   const track = useRef<HTMLDivElement>(null);
   const [selected, setSelected] = useState<number | null>(null);
   function scroll(direction: number) {
@@ -22,18 +25,20 @@ export function GallerySection() {
       <div className="site-container">
         <SectionTitle
           index="04"
-          eyebrow="Beyond the screen"
-          title="People & moments."
-          description="A few snapshots from the communities and projects I’ve been part of."
+          eyebrow={t("Beyond the screen")}
+          title={t("People & moments.")}
+          description={t(
+            "A few snapshots from the communities and projects I’ve been part of.",
+          )}
         />
         <div className="gallery-controls">
-          <span className="mono muted">A few moments along the way</span>
+          <span className="mono muted">{t("A few moments along the way")}</span>
           <div>
             <button
               className="icon-button"
               type="button"
               onClick={() => scroll(-1)}
-              aria-label="Previous photos"
+              aria-label={t("Previous photos")}
             >
               <ArrowLeft size={18} />
             </button>
@@ -41,7 +46,7 @@ export function GallerySection() {
               className="icon-button"
               type="button"
               onClick={() => scroll(1)}
-              aria-label="Next photos"
+              aria-label={t("Next photos")}
             >
               <ArrowRight size={18} />
             </button>
@@ -52,29 +57,44 @@ export function GallerySection() {
           ref={track}
           tabIndex={0}
           role="region"
-          aria-label="Photo gallery"
+          aria-label={t("Photo gallery")}
         >
           {galleryImages.map((photo, index) => (
-            <figure className="gallery-item" key={photo.src}>
+            <figure
+              className="gallery-item"
+              data-portrait={photo.width < photo.height}
+              key={photo.src}
+              style={
+                {
+                  "--photo-ratio":
+                    photo.previewRatio ??
+                    Math.max(0.9, photo.width / photo.height),
+                  "--photo-position": photo.previewPosition,
+                } as CSSProperties
+              }
+            >
               <button
                 type="button"
                 onClick={() => setSelected(index)}
-                aria-label={`Enlarge photo: ${photo.alt}`}
+                aria-label={`${t("Enlarge photo")}: ${t(photo.alt)}`}
               >
                 <img
-                  src={photo.src}
-                  alt={photo.alt}
-                  width={640}
-                  height={480}
+                  src={photo.thumbnail}
+                  alt={t(photo.alt)}
+                  width={photo.width}
+                  height={photo.height}
                   loading="lazy"
+                  decoding="async"
                 />
                 <span>
                   <ArrowUpRight size={18} />
                 </span>
               </button>
               <figcaption>
-                <span className="mono">0{index + 1}</span>
-                <p>{photo.description}</p>
+                <span className="mono">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <p>{t(photo.description)}</p>
               </figcaption>
             </figure>
           ))}
@@ -88,14 +108,24 @@ export function GallerySection() {
       >
         {selected !== null && (
           <>
-            <img
-              src={galleryImages[selected].src}
-              alt={galleryImages[selected].alt}
-              className="gallery-full-image"
-            />
+            <div className="gallery-image-stage">
+              <img
+                src={galleryImages[selected].thumbnail}
+                alt=""
+                aria-hidden="true"
+                className="gallery-image-backdrop"
+              />
+              <img
+                src={galleryImages[selected].src}
+                alt={t(galleryImages[selected].alt)}
+                className="gallery-full-image"
+              />
+            </div>
             <div className="gallery-dialog-caption">
-              <h2 id="gallery-dialog-title">{galleryImages[selected].alt}</h2>
-              <p className="muted">{galleryImages[selected].description}</p>
+              <h2 id="gallery-dialog-title">
+                {t(galleryImages[selected].alt)}
+              </h2>
+              <p className="muted">{t(galleryImages[selected].description)}</p>
               <div className="project-pagination">
                 <button
                   type="button"
@@ -108,7 +138,7 @@ export function GallerySection() {
                   }
                 >
                   <ArrowLeft size={16} />
-                  Previous
+                  {t("Previous")}
                 </button>
                 <span className="mono">
                   {selected + 1} / {galleryImages.length}
@@ -120,7 +150,7 @@ export function GallerySection() {
                     setSelected((selected + 1) % galleryImages.length)
                   }
                 >
-                  Next
+                  {t("Next")}
                   <ArrowRight size={16} />
                 </button>
               </div>

@@ -1,5 +1,8 @@
 "use client";
 
+import { FaGithub } from "react-icons/fa6";
+import { useLanguage } from "@/components/language-provider";
+
 import { useState } from "react";
 import {
   ArrowDown,
@@ -11,7 +14,7 @@ import {
 import { SectionTitle } from "@/components/section-title";
 import { TiltCard } from "@/components/spell/tilt-card";
 import { PortfolioDialog } from "@/components/portfolio-dialog";
-import { projects, designs, type Project } from "@/lib/projects";
+import { projects, type Project } from "@/lib/projects";
 
 const selection = [
   {
@@ -41,7 +44,13 @@ const selection = [
 ];
 const selectedIds = new Set(selection.map((item) => item.id));
 const archived = projects.filter((project) => !selectedIds.has(project.id));
-const allProjects = [...projects, ...designs];
+const allProjects = projects;
+const archiveFilters = [
+  { id: "all", label: "All" },
+  { id: "systems", label: "Systems & platforms" },
+  { id: "websites", label: "Websites" },
+  { id: "experiments", label: "Experiments" },
+] as const;
 
 function ProjectDetail({
   project,
@@ -50,6 +59,7 @@ function ProjectDetail({
   project: Project;
   navigate: (project: Project) => void;
 }) {
+  const { t } = useLanguage();
   const index = allProjects.findIndex((item) => item.id === project.id);
   const cover = selection.find((item) => item.id === project.id)?.cover;
   return (
@@ -59,18 +69,20 @@ function ProjectDetail({
       >
         <img
           src={cover || project.image}
-          alt={cover ? `${project.title} website preview` : project.title}
+          alt={
+            cover
+              ? `${t(project.title)} - ${t("website preview")}`
+              : t(project.title)
+          }
         />
       </div>
       <div className="project-detail-body">
-        <p className="eyebrow">
-          {project.figma ? "Design study" : "Project details"}
-        </p>
-        <h2 id="project-dialog-title">{project.title}</h2>
-        <p className="project-detail-description">{project.description}</p>
-        <ul className="project-technologies" aria-label="Technologies">
+        <p className="eyebrow">{t("Project details")}</p>
+        <h2 id="project-dialog-title">{t(project.title)}</h2>
+        <p className="project-detail-description">{t(project.description)}</p>
+        <ul className="project-technologies" aria-label={t("Technologies")}>
           {project.technologies.map((tech) => (
-            <li key={tech}>{tech}</li>
+            <li key={tech}>{t(tech)}</li>
           ))}
         </ul>
         <div className="project-detail-links">
@@ -81,7 +93,7 @@ function ProjectDetail({
               target="_blank"
               rel="noopener noreferrer"
             >
-              {project.figma ? "Open prototype" : "Visit website"}
+              {t("Visit website")}
               <ArrowUpRight size={16} />
             </a>
           )}
@@ -92,18 +104,8 @@ function ProjectDetail({
               target="_blank"
               rel="noopener noreferrer"
             >
-              Source code
-              <ArrowUpRight size={16} />
-            </a>
-          )}
-          {project.figma && (
-            <a
-              className="text-link"
-              href={project.figma}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Figma file
+              <FaGithub size={16} aria-hidden="true" />
+              {t("Source code")}
               <ArrowUpRight size={16} />
             </a>
           )}
@@ -121,7 +123,7 @@ function ProjectDetail({
             }
           >
             <ArrowLeft size={16} />
-            Previous
+            {t("Previous")}
           </button>
           <span className="mono muted">
             {String(index + 1).padStart(2, "0")} / {allProjects.length}
@@ -133,7 +135,7 @@ function ProjectDetail({
               navigate(allProjects[(index + 1) % allProjects.length])
             }
           >
-            Next
+            {t("Next")}
             <ArrowRight size={16} />
           </button>
         </div>
@@ -143,22 +145,28 @@ function ProjectDetail({
 }
 
 export function ProjectsSection() {
+  const { t } = useLanguage();
   const [selected, setSelected] = useState<Project | null>(null);
-  const [filter, setFilter] = useState<"projects" | "designs">("projects");
+  const [filter, setFilter] =
+    useState<(typeof archiveFilters)[number]["id"]>("all");
   const [query, setQuery] = useState("");
-  const filtered = (filter === "projects" ? archived : designs).filter((item) =>
-    `${item.title} ${item.technologies.join(" ")}`
-      .toLowerCase()
-      .includes(query.toLowerCase().trim()),
-  );
+  const filtered = archived
+    .filter((item) => filter === "all" || item.category === filter)
+    .filter((item) =>
+      `${t(item.title)} ${item.technologies.map(t).join(" ")}`
+        .toLowerCase()
+        .includes(query.toLowerCase().trim()),
+    );
   return (
     <section id="projects" className="portfolio-section projects-section">
       <div className="site-container">
         <SectionTitle
           index="01"
-          eyebrow="Selected work"
-          title="Ideas, made real."
-          description="A selection of websites, platforms and systems I’ve helped bring to life."
+          eyebrow={t("Selected work")}
+          title={t("Ideas, made real.")}
+          description={t(
+            "A selection of websites, platforms and systems I’ve helped bring to life.",
+          )}
         />
         <div className="featured-grid">
           {selection.map((item, index) => {
@@ -169,7 +177,7 @@ export function ProjectsSection() {
                   type="button"
                   className="project-cover-button"
                   onClick={() => setSelected(project)}
-                  aria-label={`View ${project.title} project`}
+                  aria-label={`${t("View project")}: ${t(project.title)}`}
                 >
                   <TiltCard
                     tiltLimit={2}
@@ -179,7 +187,7 @@ export function ProjectsSection() {
                   >
                     <div className="cover-topline">
                       <span className="mono">
-                        PROJECT / {String(index + 1).padStart(2, "0")}
+                        {t("PROJECT /")} {String(index + 1).padStart(2, "0")}
                       </span>
                       <span className="cover-open">
                         <ArrowUpRight size={17} />
@@ -190,8 +198,8 @@ export function ProjectsSection() {
                         src={item.cover || project.image}
                         alt={
                           item.cover
-                            ? `${project.title} website`
-                            : project.title
+                            ? `${t(project.title)} - ${t("website")}`
+                            : t(project.title)
                         }
                         loading="lazy"
                         width={1440}
@@ -200,30 +208,30 @@ export function ProjectsSection() {
                     </div>
                     {!item.cover && (
                       <p className="cover-caption mono">
-                        OpenMRS / HL7 FHIR R4 / RENHICE
+                        {t("OpenMRS / HL7 FHIR / RENHICE")}
                       </p>
                     )}
                   </TiltCard>
                 </button>
                 <div className="project-caption">
                   <div>
-                    <p className="eyebrow">{item.category}</p>
+                    <p className="eyebrow">{t(item.category)}</p>
                     <h3>
                       <button
                         type="button"
                         onClick={() => setSelected(project)}
                       >
-                        {project.title}
+                        {t(project.title)}
                       </button>
                     </h3>
-                    <p className="muted">{item.summary}</p>
+                    <p className="muted">{t(item.summary)}</p>
                   </div>
                   <a
                     className="icon-button"
                     href={project.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Visit ${project.title}`}
+                    aria-label={`${t("Visit")} ${t(project.title)}`}
                   >
                     <ArrowUpRight size={19} />
                   </a>
@@ -235,10 +243,10 @@ export function ProjectsSection() {
         <div className="archive" id="archive">
           <div className="archive-heading">
             <div>
-              <p className="eyebrow">There’s more to explore</p>
+              <p className="eyebrow">{t("There’s more to explore")}</p>
               <h3>
-                The archive
-                <span className="mono">{archived.length + designs.length}</span>
+                {t("The archive")}
+                <span className="mono">{archived.length}</span>
               </h3>
             </div>
             <ArrowDown className="muted" size={22} />
@@ -247,68 +255,107 @@ export function ProjectsSection() {
             <div
               className="archive-filters"
               role="group"
-              aria-label="Filter archive"
+              aria-label={t("Filter archive")}
             >
-              <button
-                type="button"
-                aria-pressed={filter === "projects"}
-                onClick={() => setFilter("projects")}
-              >
-                Development <span>{archived.length}</span>
-              </button>
-              <button
-                type="button"
-                aria-pressed={filter === "designs"}
-                onClick={() => setFilter("designs")}
-              >
-                Design <span>{designs.length}</span>
-              </button>
+              {archiveFilters.map((tab) => (
+                <button
+                  key={tab.id}
+                  type="button"
+                  aria-pressed={filter === tab.id}
+                  onClick={() => setFilter(tab.id)}
+                >
+                  {t(tab.label)}
+                  <span>
+                    {tab.id === "all"
+                      ? archived.length
+                      : archived.filter(
+                          (project) => project.category === tab.id,
+                        ).length}
+                  </span>
+                </button>
+              ))}
             </div>
             <label className="archive-search">
               <Search size={15} />
-              <span className="sr-only">Search archive</span>
+              <span className="sr-only">{t("Search archive")}</span>
               <input
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Find a project…"
+                placeholder={t("Find a project…")}
               />
             </label>
           </div>
           <div className="archive-list" aria-live="polite">
             {filtered.map((project, index) => (
-              <button
-                type="button"
-                className="archive-row"
-                key={project.id}
-                onClick={() => setSelected(project)}
-              >
-                <span className="archive-number mono">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <img
-                  src={project.image}
-                  alt=""
-                  width={64}
-                  height={44}
-                  loading="lazy"
-                />
-                <span className="archive-title">{project.title}</span>
-                <span className="archive-tech">
-                  {project.technologies.slice(0, 3).join(" · ")}
-                </span>
-                <ArrowUpRight size={18} />
-              </button>
+              <article className="archive-row" key={project.id}>
+                <button
+                  type="button"
+                  className="archive-project"
+                  onClick={() => setSelected(project)}
+                  aria-label={`${t("View project")}: ${t(project.title)}`}
+                >
+                  <span className="archive-number mono">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <img
+                    src={project.image}
+                    alt=""
+                    width={64}
+                    height={44}
+                    loading="lazy"
+                  />
+                  <span className="archive-info">
+                    <span className="archive-title">{t(project.title)}</span>
+                    <span className="archive-tech">
+                      {project.technologies.slice(0, 3).map(t).join(" · ")}
+                    </span>
+                  </span>
+                </button>
+                <div className="archive-actions">
+                  {project.github && (
+                    <a
+                      className="archive-action"
+                      href={project.github}
+                      aria-label={`${t("Source code")}: ${t(project.title)}`}
+                      title={t("Source code")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <FaGithub size={19} aria-hidden="true" />
+                    </a>
+                  )}
+                  {project.demo && (
+                    <a
+                      className="archive-action"
+                      href={project.demo}
+                      aria-label={`${t("Visit website")}: ${t(project.title)}`}
+                      title={t("Visit website")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <ArrowUpRight size={19} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+              </article>
             ))}
             {filtered.length === 0 && (
               <div className="archive-empty">
-                <p>No projects match “{query}”.</p>
+                <p>
+                  {t("No projects match “")}
+                  {query}”.
+                </p>
                 <button
                   className="text-link"
                   type="button"
-                  onClick={() => setQuery("")}
+                  onClick={() => {
+                    setQuery("");
+                    setFilter("all");
+                  }}
                 >
-                  Clear search <ArrowRight size={15} />
+                  {t("Clear search")}
+                  <ArrowRight size={15} />
                 </button>
               </div>
             )}
