@@ -1,3 +1,12 @@
+# Geist fonts
+
+`public/email/geist-latin.woff2` and `geist-mono-latin.woff2` are the Latin
+subsets of Geist and Geist Mono already used by `next/font/google` in the
+website. They are redistributed under the SIL Open Font License 1.1;
+see [the bundled license](public/email/geist-license.txt).
+
+Copyright 2024 The Geist Project Authors (https://github.com/vercel/geist-font.git).
+
 # Spell UI
 
 The components in `components/spell/` are adapted from [Spell UI](https://github.com/xxtomm/spell-ui), registry files `blur-reveal.tsx` and `copy-button.tsx`. Local changes cover reduced motion, progressive enhancement, and clipboard error handling.

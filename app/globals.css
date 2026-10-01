@@ -1661,6 +1661,9 @@ details[open] .details-plus {
   resize: vertical;
   min-height: 110px;
 }
+.contact-verification {
+  margin-top: 24px;
+}
 .form-bottom {
   display: flex;
   align-items: center;

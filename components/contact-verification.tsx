@@ -50,6 +50,6 @@ export function ContactVerification({ siteKey, attempt, onToken, onError }: {
   return <>
     <Script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
       strategy="lazyOnload" onReady={render} onError={() => callbacks.current.onError()} />
-    <div ref={container} />
+    <div ref={container} className="contact-verification" />
   </>;
 }

@@ -10,8 +10,12 @@ const sample = {
   email: "alex@example.com",
   message: "Hola, Johan:\n\nEstoy preparando una plataforma para mi equipo y me gustaría conversar contigo sobre el desarrollo.\n\nMe interesó tu trabajo y creo que podríamos hacer algo muy bueno juntos. ¿Tienes disponibilidad esta semana?\n\nGracias,\nAlex",
 };
-const html = renderContactEmail(template, sample)
+let html = renderContactEmail(template, sample)
   .replace("https://johanamador.com/email/ja.png", `data:image/png;base64,${logo.toString("base64")}`);
+for (const font of ["geist-latin.woff2", "geist-mono-latin.woff2"]) {
+  const content = await readFile(new URL(`public/email/${font}`, root));
+  html = html.replace(`https://johanamador.com/email/${font}`, `data:font/woff2;base64,${content.toString("base64")}`);
+}
 const output = new URL(".next-dev/email-preview/", root);
 await mkdir(output, { recursive: true });
 await writeFile(new URL("contact-notification.html", output), html);

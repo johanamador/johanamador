@@ -6,8 +6,10 @@ Pruebas sin envíos reales: npm run test:contact
 
 El logo deriva de public/ja.svg. public/email/ja.png se publica con la web.
 El correo usa HTML con estilos en línea, tablas, texto alternativo y versión
-de texto plano. Conserva la paleta y el monograma del portafolio; usa fuentes
-de sistema para que funcione sin descargar tipografías externas.
+de texto plano. Conserva la paleta, el monograma y las fuentes Geist y Geist
+Mono del portafolio. Los lectores que no admiten fuentes web usan Arial y
+Courier New. Las fuentes se sirven desde public/email con URLs estables;
+la vista previa las incrusta para poder revisarse sin conexión.
 
 ACTIVACIÓN
 1. Verificar johanamador.com como dominio de envío en Resend con sus registros
