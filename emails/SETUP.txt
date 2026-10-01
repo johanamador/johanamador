@@ -1,0 +1,54 @@
+CORREO DE CONTACTO · JOHAN AMADOR
+
+Plantilla: emails/contact-notification.html
+Vista previa: npm run preview:email (abre el HTML que imprime el comando).
+Pruebas sin envíos reales: npm run test:contact
+
+El logo deriva de public/ja.svg. public/email/ja.png se publica con la web.
+El correo usa HTML con estilos en línea, tablas, texto alternativo y versión
+de texto plano. Conserva la paleta y el monograma del portafolio; usa fuentes
+de sistema para que funcione sin descargar tipografías externas.
+
+ACTIVACIÓN
+1. Verificar johanamador.com como dominio de envío en Resend con sus registros
+   DNS exactos (DKIM y SPF). Mantener los registros del correo existente.
+2. Crear una API key de Resend restringida al envío desde ese dominio.
+3. Crear Turnstile en modo managed para johanamador.com (incluye subdominios).
+4. Configurar estas variables en el proyecto de Vercel:
+
+   RESEND_API_KEY=<clave privada de envío>
+   CONTACT_FROM_EMAIL=Johan Amador <contacto@johanamador.com>
+   CONTACT_TO_EMAIL=johan.amador@pucp.edu.pe
+   TURNSTILE_SITE_KEY=<sitekey pública>
+   TURNSTILE_SECRET=<clave privada>
+   TURNSTILE_HOSTNAMES=johanamador.com,www.johanamador.com
+   CONTACT_PROVIDER=resend
+
+5. Desplegar y comprobar un envío real a Johan, el Reply-To y la entrega.
+   Comprobar también que un token repetido se rechace.
+
+Las credenciales nunca llevan prefijo NEXT_PUBLIC y no se guardan en Git.
+Para pruebas locales, usar .env.local (ignorado) y claves de prueba oficiales
+de Turnstile. TURNSTILE_HOSTNAMES=localhost,127.0.0.1 solo en desarrollo.
+Los previews requieren su hostname explícito y un widget que lo permita.
+
+DESPLIEGUE GRADUAL
+Mientras CONTACT_PROVIDER no sea resend o falte alguna variable requerida,
+la página conserva Formspree y /api/contact responde 503 sin enviar correo.
+Cambiar variables requiere un nuevo despliegue: la página se genera al compilar.
+Para volver a Formspree, establecer CONTACT_PROVIDER=formspree y redesplegar.
+No se reintenta por Formspree después de un fallo de Resend: podría duplicar
+un correo que el proveedor ya haya aceptado antes de un timeout.
+
+El destinatario lo fija el servidor; ningún visitante puede cambiarlo.
+La verificación Turnstile exige el hostname y la acción contact correctos.
+La misma solicitud conserva su clave de idempotencia al reintentar, incluso
+si cambia el token de verificación. Resend conserva estas claves 24 horas.
+El mensaje del visitante se escapa antes de insertarlo en HTML.
+La vista previa del navegador no sustituye una prueba en clientes de correo.
+
+Referencias:
+https://resend.com/docs/api-reference/emails/send-email
+https://resend.com/docs/dashboard/domains/introduction
+https://resend.com/docs/dashboard/emails/idempotency-keys
+https://developers.cloudflare.com/turnstile/get-started/server-side-validation/

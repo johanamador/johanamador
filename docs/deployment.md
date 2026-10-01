@@ -34,7 +34,7 @@ Los archivos nuevos usan **kebab-case en minúsculas**. `npm run check` detecta 
 
 Espaciado de secciones: 112 px arriba/abajo en escritorio y 72 px en móvil, definido mediante variables en `app/globals.css`. El hero conserva su composición de portada.
 
-El formulario usa el endpoint existente de Formspree; confirma en su panel que acepta `johanamador.com`. Los datos de GitHub se consultan desde APIs públicas con estados de error; no incluyas tokens en el código del navegador. Las pruebas locales no envían mensajes reales.
+El formulario conserva Formspree hasta activar Resend con todas las variables requeridas. La configuración y el procedimiento de activación están en `emails/SETUP.txt`; `npm run preview:email` genera una vista previa del correo con el logo y estilo del portafolio. `npm run test:contact` verifica validación, Turnstile, HTML y reintentos sin enviar correos reales. Los datos de GitHub se consultan desde APIs públicas con estados de error; no incluyas tokens en el código del navegador.
 
 ## Perfil de GitHub
 

@@ -3,6 +3,9 @@ import { PHASE_DEVELOPMENT_SERVER } from 'next/constants.js'
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   poweredByHeader: false,
+  outputFileTracingIncludes: {
+    '/api/contact': ['./emails/contact-notification.html'],
+  },
   async redirects() {
     return [
       {

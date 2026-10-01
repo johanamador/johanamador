@@ -7,45 +7,56 @@ import { useRef, useState, type FormEvent } from "react";
 import { ArrowUpRight, ArrowRight, Loader2 } from "lucide-react";
 import { CopyButton } from "@/components/spell/copy-button";
 import { SectionTitle } from "@/components/section-title";
+import { ContactVerification } from "@/components/contact-verification";
 
 const email = "johan.amador@pucp.edu.pe";
 
-export function ContactSection() {
+export function ContactSection({ useResend = false, siteKey = "" }: { useResend?: boolean; siteKey?: string }) {
   const { t } = useLanguage();
   const [status, setStatus] = useState<
     "idle" | "sending" | "success" | "error"
   >("idle");
   const submitting = useRef(false);
+  const [token, setToken] = useState("");
+  const [attempt, setAttempt] = useState(0);
+  const submission = useRef({ payload: "", id: "" });
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting.current) return;
+    if (useResend && !token) { setStatus("error"); return; }
     submitting.current = true;
     const form = event.currentTarget;
     const data = new FormData(form);
     setStatus("sending");
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 15000);
+    const timeout = setTimeout(() => controller.abort(), 25000);
     try {
-      const response = await fetch("https://formspree.io/f/xldlblvl", {
+      const fields = { name: data.get("name"), email: data.get("email"), message: data.get("message") };
+      if (useResend && submission.current.payload !== JSON.stringify(fields)) {
+        submission.current = { payload: JSON.stringify(fields), id: crypto.randomUUID() };
+      }
+      const response = await fetch(useResend ? "/api/contact" : "https://formspree.io/f/xldlblvl", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          name: data.get("name"),
-          email: data.get("email"),
-          message: data.get("message"),
+          ...fields,
+          ...(useResend ? { token, requestId: submission.current.id, website: data.get("website") ?? "" } : {}),
         }),
         signal: controller.signal,
       });
       if (!response.ok) throw new Error("Message could not be sent");
+      if (useResend && (await response.json()).ok !== true) throw new Error("Message could not be sent");
       setStatus("success");
       form.reset();
+      submission.current = { payload: "", id: "" };
     } catch {
       setStatus("error");
     } finally {
       clearTimeout(timeout);
+      if (useResend) { setToken(""); setAttempt((value) => value + 1); }
       submitting.current = false;
     }
   }
@@ -107,6 +118,9 @@ export function ContactSection() {
             aria-label={t("Contact Johan")}
             aria-busy={status === "sending"}
           >
+            {useResend && <div hidden aria-hidden="true">
+              <label>Website<input name="website" tabIndex={-1} autoComplete="off" /></label>
+            </div>}
             <div className="form-row">
               <label>
                 {t("Your name")}
@@ -142,6 +156,8 @@ export function ContactSection() {
                 maxLength={5000}
               />
             </label>
+            {useResend && <ContactVerification siteKey={siteKey} attempt={attempt}
+              onToken={setToken} onError={() => setStatus("error")} />}
             <div className="form-bottom">
               <span className="muted">{t("A conversation starts here.")}</span>
               <button

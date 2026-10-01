@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && node scripts/check-assets.mjs"
+    "check": "npm run typecheck && node scripts/check-assets.mjs && npm run test:contact",
+    "test:contact": "node --test scripts/contact.test.mjs",
+    "preview:email": "node scripts/preview-contact-email.mjs"
   },
   "dependencies": {
     "@radix-ui/react-select": "2.1.4",

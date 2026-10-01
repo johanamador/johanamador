@@ -9,6 +9,7 @@ import { ProjectsSection } from "@/components/projects-section";
 import { GallerySection } from "@/components/gallery-section";
 import { SkillsSection } from "@/components/skills-section";
 import { PageLoader } from "@/components/page-loader";
+import { isResendConfigured } from "@/lib/contact";
 
 export default function Home() {
   return (
@@ -23,7 +24,7 @@ export default function Home() {
           <EducationSection />
           <SkillsSection />
           <GallerySection />
-          <ContactSection />
+          <ContactSection useResend={isResendConfigured(process.env)} siteKey={process.env.TURNSTILE_SITE_KEY} />
         </main>
         <Footer />
       </div>
