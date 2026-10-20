@@ -22,19 +22,19 @@ const selection = [
     background: "sihsalus",
   },
   {
+    id: 24,
+    category: "Commerce & inventory",
+    background: "rmk",
+  },
+  {
+    id: 25,
+    category: "Catalog & WhatsApp",
+    background: "pieros",
+  },
+  {
     id: 11,
     category: "Corporate website",
     background: "sercom",
-  },
-  {
-    id: 16,
-    category: "Catalog & platform",
-    background: "prosedain",
-  },
-  {
-    id: 21,
-    category: "Commerce & operations",
-    background: "iserma",
   },
 ];
 const selectedIds = new Set(selection.map((item) => item.id));

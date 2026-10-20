@@ -36,7 +36,7 @@ for (const file of sources) {
   visit(tree)
 }
 // These paths are assembled at runtime, so check each supported variant explicitly.
-for (const name of ['sihsalus', 'sercom', 'prosedain', 'iserma']) {
+for (const name of ['sihsalus', 'rmk', 'pieros', 'sercom']) {
   for (const size of [480, 960]) {
     const asset = `/projects/featured/${name}-${size}.webp`
     if (!assets.has(asset)) errors.push(`Missing featured image: ${asset}`)

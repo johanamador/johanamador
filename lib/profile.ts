@@ -1,7 +1,7 @@
 export const experience = [
   {
     title: "SIH.SALUS · PUCP / GIDIS",
-    period: "August 2025 - Present",
+    period: "August 2025 - October 2026",
     role: "Software Developer — Health Systems · Hybrid",
     technologies: [
       "OpenMRS",
@@ -31,7 +31,7 @@ export const experience = [
       "shadcn/ui",
     ],
     description:
-      "End-to-end development of web applications, B2B catalogs, ERPs and internal systems. Requirements analysis, frontend and backend development, API integration, deployment, client training and ongoing maintenance. Projects include Automotriz Lévano ERP, Grupo Sercom, Prosedain, Iserma, Farmasalud and Nebu.",
+      "End-to-end development of web applications, commerce platforms, B2B catalogs and internal systems. Requirements analysis, frontend and backend development, API integration, deployment, client training and ongoing maintenance. Projects include Remake Comics, Tortas Pieros, Grupo Sercom, Nebu and Automotriz Lévano ERP.",
   },
   {
     title: "Academic Thesis Management System",
