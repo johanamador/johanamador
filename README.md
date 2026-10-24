@@ -2,9 +2,7 @@
 
 Software developer based in Lima, Perú. I build full-stack web applications, business systems and healthcare integrations, from requirements to deployment and maintenance.
 
-My work includes client projects with React, Next.js, TypeScript and PostgreSQL, and OpenMRS / HL7 FHIR interoperability with PUCP / GIDIS. Open to frontend, backend and full-stack opportunities.
-
-[Portfolio](https://johanamador.com/) · [LinkedIn](https://www.linkedin.com/in/johanamadordev/) · [CV en español](public/johan-amador-cv-es.pdf) · [Résumé in English](public/johan-amador-cv-en.pdf)
+[Portfolio](https://johanamador.com/) · [LinkedIn](https://www.linkedin.com/in/johanamadordev/)
 
 <p align="left">
   <a href="https://www.sihsalus.org/"><img src="docs/assets/project-sihsalus.svg" alt="SIH.SALUS" width="24%" /></a>
@@ -26,5 +24,3 @@ My work includes client projects with React, Next.js, TypeScript and PostgreSQL,
   <a href="https://iped.vercel.app/"><img src="docs/assets/project-iped.svg" alt="IPED" width="24%" /></a>
   <a href="https://johanamador.com/"><img src="docs/assets/project-ja.svg" alt="Personal Portfolio" width="24%" /></a>
 </p>
-
-[Development and deployment](docs/deployment.md)
