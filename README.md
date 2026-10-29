@@ -5,6 +5,7 @@ Software developer based in Lima, Perú. I build full-stack web applications, bu
 [Portfolio](https://johanamador.com/) · [LinkedIn](https://www.linkedin.com/in/johanamadordev/)
 
 <p align="left">
+  <a href="https://tick.johanamador.com/" title="tick — Personal open-source project"><img src="docs/assets/project-tick.svg" alt="tick" width="24%" /></a>
   <a href="https://www.sihsalus.org/"><img src="docs/assets/project-sihsalus.svg" alt="SIH.SALUS" width="24%" /></a>
   <a href="https://remake.johanamador.com/"><img src="docs/assets/project-rmk.svg" alt="Remake Comics" width="24%" /></a>
   <a href="https://pieros.johanamador.com/"><img src="docs/assets/project-pieros.svg" alt="Tortas Pieros" width="24%" /></a>
@@ -16,7 +17,6 @@ Software developer based in Lima, Perú. I build full-stack web applications, bu
   <a href="https://grunge.vercel.app/"><img src="docs/assets/project-grunge.svg" alt="Grunge Merch" width="24%" /></a>
   <a href="https://cinemark-peru.vercel.app/"><img src="docs/assets/project-cinemark.svg" alt="Cinemark Perú Clone" width="24%" /></a>
   <a href="https://farmasaludinversiones.com/"><img src="docs/assets/project-farmasalud.svg" alt="Farmasalud Inversiones" width="24%" /></a>
-  <a href="https://intranet.gruposercom.pe/"><img src="docs/assets/project-sercom-intranet.svg" alt="Grupo Sercom Intranet" width="24%" /></a>
   <a href="https://mitsperu.com/"><img src="docs/assets/project-mits.svg" alt="MITS Perú" width="24%" /></a>
   <a href="https://mecanicalevano.org/"><img src="docs/assets/project-servicios-levano.svg" alt="Automotriz Lévano ERP" width="24%" /></a>
   <a href="https://academiapasalo.com"><img src="docs/assets/project-pasalo.svg" alt="Academia Pásalo" width="24%" /></a>
