@@ -5,7 +5,7 @@ Software developer based in Lima, Perú. I build full-stack web applications, bu
 [Portfolio](https://johanamador.com/) · [LinkedIn](https://www.linkedin.com/in/johanamadordev/)
 
 <p align="left">
-  <a href="https://tick.johanamador.com/" title="tick — Personal open-source project"><img src="docs/assets/project-tick.svg" alt="tick" width="24%" /></a>
+  <a href="https://tick.johanamador.com/" title="tick — Personal open-source project"><img src="docs/assets/project-tick-white.svg" alt="tick" width="24%" /></a>
   <a href="https://www.sihsalus.org/"><img src="docs/assets/project-sihsalus.svg" alt="SIH.SALUS" width="24%" /></a>
   <a href="https://remake.johanamador.com/"><img src="docs/assets/project-rmk.svg" alt="Remake Comics" width="24%" /></a>
   <a href="https://pieros.johanamador.com/"><img src="docs/assets/project-pieros.svg" alt="Tortas Pieros" width="24%" /></a>
