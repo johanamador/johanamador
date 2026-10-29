@@ -49,6 +49,19 @@ export function HeroSection() {
         </div>
         <div className="hero-footnote site-container mono">
           <span>{t("Lima, Perú")}</span>
+          <a
+            className="hero-tick-link"
+            href="https://tick.johanamador.com"
+            aria-label={t("Open tick")}
+            title={t("Open tick")}
+          >
+            <img
+              src="/projects/logos/tick.svg"
+              width="76"
+              height="24"
+              alt="tick"
+            />
+          </a>
           <div className="hero-socials">
             <a
               href="https://github.com/johanamador"

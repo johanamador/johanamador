@@ -8,6 +8,7 @@ export type Project = {
   technologies: string[];
   github?: string;
   demo: string;
+  intranet?: string;
   category: "systems" | "websites" | "experiments";
 };
 
@@ -31,7 +32,8 @@ export const projects: Project[] = [
     id: 24,
     category: "systems",
     title: "Remake Comics",
-    shortDescription: "A comic shop with orders, inventory and store administration.",
+    shortDescription:
+      "A comic shop with orders, inventory and store administration.",
     description:
       "Comic and manga commerce platform with customer accounts, guest checkout and store administration. Includes transactional inventory reservations, preorders, coupons, CSV imports and manual payment verification.",
     contribution:
@@ -74,16 +76,47 @@ export const projects: Project[] = [
     demo: "https://pieros.johanamador.com/",
   },
   {
-    id: 11,
-    category: "websites",
-    title: "Grupo Sercom",
-    shortDescription: "Fire protection services, products and training.",
+    id: 26,
+    category: "systems",
+    title: "tick",
+    shortDescription: "Media lists, tasks and Markdown notes.",
     description:
-      "Corporate B2B website for Grupo Sercom: services, products and training for a fire protection company with 22+ years of experience and SGS homologation. Built end-to-end with Next.js.",
+      "A personal workspace for movies, TV shows, books, comics, games, tasks and Markdown notes. Self-hosted with a private account, searchable catalogs, tags and an English/Spanish interface.",
+    contribution:
+      "I designed and built tick as a personal open-source project, from the interface and note editor to Supabase access policies and deployment.",
+    logo: "/projects/logos/tick.svg",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Supabase",
+      "PostgreSQL",
+      "Tiptap",
+      "Vercel",
+    ],
+    github: "https://github.com/johanamador/tick",
+    demo: "https://tick.johanamador.com/",
+  },
+  {
+    id: 11,
+    category: "systems",
+    title: "Grupo Sercom",
+    shortDescription: "Corporate website and client document portal.",
+    description:
+      "Corporate B2B website and intranet for a fire protection company. The website presents services, products and training; the client portal provides technical documents by RUC, PDF previews and a private administration panel.",
     logo: "/projects/logos/sercom.svg",
-    technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
-    github: "",
+    technologies: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Admin Panel",
+      "PDF Preview",
+      "VPS",
+      "PM2",
+    ],
     demo: "https://gruposercom.pe/",
+    intranet: "https://intranet.gruposercom.pe/",
   },
   {
     id: 16,
@@ -211,25 +244,6 @@ export const projects: Project[] = [
     ],
     github: "",
     demo: "https://farmasaludinversiones.com/",
-  },
-  {
-    id: 12,
-    category: "systems",
-    title: "Grupo Sercom Intranet",
-    shortDescription: "A client portal for accessing technical documents.",
-    description:
-      "Grupo Sercom intranet and document portal. Clients access technical documents via RUC with integrated PDF preview while admins manage companies, services and documents from a private panel. Delivered end-to-end and deployed on a VPS with PM2.",
-    logo: "/projects/logos/sercom.svg",
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "Admin Panel",
-      "PDF Preview",
-      "VPS",
-      "PM2",
-    ],
-    github: "",
-    demo: "https://intranet.gruposercom.pe/",
   },
   {
     id: 19,

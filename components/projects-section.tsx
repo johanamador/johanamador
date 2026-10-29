@@ -10,6 +10,7 @@ import {
   ArrowRight,
   ArrowUpRight,
   Search,
+  PanelsTopLeft,
 } from "lucide-react";
 import { SectionTitle } from "@/components/section-title";
 import { PortfolioDialog } from "@/components/portfolio-dialog";
@@ -32,9 +33,9 @@ const selection = [
     background: "pieros",
   },
   {
-    id: 11,
-    category: "Corporate website",
-    background: "sercom",
+    id: 26,
+    category: "Personal / open source",
+    background: "tick",
   },
 ];
 const selectedIds = new Set(selection.map((item) => item.id));
@@ -78,6 +79,18 @@ function ProjectLinks({ project }: { project: Project }) {
           <ArrowUpRight size={19} aria-hidden="true" />
         </a>
       )}
+      {project.intranet && (
+        <a
+          className="archive-action"
+          href={project.intranet}
+          aria-label={`${t("Client portal")}: ${t(project.title)}`}
+          title={t("Client portal")}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <PanelsTopLeft size={18} aria-hidden="true" />
+        </a>
+      )}
     </>
   );
 }
@@ -116,7 +129,9 @@ function ProjectDetail({
         {project.contribution && (
           <>
             <p className="eyebrow">{t("My contribution")}</p>
-            <p className="project-detail-description">{t(project.contribution)}</p>
+            <p className="project-detail-description">
+              {t(project.contribution)}
+            </p>
           </>
         )}
         <ul className="project-technologies" aria-label={t("Technologies")}>
@@ -144,7 +159,23 @@ function ProjectDetail({
               rel="noopener noreferrer"
             >
               <FaGithub size={16} aria-hidden="true" />
-              {t(project.id === 18 ? "My interoperability module" : "Source code")}
+              {t(
+                project.id === 18
+                  ? "My interoperability module"
+                  : "Source code",
+              )}
+              <ArrowUpRight size={16} />
+            </a>
+          )}
+          {project.intranet && (
+            <a
+              className="text-link"
+              href={project.intranet}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <PanelsTopLeft size={16} aria-hidden="true" />
+              {t("Client portal")}
               <ArrowUpRight size={16} />
             </a>
           )}
@@ -323,7 +354,11 @@ export function ProjectsSection() {
                           className="archive-action"
                           href={project.github}
                           aria-label={`${t(project.id === 18 ? "My interoperability module" : "Source code")}: ${t(project.title)}`}
-                          title={t(project.id === 18 ? "My interoperability module" : "Source code")}
+                          title={t(
+                            project.id === 18
+                              ? "My interoperability module"
+                              : "Source code",
+                          )}
                           target="_blank"
                           rel="noopener noreferrer"
                         >

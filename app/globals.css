@@ -714,6 +714,7 @@ main > section:nth-of-type(even) {
   color: hsl(var(--foreground));
 }
 .hero-footnote {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -730,6 +731,23 @@ main > section:nth-of-type(even) {
 }
 .hero-footnote a:hover {
   color: hsl(var(--foreground));
+}
+.hero-footnote .hero-tick-link {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.65;
+  transition: opacity 160ms;
+}
+.hero-footnote .hero-tick-link:hover {
+  opacity: 1;
+}
+.hero-tick-link img {
+  display: block;
+  object-fit: contain;
+}
+.light .hero-tick-link img {
+  filter: invert(1);
 }
 
 .featured-showcase {

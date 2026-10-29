@@ -70,9 +70,9 @@ export function Navbar() {
           aria-label={t("Main navigation")}
         >
           <a
-            href="#home"
+            href="https://tick.johanamador.com"
             className="wordmark"
-            aria-label={t("Johan Amador — home")}
+            aria-label={t("Johan Amador — tick")}
           >
             <img src="/ja.svg" width="30" height="24" alt="" />
             <span>
